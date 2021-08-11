@@ -21,26 +21,49 @@ where deptno in (20,30)
 group by deptno
 order by 평균연봉 desc;
 -- 5번 ----------------------------------------------------------------------
+select e.*, d.dname, d.loc, s.grade
+from emp e join dept d
+on e.deptno = d.deptno
+join salgrade s
+on e.sal between s.losal and s.hisal
+order by s.grade;
+-- 6번 ----------------------------------------------------------------------
+select e.empno, e.ename, e.job, e.mgr, m.ename "MANAGER"
+from emp e left outer join emp m
+on e.mgr = m.empno;
+-- 7번 ----------------------------------------------------------------------
+-- 미완
+--select e.ename, m.ename
+--from emp e join emp m
+
+
+
+-- 8번 ----------------------------------------------------------------------
+
+-- 9번 ----------------------------------------------------------------------
+
+-- 10번 ----------------------------------------------------------------------
+
+-- 11번 ----------------------------------------------------------------------
 
 
 
 
+----------------쪽지----------------
+select to_char(sysdate, 'yyyy-mm-dd am hh24:mi:ss')
+from dual;
 
+select e.deptno, dname, count(empno) 사원수
+from emp e join dept d
+on e.deptno = d.deptno
+GROUP BY e.deptno, dname;
 
+select e.deptno, d.dname, count(*) 사원수
+from emp e, dept d
+where e.deptno = d.deptno
+GROUP BY e.deptno, d.dname
+having count(e.empno) > 5;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+select e.ename, m.ename as 매니저
+from emp e left outer join emp m
+on e.mgr = m.empno;

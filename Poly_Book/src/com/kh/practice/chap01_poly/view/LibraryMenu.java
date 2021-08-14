@@ -69,6 +69,7 @@ public class LibraryMenu {
 			break;
 
 		case 9:
+			scannerClose();
 			loop = false;
 			System.out.println("프로그램을 종료합니다.");
 			break;
@@ -84,6 +85,7 @@ public class LibraryMenu {
 	public void selectAll() {
 		Book[] bList = lc.selectAll();
 		
+		System.out.println();
 		for (int i = 0; i < bList.length; i++) {
 			System.out.println(i + "번 도서 : " + bList[i].toString());
 		}
@@ -94,18 +96,26 @@ public class LibraryMenu {
 		// “검색할 제목 키워드 : “ >> 입력 받음 (keyword)
 		// LibraryController의 searchBook() 에 전달
 		// 그 결과 값을 Book[] 자료형 searchList에 담아 검색 결과인 도서 목록 출력
+		System.out.println();
 		System.out.print("검색할 제목 키워드 : ");
 		String keyword = sc.next();
 		
 		Book[] searchList = lc.searchBook(keyword);
 		
-		if (searchList == null) {
-			System.out.println("검색 결과가 없습니다.");
-		} else {
-			for (int i = 0; i < searchList.length; i++) {
+		int count = 0;
+		
+		for (int i = 0; i < searchList.length; i++) {
+			if (searchList[i] == null) {
+				count++;
+			} else {
 				System.out.println(searchList[i].toString());
 			}
 		}
+		
+		if (count == searchList.length) {
+			System.out.println("검색 결과가 없습니다.");
+		}
+		System.out.println();
 	}
 //============================================================================
 	public void rentBook() {
@@ -123,5 +133,6 @@ public class LibraryMenu {
 		} else {
 			System.out.println("성공적으로 대여되었습니다. 요리학원 쿠폰이 발급되었으니 마이페이지에서 확인하세요.");
 		}
+		System.out.println();
 	}
 }

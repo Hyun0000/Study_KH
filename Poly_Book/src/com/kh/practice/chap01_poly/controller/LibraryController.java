@@ -37,18 +37,14 @@ public class LibraryController {
 		// for문을 이용하여 bList 도서 목록들의 도서명과 전달받은 keyword 비교
 		// 전달받은 keyword를 포함하고 있으면  HINT : String 클 래스 의 contains() 참 고
 		// 검 색결과 의 도 서목록에 담 기  HINT : count 이 용
-		int count = 0;
-		
 		Book[] searchBook = new Book[5];
 		
 		for (int i = 0; i < searchBook.length; i++) {
 			if (bList[i].getTitle().contains(keyword)) {
 				searchBook[i] = bList[i];
-				count++;
 			}
 		}
-		
-
+		return searchBook;
 	}
 
 	public int rentBook(int index) {

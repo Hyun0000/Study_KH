@@ -61,12 +61,21 @@ public class FarmController {
 			return false;
 		}
 	}
-//	
-//	public boolean removeFarm(Farm f) {
-//		
-//	}
-//	
-//	public ArrayList<Farm> printBuyFarm() {
-//		
-//	}
+	
+	public boolean removeFarm(Farm f) {
+		// 전달 받은 f가 list에 존재할 때 list에 f 삭제, 그리고 hMap에 f 수량 1 증가
+		// 위 경우일 때 true 반환, 아니면 false 반환
+		if (list.contains(f)) {
+			list.remove(f);
+			hMap.put(f, hMap.get(f) + 1);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public ArrayList<Farm> printBuyFarm() {
+		// 농산물 구매 데이터가 들어가있는 컬렉션 반환
+		return list;
+	}
 }

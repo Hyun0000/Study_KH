@@ -1,5 +1,6 @@
 package com.kh.practice.generics.view;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -32,7 +33,7 @@ public class FarmMenu {
 		System.out.println("9. 종료");
 		
 		System.out.println();
-		System.out.print("메뉴 번호 선택 : ");
+		System.out.print("메뉴 번호 입력 : ");
 		int num = scanner.nextInt();
 		
 		switch (num) {
@@ -160,7 +161,7 @@ public class FarmMenu {
 			if (add1) {
 				System.out.println("새 농산물이 추가되었습니다.");
 			} else {
-				System.out.println("새 농산물 추가에 실패하였습니다.");
+				System.out.println("새 농산물 추가에 실패하였습니다. 다시 입력해주세요.");
 				addNewKind();
 			}
 			adminMenu();
@@ -172,7 +173,7 @@ public class FarmMenu {
 			if (add2) {
 				System.out.println("새 농산물이 추가되었습니다.");
 			} else {
-				System.out.println("새 농산물 추가에 실패하였습니다.");
+				System.out.println("새 농산물 추가에 실패하였습니다. 다시 입력해주세요.");
 				addNewKind();
 			}
 			adminMenu();
@@ -184,7 +185,7 @@ public class FarmMenu {
 			if (add3) {
 				System.out.println("새 농산물이 추가되었습니다.");
 			} else {
-				System.out.println("새 농산물 추가에 실패하였습니다.");
+				System.out.println("새 농산물 추가에 실패하였습니다. 다시 입력해주세요.");
 				addNewKind();
 			}
 			adminMenu();
@@ -337,6 +338,7 @@ public class FarmMenu {
 			}
 			System.out.println("현재 KH마트 농산물 수량");
 			printFarm();
+			System.out.println();
 			customerMenu();
 			break;
 			
@@ -351,6 +353,7 @@ public class FarmMenu {
 			}
 			System.out.println("현재 KH마트 농산물 수량");
 			printFarm();
+			System.out.println();
 			customerMenu();
 			break;
 			
@@ -365,6 +368,7 @@ public class FarmMenu {
 			}
 			System.out.println("현재 KH마트 농산물 수량");
 			printFarm();
+			System.out.println();
 			customerMenu();
 			break;
 
@@ -376,11 +380,79 @@ public class FarmMenu {
 	}
 //=====================================================================
 	public void removeFarm() {
+		System.out.println("1. 과일 / 2. 채소 / 3. 견과");
+		System.out.print("취소 종류 번호 : ");
+		int num = scanner.nextInt();
 		
+		System.out.print("구매 취소할 것 : ");
+		String name = scanner.next();
+		
+		switch (num) {
+		case 1:
+			Fruit fruit = new Fruit("과일", name);
+			boolean add1 = fc.removeFarm(fruit);
+			if (add1) {
+				System.out.println("구매 취소에 성공하였습니다.");
+				System.out.println();
+			} else {
+				System.out.println("구매 목록에 존재하지 않습니다. 다시 입력해주세요.");
+				removeFarm();
+			}
+			System.out.println("현재 KH마트 농산물 수량");
+			printFarm();
+			customerMenu();
+			break;
+			
+		case 2:
+			Vegetable vegetable = new Vegetable("채소", name);
+			boolean add2 = fc.removeFarm(vegetable);
+			if (add2) {
+				System.out.println("구매 취소에 성공하였습니다.");
+				System.out.println();
+			} else {
+				System.out.println("구매 목록에 존재하지 않습니다. 다시 입력해주세요.");
+				removeFarm();
+			}
+			System.out.println("현재 KH마트 농산물 수량");
+			printFarm();
+			customerMenu();
+			break;
+			
+		case 3:
+			Nut nut = new Nut("견과", name);
+			boolean add3 = fc.removeFarm(nut);
+			if (add3) {
+				System.out.println("구매 취소에 성공하였습니다.");
+				System.out.println();
+			} else {
+				System.out.println("구매 목록에 존재하지 않습니다. 다시 입력해주세요.");
+				removeFarm();
+			}
+			System.out.println("현재 KH마트 농산물 수량");
+			printFarm();
+			customerMenu();
+			break;
+
+		default:
+			System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
+			removeFarm();
+			break;
+		}
 	}
 //=====================================================================
 	public void printBuyFarm() {
+		// fc의 printBuyFarm()의 반환 값을 이용하여 Iterator를 통해 출력
+		// ("과일, 채소, 견과 중 하나", name)
+		ArrayList<Farm> printBuyList = fc.printBuyFarm();
+
+		Iterator<Farm> iterKey = printBuyList.iterator();
 		
+		while (iterKey.hasNext()) {
+			Farm key = iterKey.next();
+			System.out.println(key.toString());
+		}
+		System.out.println("현재 KH마트 농산물 수량");
+		printFarm();
+		System.out.println();
 	}
-	
 }

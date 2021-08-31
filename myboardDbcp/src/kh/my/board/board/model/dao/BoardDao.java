@@ -187,11 +187,13 @@ public class BoardDao {
 		
 		// 답글을 작성할 때의 Insert문 
 		String sqlInsert = "INSERT INTO  board_r (BNO, TITLE, CONTENT, WRITER, bref, bre_level, bre_step)" + 
-				"VALUES (SEQ_BOARD.nextval, ?, ?, ?, ?, ?, ?)";
+				"VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
-		// 새 글(새 원본글)을 작성할 때의 Insert문
-		String sqlInsertnew = "INSERT INTO  board_r (BNO, TITLE, CONTENT, WRITER, bref, bre_level, bre_step)" + 
-				"VALUES (SEQ_BOARD.nextval, ?, ?, ?, SEQ_BOARD.nextval, ?, ?)";
+		// SEQ_BOARD.nextval을 미리 받아와 보자(직접 하드코딩 하지 말고)
+		String sqlSqlNextval = "select SEQ_BOARD.nextval from dual";
+		
+		ResultSet rs = null;
+		int nextVal = 0; // 시퀀스는 1부터 시작(옵션 없다는 가정하에)이니까 초기값을 '0'으로 잡았다.
 		
 		int bref = 0;
 		int bre_level = 0; // 새 원본글을 작성할 때를 대비해 '0'으로 설정
@@ -202,10 +204,17 @@ public class BoardDao {
 		// (board.getBno() == 0) --> 새로운 원본글을 작성하는 것이다.
 		
 		try {
-			if (board.getBno() != 0) {
+			pstmt = conn.prepareStatement(sqlSqlNextval); // SEQ_BOARD.nextval의 값을 먼저 가져온다.
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				nextVal = rs.getInt(1); // 없으면 (SEQ_BOARD.nextval = 0)
+			}
+			close(rs); close(pstmt);
+			
+			if (board.getBno() != 0) { // 답글(답답글)을 쓰는 상태
 				bref = board.getBref();
 				bre_step = board.getBreStep();
-				pstmt = conn.prepareStatement(sqlUpdate);
+				pstmt = conn.prepareStatement(sqlUpdate); // update
 				pstmt.setInt(1, bref);
 				pstmt.setInt(2, bre_step);
 				result = pstmt.executeUpdate();
@@ -214,28 +223,29 @@ public class BoardDao {
 				// insert문 때문에 증가
 				bre_level = board.getBreLevel() + 1; // 레벨증가
 				bre_step++;
-				
+			}	
 				//close 했으니 다시 연다.
-				pstmt = conn.prepareStatement(sqlInsert);
-				pstmt.setInt(4, bref);
-				pstmt.setInt(5, bre_level);
-				pstmt.setInt(6, bre_step);
-			} else {
-				// 새 원본글을 작성할 때는
-				// pstmt.setInt(4, bref); 대신
-				// pstmt.setInt(4, SEQ_BOARD.nextval);로 들어가야 한다.
-				pstmt = conn.prepareStatement(sqlInsertnew);
-				pstmt.setInt(4, bre_level); // bre_level = 0;
-				pstmt.setInt(5, bre_step); // bre_step = 1;
-			}
-			pstmt.setString(1, board.getTitle());
-			pstmt.setString(2, board.getContent());
-			pstmt.setString(3, board.getWriter());
-			result = pstmt.executeUpdate();
+				pstmt = conn.prepareStatement(sqlInsert); // insert
+				if (board.getBno() != 0) {
+					pstmt.setInt(5, bref); // 답글(답답글)쓰기
+				} else {
+					pstmt.setInt(5, nextVal); // 새글 쓰기
+				}
+				pstmt.setInt(1, nextVal);
+				pstmt.setString(2, board.getTitle());
+				pstmt.setString(3, board.getContent());
+				pstmt.setString(4, board.getWriter());
+				pstmt.setInt(6, bre_level);
+				pstmt.setInt(7, bre_step);
+				result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			
+			close(rs);
+			// 위의 코드의 if (rs.next()) { nextVal = rs.getInt(1); } 부분에서
+			// 오류가 발생하면 catch 다음에 바로 이곳으로 오기에 정상적으로 close(rs)을 수행할 수 없다.
+			// 따라서 close(rs) 부분을 여기서도 작성해 NullPointException을 방지한다.
+			close(pstmt);
 		}
 		return result;
 	}

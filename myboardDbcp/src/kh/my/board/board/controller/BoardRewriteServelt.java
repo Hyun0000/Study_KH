@@ -38,7 +38,10 @@ public class BoardRewriteServelt extends HttpServlet {
 		
 		Board originVo = null; // 원본글에 대한 정보를 가져온다.
 		// 답글은 원본글이 존재해야 달 수 있는 것이다.
-		// 따라서 답글을 작성하기 전에 답글을 달기위한 원본글의 정보를 알아야한다. 
+		// 따라서 답글을 작성하기 전에 답글을 달기위한 원본글의 정보를 알아야한다.
+		String title = request.getParameter("t");
+		String content = request.getParameter("c");
+		String writer = (String)request.getSession().getAttribute("memberLoginInfo");
 		
 		String bnoStr = request.getParameter("bno"); // 현재 보고 있는 글의 번호
 		int bno = 0;
@@ -58,11 +61,8 @@ public class BoardRewriteServelt extends HttpServlet {
 			// 정보 = (bno, bref, bre_level, bre_step)
 		}
 		
-		String title = request.getParameter("t");
-		String content = request.getParameter("c");
-		String writer = (String)request.getSession().getAttribute("memberLoginInfo");
+
 		if (writer == null) { writer = "user01"; } // 로그인이 안 됐을때를 대비해 기본 계정 설정
-		
 		out.print("title : " + title + "<br>");
 		out.print("content : " + content);
 		

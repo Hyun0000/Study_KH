@@ -39,14 +39,14 @@ public class BoardRewriteServelt extends HttpServlet {
 		Board originVo = null; // 원본글에 대한 정보를 가져온다.
 		// 답글은 원본글이 존재해야 달 수 있는 것이다.
 		// 따라서 답글을 작성하기 전에 답글을 달기위한 원본글의 정보를 알아야한다.
-		String title = request.getParameter("t");
-		String content = request.getParameter("c");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 		String writer = (String)request.getSession().getAttribute("memberLoginInfo");
 		
 		String bnoStr = request.getParameter("bno"); // 현재 보고 있는 글의 번호
 		int bno = 0;
-				
-		if (bnoStr == null) {
+		
+		if (bnoStr == null || bnoStr.equals("")) {
 			originVo = new Board();
 			// 현재 보고 있는 글이 없는데 글을 작성하려고 한다. --> 새로운 글(원본글)을 작성하기 위한 것으로 판단
 			// 아예 새로운 글(원본글)에 대한 정보를 넣을 수 있는 비어 있는 Board 객체를 주는 것이다.
@@ -62,9 +62,9 @@ public class BoardRewriteServelt extends HttpServlet {
 		}
 		
 
-		if (writer == null) { writer = "user01"; } // 로그인이 안 됐을때를 대비해 기본 계정 설정
-		out.print("title : " + title + "<br>");
-		out.print("content : " + content);
+		if (writer == null || writer.equals("")) { writer = "user01"; } // 로그인이 안 됐을때를 대비해 기본 계정 설정
+//		out.print("title : " + title + "<br>");
+//		out.print("content : " + content);
 		
 		// originVo = new BoardService().getBoard(bno);를 통해
 		// 원본글에 대한 (bno, bref, bre_level, bre_step) 정보를 가져왔다.
@@ -80,11 +80,19 @@ public class BoardRewriteServelt extends HttpServlet {
 		Board board = new Board(originVo.getBno(), title, content, writer, originVo.getBref(), originVo.getBreLevel(), originVo.getBreStep());
 		int result = new BoardService().insertBoard(board);
 
-		if (result == 0) {
-			out.print("<br>게시글이 등록되지 않았습니다. 작성한 글에 비속어가 포함돼 있습니다. 다시 작성해주세요");
-		} else {
-			out.print("<br>게시글이 등록됐다.");
-		}
+//		if (result == 0) {
+//			out.print("<br>게시글이 등록되지 않았습니다. 작성한 글에 비속어가 포함돼 있습니다. 다시 작성해주세요");
+//		} else {
+//			out.print("<br>게시글이 등록됐다.");
+//		}
+		
+		// 글을 쓴후 다시 리스트화면으로 이동하고 싶을때는 어떻게 해야할까?
+//		request.getRequestDispatcher("BoardList").forward(request, response);
+		
+		//URL에 이상하게 보여지지 않게
+		response.sendRedirect("BoardList");
+		// 데이터를 들고가지는 못한다.
+		// 페이지를 이동시켜주는 역할만한다.
 	}
 
 	/**

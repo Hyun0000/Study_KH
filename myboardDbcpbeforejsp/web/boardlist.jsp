@@ -30,12 +30,23 @@
         <%
 			if(selectBoradList != null) {        
         		for(Board board : selectBoradList) {
-       			// <tr>
         %>
         
         <tr>
-           	<td><a href="SelectDetailBoard?bno=<%= board.getBno() %>"><%= board.getBno() %></a></td>
-            <td><%=board.getTitle() %></td>
+           	<td><a href="boardcontent?bno=<%= board.getBno() %>"><%= board.getBno() %></a></td>
+            <td>
+            	<%
+            		// 답글이 몇단계 답글이냐에따라 'Re:' 붙여주기
+            		for(int i = 0; i < board.getBreLevel(); i++){
+            			%>Re:<%
+            		}
+            	%>
+            	
+            
+            	<%=board.getTitle() %>
+            
+            
+            </td>
             <td><%=board.getWriter() %></td>
             <td><%=board.getCreateDate() %></td>
         </tr>
@@ -65,7 +76,8 @@
 		
 		<br>현재 선택한 페이지 : <%= currentPage%>
 		
-		<br><a href="boardwrite.jsp">글쓰기</a>
+		<br><a href=boardWrite>글쓰기</a>
+		<!--boardWrite.jsp가 아니라 view용 서블릿으로 이동하게 수정-->
     
 </body>
 </html>

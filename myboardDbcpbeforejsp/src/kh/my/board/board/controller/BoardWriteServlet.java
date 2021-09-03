@@ -38,7 +38,7 @@ public class BoardWriteServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		// 사용자가 입력한 값이 request에 실려서 이곳으로 오게된다.
 		// 화면입력 전달되어 옴 by request --> parameter (==변수명)에 실어서 받아온다.
-		// t라는 파라미터면 거기에는 타이틀이 , c 면 그 안에는 콘텐트가 있을것이다.
+		// title라는 파라미터면 거기에는 타이틀이 , content면 그 안에는 콘텐트가 있을것이다.
 
 		PrintWriter out = response.getWriter();
 

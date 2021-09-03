@@ -120,6 +120,7 @@ public class BoardDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			//흠....주석 테스트
 			pstmt.setInt(1, bno);
 			pstmt.setString(2, title);
 			
@@ -253,27 +254,33 @@ public class BoardDao {
 //========================================================================================================================
 	// 글 세부사항 출력
 	public Board selectDetailBoard(Connection conn, int bno) {
-		Board board = new Board();
-		Statement stmt = null;
+		Board board = null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from BOARD_R where bno = " + bno ;
+		String sql = "select title, content, create_Date, writer, delete_yn, bno, bref, bre_level, bre_step from BOARD_R where bno = ?";
 		
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				board.setBno(rs.getInt("bno"));
+				board = new Board();
 				board.setTitle(rs.getString("title"));
 				board.setContent(rs.getString("content"));
 				board.setCreateDate(rs.getDate("create_Date"));
 				board.setWriter(rs.getString("writer"));
+				board.setDeleteYn(rs.getString("delete_Yn"));
+				board.setBno(rs.getInt("bno"));
+				board.setBref(rs.getInt("bref"));
+				board.setBreLevel(rs.getInt("bre_Level"));
+				board.setBreStep(rs.getInt("bre_Step"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close(rs);
-			close(stmt);
+			close(pstmt);
 		}
 		return board;
 	}

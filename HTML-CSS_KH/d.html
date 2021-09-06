@@ -7,89 +7,59 @@
     <title>영역 - inline / block</title>
 </head>
 <body>
-    <!-- 인라인 형태 -->
-    <header>
-        asdasdasdasdasdasdasdas<br>dasdasdasdasdasdasdasdasdv<br>asdasdasdasdasdasdasdasd<br>asdasdasdasdasdasdasdasdasd<br>asdasdasdasdasdasdasdasda<br>sdasdasdvasdasdasdasdasdasdasd<br>asdasdasdasdasdasdasdasdasdasdasdasdasdasd<br>asdasdasdasdasdasdasdvasdasdas<br>dasdasdasdasdasdasdasd<br>sdsdasdas
-    </header>
-    <nav>
-        메뉴바가 들어간다.<br>
-        메뉴바는 가로 한줄로 나오는 경우도 있고(수평으로 나오는 인라인-블록 or 블록 형태)<br>
-        세로 한줄로 나오는 경우도 있다.(수직으로 나오는 블록 형태)<br>
-        header안 혹은 section 안에 들어갈때도 있다.(구성하기 나름)<br>
-        즉, 시맨틱태그의 구분은 정확한 기준은 없고 각 페이지의 구성마다 달라진다는 의미이다.<br>
-    </nav>
-    <br>
-    <!-- inline은 사이즈 지정이 불가 -->
-    <!-- style로도 inline은 사이즈 지정이 불가 -->
+    <header>내용</header>
+
+    <nav>메뉴바</nav>
+
 <section>
     <article>
         <h2>inline</h2>
-        <span width="100px" style="border: 1px solid black">
-            aaa
-        </span>
-        <span width="500px" style="border: 1px solid black">
-            bbb
-        </span>
-        <span style="width:100px; border: 1px solid black;">
-            aaa
-        </span>
+        <span width="100px" style="border: 1px solid black"> aaa </span>
+        <span width="500px" style="border: 1px solid black"> bbb </span>
+        <span style="width:100px; border: 1px solid black;"> ccc </span>
     </article>
 
-    <!-- block은 사이즈 지정이 가능 -->
     <article>
         <h2>block</h2>
-        <div style="width: 100px; border: 1px solid black">
+        <div style="width: 100px; border: 1px solid black"> aaa </div>
+        <div style="width: 400px; border: 1px solid black"> bbb </div>
+        <div style="width: 200px; border: 1px solid black"> ccc </div>
+    </article>
+
+    <!--inline-block -->
+    <article>
+        <h2>inline --> inline-block으로 변경</h2>
+        <span style="display: inline-block; width: 100px; border: 1px solid black">
+            aaa
+        </span>
+
+        <span style="display: inline-block; width: 400px; border: 1px solid black">
+            bbb
+        </span>
+
+        <span style="display: inline-block; width: 200px; border: 1px solid black">
+            aaa
+        </span>
+    </article>
+
+    <article>
+        <h2>block --> inline-block으로 변경</h2>
+        <div style="display: inline-block; width: 100px; border: 1px solid black">
             aaa
         </div>
 
-        <div style="width: 400px; border: 1px solid black">
+        <div style="display: inline-block; width: 400px; border: 1px solid black">
             bbb
         </div>
 
-        <div style="width: 200px; border: 1px solid black">
+        <div style="display: inline-block; width: 200px; border: 1px solid black">
             bbb
         </div>
     </article>
-
-    <!--인라인 블록 -->
-    <h2>인라인 형태를 인라인-블록으로 변경</h2>
-    <span width="100px" style="display: inline-block; width: 100px; border: 1px solid black">
-        aaa
-    </span>
-
-    <span width="100px" style="display: inline-block; width: 400px; border: 1px solid black">
-        bbb
-    </span>
-
-    <span width="100px" style="display: inline-block; width: 200px; border: 1px solid black">
-        aaa
-    </span>
-
-        
-    <h2>block 형태 div를 인라인-블록 형태로 변경</h2>
-    <div style="display: inline-block; width: 100px; border: 1px solid black">
-        aaa
-    </div>
-
-    <div style="display: inline-block; width: 400px; border: 1px solid black">
-        bbb
-    </div>
-
-    <div style="display: inline-block; width: 200px; border: 1px solid black">
-        bbb
-    </div>
 </section>
 
-    <aside></aside>
-    <br>
-    둘의 형태가 동일해졌다
-    즉, 태그의 고유한 디스플레이 속성을 변경할 수 있는 것이다.
-    <!-- <span width="100px" style="display: block; width: 200px; border: 1px solid black"></span>
-    이렇게 하면 span이라도 block형태로 display 속성이 변경된다. 
-    -->
+    <aside>사이드바</aside>
 
-    <header></header>
-    <section></section>
     <footer>사업자 번호, 사업자 주소, 연락처, 저작권, 링크 등이 들어간다.</footer>
 </body>
 </html>

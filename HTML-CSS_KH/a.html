@@ -1,0 +1,258 @@
+<!DOCTYPE html> <!--문서유형-->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>첫 화면 제목</title>
+</head>
+<body>
+    <table border="1px black solid">
+        <caption>caption 연습</caption>
+        <tr>
+            <th>제목1</th>
+            <th>제목2</th>
+            <th>제목3</th>
+        </tr>
+        <tr>
+            <td>값1</td>
+            <td>값2</td>
+            <td>값3</td>
+        </tr>
+        <tr>
+            <td>값4</td>
+            <td>값5</td>
+            <td>값6</td>
+        </tr>        
+    </table>
+<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <figure>
+        <figcaption>figure연습</figcaption>
+            <table border="1px black solid">
+                <tr>
+                    <th>제목1</th>
+                    <th>제목2</th>
+                    <th>제목3</th>
+                </tr>
+                <tr>
+                    <td>값1</td>
+                    <td>값2</td>
+                    <td>값3</td>
+                </tr>       
+            </table>
+        <figcaption>figure연습</figcaption>
+    </figure>
+
+
+    <table border="1px black solid">
+        <tr> <!--한 행(한 줄)을 만들어 준다.--> <!--이것만으로는 실제로 값을 집어넣을 수 없다.-->
+            <th>값1</th> <!--이렇게 '한 칸'을 만들어줘야 값을 넣을 수 있다.-->
+            <td rowspan="2">값1-2</td>
+            <td>값1-3</td>
+        </tr>
+        
+        <tr>
+            <th>값2</th>
+            <!-- <td>값2-2</td> -->
+            <td>값2-3</td>
+        </tr>
+        
+        <tr>
+            <!--나는 이줄에는 칸을 만드는거 말고 한줄로 셀병합하고싶다.
+            colspan="2" -> 열 2칸을 병합시킬거다. (위 행의 칸수와 맞춰야한다.)
+            colspan = columnspan
+            rowspan = 세로 병합 -->
+            <th colspan="2">값3</th>
+            <td>값3-1</td>
+        </tr>
+    </table>
+
+    <table border="1px black solid">
+        <tr>
+            <td>1</td>
+            <td rowspan="3">1-1</td>
+            <td>1-2</td>
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>2-1</td>
+        </tr>
+
+        <tr>
+            <td>3</td>
+            <td>3-1</td>
+        </tr>
+
+        <tr>
+            <td>4</td>
+            <td colspan="2">4-1</td>
+        </tr>
+
+        <tr>
+            <td>5</td>
+            <td colspan="2">5-1</td>
+        </tr>
+    </table>
+
+    <table border="1">
+        <!-- 자동 정렬 단축키 이용 -->
+        <tr>
+            <td>1</td>
+            <td rowspan="3">1</td>
+            <td>1</td>
+
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+     </table>
+
+    <table border="1">
+    <caption>[표 1-1] 아래표 캡션작성</caption>
+
+    <colgroup>
+        <col> <!--첫번째 컬럼 작용 -->
+        <col span="2" style="background-color: red;"> <!--두번 째 컬럼 작용 -->
+        <!--span="2" 컬럼 2줄에 적용한다는 의미 -->
+        
+        <col style="background-color: yellow;"> <!-- 셋번째 컬럼에 적용 -->
+    </colgroup>
+        <thead>
+            <tr>
+                <td>1</td>
+                <td rowspan="3">1</td>
+                <td>1</td>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1111111111111111111111111111111111111111</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+       </tbody>
+
+       <tfoot>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+       </tfoot>
+       <!-- thead, tbody 없이  tfoot만 있어도 된다.-->
+       <!-- thead 없이  tbody, tfoot만 있어도 된다.-->
+     </table>
+     <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+     <figure>
+        <figcaption>표의 캡션을 다양한 위치에 넣기</figcaption>
+     <table border="1 black solid" style="border-collapse: separate; border-spacing: 5px;">
+            <thead>
+                <tr>
+                    <td>1</td>
+                    <td rowspan="3">1</td>
+                    <td>1</td>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+    
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>1111111111111111111111111111111111111111</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+           </tbody>
+    
+           <tfoot>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+           </tfoot>
+           <!-- thead, tbody 없이  tfoot만 있어도 된다.-->
+           <!-- thead 없이  tbody, tfoot만 있어도 된다.-->
+         </table>
+         <figcaption>표의 캡션을 다양한 위치에 넣기</figcaption>
+    </figure>
+ <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <figure>
+        <figcaption>표의 캡션을 다양한 위치에 넣기</figcaption>
+     <table border="5" style="border-collapse: collapse; border-color: aqua">
+            <thead>
+                <tr>
+                    <td>1</td>
+                    <td rowspan="3">1</td>
+                    <td>1</td>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+    
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>1111111111111111111111111111111111111111</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+           </tbody>
+    
+           <tfoot>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+           </tfoot>
+           <!-- thead, tbody 없이  tfoot만 있어도 된다.-->
+           <!-- thead 없이  tbody, tfoot만 있어도 된다.-->
+         </table>
+         <figcaption>표의 캡션을 다양한 위치에 넣기</figcaption>
+    </figure>
+
+
+</body>
+</html>

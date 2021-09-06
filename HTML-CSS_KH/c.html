@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>목록</title>
+</head>
+<body>
+    <h1>순서 없는 목록</h1>
+
+    <ul>
+        <li>내용1</li>
+        <li>내용2</li>
+        <li>내용3</li>
+    </ul>
+
+    <h1>순서 있는 목록</h1>
+    <ol type="A" start="2">
+        <li>내용1</li>
+        <li>내용2</li>
+        <li>내용3</li>
+        <li>내용4</li>
+        <li>내용5</li>
+    </ol>
+
+    <!-- 제목과 내용이 한 세트처럼 보이고 싶을 때 사용 -->
+    <!-- 위의 목록들은 제목과 내용이 따로 노는 듯한 느낌이 있다. -->
+    <h1>목록의 제목과 내용이 한 세트처럼</h1>
+    <dl>
+        <dt>목록의 제목 부분</dt>
+        <dd>목록의 내용 1</dd>
+        <dd>목록의 내용 2</dd>
+        <dd>목록의 내용 3</dd>
+    </dl>
+
+    종류와 상관없이 목록 내용의 시작 위치가 모두 동일하다.(기본 들여쓰기가 돼있다.)
+    들여쓰기 간격이 기본으로 정해져있다.(CSS로 수정가능)
+    목록 내용은 한 줄당 block으로 구역이 지정된다.(그래서 개행 기능이 자동으로 있다.)
+
+    <li>TQ</li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+
+    <ul></ul>
+
+    <dl>
+        <dt>제목</dt>
+        <dd>내용2</dd>
+        <dd>내용3</dd>
+    </dl>
+
+    <p align="center" style="border: 1px red solid; padding: 10px;">HTML / CSS</p>
+    뒤에 이어서 작성<br>
+   <h1><small>P 태그</small>의 특징을 확인한다.</h1>
+    <!--P 태그는 단락(문단)을 차지한다.-->
+
+    <hr>
+    <h1>글자 크기</h1>
+    <h6>글자 크기</h6>
+    <strong>글자 크기</strong><br>
+    <b>글자 크기</b><br>
+    <mark style="color: red;">글자 크기</mark><br>
+    <blockquote>가나다라마바사</blockquote>
+    <q>가나다라마바사</q><br>
+    <u>글자 크기</u><br>
+    <s>글자 크기</s><br>
+    <em>글자 크기</em><br>
+    <i>글자 크기</i><br>
+    <hr>
+    <sup>글자</sup> 크기<br>
+    <sub>글자</sub> 크기<br>
+    <hr>
+    <abbr title="aaa" style="text-decoration: none;">글자 크기</abbr><br>
+    <cite>글자 크기</cite> <!-- 이텔릭채로 표현하는 인용구 -->
+
+<body>몸체 <h1> 몽통</h1></body>
+<!-- 위의 것을 그대로 화면에 출력하고 싶다. 현재는 html 태그로 인식해버려 출력이 안 된다.-->
+
+<pre>몸체이다.      헤드부분</pre>
+<!-- 공백도 입려한 만큼 그대로 출력-->
+
+    
+</body>
+</html>

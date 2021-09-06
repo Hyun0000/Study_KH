@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>첫 폼 태그</title>
+</head>
+<body>
+    <h1>게시판</h1>
+    <form method="post" name="formboard" action="BoardWrite.kh" target="_self" autocomplete="off">
+        <fieldset>
+            <!-- fieldset : 띠를 둘러준다. -->
+            <legend>새글쓰기</legend>
+            <!-- <input type="file" value="apple" name="title" readonly multiple> -->
+            <!-- <input type="text" size="50" autofocus name="title" placeholder="제목은 한글 10자까지 입력가능">
+            <input type="button" value="banana">
+            <input type="radio" value="banana"> -->
+            <!-- "button"은 value를 써줘야한다. -->
+
+            <input type="text" size="50" autofocus name="t" placeholder="제목은 한글 10자까지 입력가능"><br>
+            <input type="text" size="50" name="c"><br>
+            <input type="submit" value="등록">
+            <input type="reset" value="취소">
+        </fieldset>
+    </form>
+</body>
+</html>

@@ -7,60 +7,55 @@
     <title>Document</title>
 
     <style>
-        /* 후손 */
-        /* body의 자식 태그는 2개의 div */
-        /* div의 자식 태그는 h1, p, ul (첫번째) */
-        /* div의 자식 태그는 h1, p, ol (두번째) */
-        /* div의 후손 태그는 li (첫번째) */
-        div .c-red {
-            /* div이고 밑의 후손중에 클래스가 .c-red 인 것
-            if문 같은 느낌
-            div 조건을 통과하고
-            그 후 그 안의 후손 중에 .c-red인것
-            */
-            color: red;
-        }
+        /* 후손 선택자 */
+        /* body의 자식 태그는 2개의 div 태그 */
+        /* 첫번째 div의 자식 태그는 h1, p, ul 후손 태그는 li */
+        /* 두번째 div의 자식 태그는 h1, p, ol 후손 태그는 li */
+        /* cf) 후손에는 자식도 포함된다. */
+
         /* div .c-red와 div.c-red는 다르다. */
 
-        /* div'이면서' 클래스가 d2인것 
-        && 같은 조건
-        div '이고' 그 div 클래스가 d2 인것
-        */
+        div .c-red { color: red; }
+        /* 약간 if문 같은 느낌 (내 생각)
+        태그가 div 일 때 밑의 후손 중에 클래스가 .c-red 인 것
+        div가 if문의 조건이고 .c-red가 true일 때의 값과 같은 느낌*/
+        /* div.c-red --> div 태그이면서 그 태그의 클래스가 .c-red 인 것 */
+        
         div.d2 {
-            background-color: salmon;
+            background-color: green;
         }
+        /* && 같은 조건
+        div태그이면서 그 태그의 클래스가 d2 인 것
+        */
 
         div, .c-red {
-            /* div, .c-red 각각 모두에 색깔을 주겠다. */
             background-color: salmon;
         }
-
-
+        /* div, .c-red 각각 모두에 색깔을 주겠다. */
     </style>
 </head>
 <body>
     <div class="d1">
-        <h1>aaaaaa</h1>
-        <p>bbbbbbbbbb</p>
-        <p>cccccccccc</p>
+        <h1>A</h1>
+        <p>B</p>
+        <p>C</p>
 
         <ul>
-            <li class="c-red">11111</li>
-            <li>22222</li>
-            <li class="c-red">33333</li>
+            <li class="c-red">11</li>
+            <li>22</li>
+            <li class="c-red">33</li>
         </ul>
     </div>
 
-
     <div class="d2">
-        <h1>ddddddddddddddddd</h1>
-        <p>eeeeeeeeeeeeee</p>
-        <p>fffffffffffff</p>
+        <h1>D</h1>
+        <p>E</p>
+        <p>F</p>
 
         <ol>
-            <li class="c-red">44444</li>
-            <li>55555</li>
-            <li>66666</li>
+            <li class="c-red">44</li>
+            <li>55</li>
+            <li>66</li>
         </ol>
     </div>
 </body>

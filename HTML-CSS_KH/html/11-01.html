@@ -6,71 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS 선택자</title>
     <style>
-      * { background-color: thistle;
-          color: teal;
-      }  
-
-      /* 우선 수위때문에 * 대신 태그 선택자의 내용이 적용됐다. */
-      .cBlue { color: blue; }
+      /* 전체 선택자 */
+      * { background-color: thistle; color: teal; }  
 
       #intro{ color: brown; }
-
-      /* 이런 복합도 가능 */
-      /* 아이디 클래스 */
-      #intro.cYellow { color: yellow; }
-      /* 클래스 클래스 가능 */
-      .cYellow.f20 {font-weight: bold;}
-      /* .cYellow.이면서 f20인것 */
-
+      
       .cYellow { color: yellow; }
 
-        /* h1태그이면서 first 클래스 인것 */
-        h1.first { color: wheat; }
+       /*띄어쓰기 하면 후손선택자를 의미하기 때문에 딱 붙여서 써야한다. */
+      /* 복합 선택자(태그선택자.클래스) --> h1 태그이면서 first 클래스 인것 */
+      h1.first { color: wheat; }
 
-        /* p태그 이면서 secnod 클래스 인것
-        띄어쓰기 하면 후손선택자를 의미하기 때문에 딱 붙여서 써야한다. */
-        p.second { color: wheat; }
+      /* 복합 선택자(클래스.클래스) --> .cYellow 클래스 이면서 f20클래스 인것*/
+      .cYellow.f20 {font-weight: bold; border: 1px solid red;}
 
-      /* p태그와 span 태그 모두에 적용하고 싶을때
-      p 선택자'하고' span 선택자 모두에 스타일지정
-      태그만이 아니라 클래스, 아이디도 이런 방식으로 사용가능
-      3개이상도 가능
-      이때는 띄어쓰기를 해도 상관없다.
-      쉼표를 이용해 선택자 여러개를 선택
-      */
+      /* 복합 선택자(아이디.클래스.클래스)*/
+      #intro.cYellow.f40 { color: green; border: 1px solid red;}
+
+      /* 우선순위로 인해 *(전체 선택자) 대신 태그 선택자의 내용이 적용된다. */
+      .cBlue { color: blue; }
+
+      /* 복합 선택자(태그선택자.클래스) -->  p 태그 이면서 secnod 클래스 인것*/
+      p.second { color: wheat; }
+
+      /* 쉼표를 이용한 복수의 선택자 지정
+      p 태그 선택자와 span 태그 선택자 모두에 스타일이 지정된다.
+      태그 선택자만이 아니라 클래스 선택자, 아이디 선택자도 동일하게 지정 가능
+      3개이상도 가능하며 띄어쓰기를 해도 상관없다.*/
       p, span { color: blue;
         font-size: 20px;
       }
 
-      /* 이렇게도 가능(p.second, h1.first) */
       p, span, p.second, h1.first  { color: blue;
         font-size: 20px;
       }
 
-
-
-
       .f40 { font-size: 40px;}
-      /* 이렇게 class의 속성을 이용해 다양하고도 직관적이게 스타일을 지정할 수 있다. */
+      
       .f20 { font-size: 20px;}
 
-
-
-      
     </style>
 </head>
 <body>
     <h1>안녕하세요</h1>
-    <p id="intro" class="cYellow f40">ccccccccccccccc</p>
-    <!-- id에 적용된 스타일과 클래스에 적용된 스타일 모두 반영된다. -->
-    <!-- 만약 클래스도 컬러 아이디도 컬러이면 아이디의 컬러 속성이 적용된다. -->
-    <h1 class="first cYellow">bbbbbbbbbbbbbb</h1>
-    <p class="first cYellow f40">cccccccccccc</p>
-    <p class="first cYellow f20">sssssssssssssss</p>
-    <h1 class="second cBlue">bbbbbbbbbbbbbb</h1>
-    <p class="second cBlue f40">ddddddddddddddddd</p>
-    <p class="second cBlue f20">eeeeeeeeeeeeeeee</p>
+    
+    <p id="intro" class="cYellow f40">A</p> <!-- id에 적용된 스타일과 클래스에 적용된 스타일 모두 반영된다. -->
 
-    <span>ddd</span>
+    <h1 class="first cYellow">B</h1>
+    <p class="first cYellow f40">C</p>
+    <p class="first cYellow f20">D</p>
+
+    <h1 class="second cBlue">E</h1>
+    <p class="second cBlue f40">F</p>
+    <p class="second cBlue f20">G</p>
+
+    <span>H</span>
 </body>
 </html>

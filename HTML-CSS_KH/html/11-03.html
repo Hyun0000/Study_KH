@@ -6,126 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nth child</title>
     <style>
-        p:first-child, p:last-child(5) {
-            color: red;
+        :first-child {
+            background-color: salmon;
         }
 
-        /* p '중에서만 ' 첫째인것 */
-        p:first-child, p:last-of-type {
-            color: red;
+        p:first-child, p:nth-child(5) {/* 쉼표를 이용해 여러개 지정 가능 */
+            background-color: red;
         }
 
-
-        /* p 태크이면서 누군가의 첫 쨰인것 */
         p:nth-last-child(4) {
-            color: blue;
+            background-color: green;
         }
 
-        span:first-child {/* 적용 안됨 */
-            color: yellow;
-        }
-
-        /* span '중에서만 ' 첫째인것 */
-        span:first-of-type {/* 적용 안됨 */
-            color: yellow;
+        /* 적용 안 된다. <span>이 둘째부터 있기 때문 */
+        span:first-child {
+            background-color: yellow;
         }
 
         span:last-child {
-            color: green;
+            background-color: yellow;
         }
-
-        div:last-child {
-            background-color: wheat;
-        }
-
-        /* li:first-child {
-            color: blue;
-        }
-
-        li:nth-child(2) {
-            color: yellow;
-        }
-
-        li:nth-child(3) {
-            color: red;
-        } */
-
-        /* 이렇게 띄어쓰기하면 적용이 안 된다. */
-        li :first-child {
-            color: blue;
-        }
-
-        li :nth-child(2) {
-            color: yellow;
-        }
-
-        li :nth-child(3) {
-            color: red;
-        }
-
-
-
-        /* 이러면 된다. */
-        /* ul :first-child {
-            color: blue;
-        }
-
-        ul :nth-child(2) {
-            color: yellow;
-        }
-
-        ul :nth-child(3) {
-            color: red;
-        } */
-/*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  *//*  */
-        ul > :first-child {
-            color: blue;
-        }
-
-        ul >  :nth-child(2) {
-            color: yellow;
-        }
-
-        ul >  :nth-child(3) {
-            color: red;
-        }
-
-
-
-    </style>
-</head>
-<body>
-    <div>
-        <p>aaa</p>
-        <span>gggg</span>
-        <p>bbb</p>
-        <span>hhhh</span>
-        <p>ccc</p>
-        <span>jjjj</span>
-    </div>
-
-    <div>
-        <p>aaa</p>
-        <span>gggg</span>
-        <p>bbb</p>
-        <span>hhhh</span>
-        <p>ccc</p>
-        <span>jjjj</span>
-    </div>
-
-    <div>
-        <ul>
-            <li>파랑색</li>
-            <li>바나나</li>
-            <li>사과</li>
-        </ul>
-    </div>
-
-
-
-
-
-
-
+        </style>
+    </head>
+    <body>
+        <div>
+            <p>AAA</p>
+            <span>BBB</span>
+            <p>CCC</p>
+            <span>DDD</span>
+            <p>EEE</p>
+            <span>FFF</span>
+        </div>
 </body>
 </html>

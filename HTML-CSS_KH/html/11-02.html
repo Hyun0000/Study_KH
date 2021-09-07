@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 후손 */
+        /* body의 자식 태그는 2개의 div */
+        /* div의 자식 태그는 h1, p, ul (첫번째) */
+        /* div의 자식 태그는 h1, p, ol (두번째) */
+        /* div의 후손 태그는 li (첫번째) */
+        div .c-red {
+            /* div이고 밑의 후손중에 클래스가 .c-red 인 것
+            if문 같은 느낌
+            div 조건을 통과하고
+            그 후 그 안의 후손 중에 .c-red인것
+            */
+            color: red;
+        }
+        /* div .c-red와 div.c-red는 다르다. */
+
+        /* div'이면서' 클래스가 d2인것 
+        && 같은 조건
+        div '이고' 그 div 클래스가 d2 인것
+        */
+        div.d2 {
+            background-color: salmon;
+        }
+
+        div, .c-red {
+            /* div, .c-red 각각 모두에 색깔을 주겠다. */
+            background-color: salmon;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="d1">
+        <h1>aaaaaa</h1>
+        <p>bbbbbbbbbb</p>
+        <p>cccccccccc</p>
+
+        <ul>
+            <li class="c-red">11111</li>
+            <li>22222</li>
+            <li class="c-red">33333</li>
+        </ul>
+    </div>
+
+
+    <div class="d2">
+        <h1>ddddddddddddddddd</h1>
+        <p>eeeeeeeeeeeeee</p>
+        <p>fffffffffffff</p>
+
+        <ol>
+            <li class="c-red">44444</li>
+            <li>55555</li>
+            <li>66666</li>
+        </ol>
+    </div>
+</body>
+</html>

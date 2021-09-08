@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 방문한적 없는 경우 */
+        a:link {
+            color: peru;
+            text-decoration: none;
+        }
+
+        /* 방문한적 있는 경우 */
+        a:visited {
+            color: red;
+        }
+
+        /* 마우스를 위에 올린다는 의미  --> 사용자가 마우스롤 '올리면~'*/
+        a:hover {
+            color: blue;
+            background-color: #ccc;
+            text-decoration: overline;
+            cursor: wait;/* 마우스롤 올리면 나타나는 아이콘 선택 */
+        }
+
+        /* 마우스를 꾹 누르고 있는 상태 */
+        a:active {
+            color: yellow;
+            background-color: tomato;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="">
+        <table>
+            <tr>
+                <td><a href="a.html">aaa</a></td>
+                <td><<a href="f.html#a3">fff</a></td>
+                <td><a href="c.html">hhh</a></td>
+            </tr>
+            <tr>
+                <td><a href="11-01.html">bbb</a></td>
+                <td><a href="11-02.html">ccc</a></td>
+                <td><a href="11-03.html">ddd</a></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

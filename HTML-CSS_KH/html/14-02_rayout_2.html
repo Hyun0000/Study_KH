@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* header */
+    #header {
+        width: 100%;
+        height: 100px;
+        background-color: white;
+    }
+    
+    #login {
+        float: left;
+        /* 머리 부분은 가운데에 빈칸이 있으므로 %가 아니라 px을 이용한다. */
+        width: 300px;
+        height: 100%;
+    }
+
+    #logo {
+        float: right;
+        width: 200px;
+        height: 100%;
+    }
+
+    /* section */
+    #nav {
+        float: left;
+        /* 몸통부분은 화면을 꽉 채워야 하므로 %를 이용해아한다. */
+        width: 20%;
+        height: 500px; /* 나의 부모가 없으므로 px로 지정 */
+        background-color: #ccc;
+    }
+
+    #article {
+        float: left;
+        width: 80%;
+        height: 500px; /* 나의 부모가 없으므로 px로 지정 */
+        background-color: gray;
+    }
+
+    /* footer */
+    #footer {
+        clear: both;
+        width: 100%;
+        height: 80px;
+        background-color: #eee;
+    }
+</style>
+
+<body>
+    <div id="header">
+        <!-- width 100%, height 300px -->
+        <!-- width 100% 현재 화면의 넓이를 의미 -->
+        <div id="login">로그인</div>
+        <!-- width 500px -->
+        <div id="logo">로고</div>
+        <!-- width 100px -->
+    </div>
+
+    <!-- width 100%, height 700px -->
+    <div id="nav">메뉴</div>
+    <!-- width 200px -->
+    <div id="article">내용</div>
+    <!-- width 나머지 -->
+    </div>
+
+    <div id="footer">
+        <!-- width 100%, height 200px -->
+        푸터
+    </div>
+</body>
+
+</html>

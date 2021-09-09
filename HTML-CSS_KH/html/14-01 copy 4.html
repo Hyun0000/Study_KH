@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float, clear</title>
+    <style>
+        /* body {
+            float: left;
+        } */
+
+        /* div {
+            float: left;
+        } */
+
+        span{
+            /* float: left; */
+            /* float는 block 속성에 적용되는 것이므로 현재 노란줄이 뜬다. 
+            먹히게는 해주지만 쓰지는 말라(사실상 맞지 않는 코드이다.)
+            */
+            display: inline-block;
+            width: 300px;
+            height: 100px;
+            /* width, height 잡아줘야 span은 inline-block울 지정한 효과가 생긴다.
+            만약 사이즈를 지정을 안하면 inline-block지정 하나마나 이다.
+            근데 사이즈를 지정해도 div의 float:left가 먼저 먹힌다.
+            아주 개 같다.
+            만약 span을 먼저 보이게 하고 싶으면 span에게도 float: left;을 먹힌다.
+            */
+        }
+
+        .c1 {
+            /* float: left; */
+            /* 어차피 얘는 왼쪽에 붙는다고 해서 안 적으면 안 된다.
+            div의 속성은 블록이기에 만약 쓰지 않으면 c1 옆에 아무것도 올 수 없다.
+            */
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            /* border-box를 썼기 때문에 보더의 두께를 뺸 90을 쓴다. */
+            /* (보더까지 계산하므로 실제 컨테츠 크기는 90이니까) */
+            /* 만약  border-box를 안 썼다면 height: 100px와 밭게 100px을 쓴다.
+            (이때는 콘텐츠 크기만 기준으로 콘텐츠 크기 = 100px이 되니까)*/
+
+            background-color: antiquewhite;
+        }
+
+        .c2 {
+            float: left;
+            /* 얘도 만약 float를 쓰지 않으면 c2 옆에는 아무것도 붙을 수 없다. */
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            /* border-box를 썼기 때문에 보더의 두께를 뺸 90을 쓴다. */
+            /* (보더까지 계산하므로 실제 컨테츠 크기는 90이니까) */
+            /* 만약  border-box를 안 썼다면 height: 100px와 밭게 100px을 쓴다.
+            (이때는 콘텐츠 크기만 기준으로 콘텐츠 크기 = 100px이 되니까)*/
+            background-color: antiquewhite;
+        }
+
+        
+        .c3 {
+            float: left;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            /* border-box를 썼기 때문에 보더의 두께를 뺸 90을 쓴다. */
+            /* (보더까지 계산하므로 실제 컨테츠 크기는 90이니까) */
+            /* 만약  border-box를 안 썼다면 height: 100px와 밭게 100px을 쓴다.
+            (이때는 콘텐츠 크기만 기준으로 콘텐츠 크기 = 100px이 되니까)*/
+            background-color: antiquewhite;
+        }
+
+        /* 더 이상 줄바꿈을 원치않아 */
+        .c4 {
+             /* clear: both; 흐름을 끊고 원래 나의 배치 방식으로 가곘다. */
+            clear: both;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            /* border-box를 썼기 때문에 보더의 두께를 뺸 90을 쓴다. */
+            /* (보더까지 계산하므로 실제 컨테츠 크기는 90이니까) */
+            /* 만약  border-box를 안 썼다면 height: 100px와 밭게 100px을 쓴다.
+            (이때는 콘텐츠 크기만 기준으로 콘텐츠 크기 = 100px이 되니까)*/
+            background-color: antiquewhite;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="c1">
+        1. Lorem Ipsum is simply
+    </div>
+
+    <div>
+        <span>
+            0. Span Lorem Ipsum is simply
+        </span>
+    </div>
+    <!--
+    (화면 컸을 때 예기)    
+    span은 인라인 속성이므로 whidth, height 지정이 불가능 즉, 크기가 없다는 얘기
+    원래 위치는 c1다음에 들어가는게 맞다.
+    근데 c2가 float: left; 인 상황에서 span은 공간을 차지하지 않으므로
+    c2는 마치 span을 '0'으로 인식하는 것이다.
+    그래서 c2가 span을 밀고 맨 왼쪽으로 붙는 것이다.
+    c3도 마찬가지 의미로 공간이 있으니까 span을 밀고 2번째 붙는 것이다.
+    c4는 clear이므로 그제서야 span이 붙는다.
+    결론 : span은 width가 잡히지 않으므로 제일 마지막으로 밀려났다.
+
+    공간이 줄어들면
+    span먼저 차지하고 c2, c3가 차지한다.... ㅅㅂ 지도 몰랐네
+    
+    
+-->
+
+    <div class="c2">
+        2. Lorem Ipsum is simply
+    </div>
+
+    <div class="c3">
+        3. Lorem Ipsum is simply
+    </div>
+
+    <div class="c4">
+        4. Lorem Ipsum is simply
+    </div>
+
+    <div class="c5">
+        5. Lorem Ipsum is simply
+    </div>
+    
+</body>
+</html>

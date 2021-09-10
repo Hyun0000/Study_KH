@@ -7,8 +7,7 @@
     <title>Document</title>
     <style>
         #enroll {
-            border-top: 1px solid tomato;
-            
+            width: 50%;
         }
 
         td:first-child {
@@ -16,10 +15,17 @@
             font-weight: bold;
         }
 
-        #btn {
-            border-top: 1px solid tomato;
-            text-align: center;
+        #btn_border {
             padding-top: 5px;
+        }
+
+        table {
+            border-top: 1px solid tomato;
+            border-bottom: 1px solid tomato;
+        }
+
+        #btn {
+            margin-left: 250px;
         }
 
         select {
@@ -52,7 +58,7 @@
                     <td>비밀번호 확인</td>
                     <td><input type="password" name="re_pw" required></td>
                 </tr>
-                
+
                 <tr>
                     <td><label for="hint">비밀번호 힌트/답변</label></td>
                     <td><select size="1" id="hint">
@@ -95,7 +101,7 @@
                     </td>
                 </tr>
 
-                <tr>
+                <tr id="table_down">
                     <td>관심분야</td>
                     <td>
                         <input type="checkbox" name="hope" value="sangdu" id="id_sangdu">
@@ -114,9 +120,11 @@
                 </tr>
             </table>
 
-            <div id="btn">
-                <input type="submit" value="회원가입">
-                <input type="reset" value="취소">
+            <div id="btn_border">
+                <div id="btn">
+                    <input type="submit" value="회원가입">
+                    <input type="reset" value="취소">
+                </div>
             </div>
         </form>
     </div>

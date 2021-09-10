@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float, clear</title>
+    <style>
+        .c1 {
+            /* float: left; */
+            overflow:auto;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+        
+        span{
+            /* float: left; */
+            display: inline-block;
+            width: 300px;
+            height: 100px;
+        }
+
+        .c2 {
+            float: left;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+        
+        .c3 {
+            float: left;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+
+        .c4 {
+            clear: both;
+            /* clear: both;가 없다면*/
+            /* c2, c3의 (float: left) 배치를 무시하고 <span>이 감싸져 있는 <div> 블록 다음에 들어간다.(5번도 마찬가지)
+            즉, (float: left)를 무시하고 정확히 수직 분할한 위치에 들어간다.
+            (텍스트는 c2와 겹칠 수 없기 때문에 밑으로 빠진다.)
+            */
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+
+        .c5 {
+            position: absolute;
+            top: 50px;
+            left: 350px;
+            /* absolute이므로 (left: 350px, top: 50px) 위치로 아예 붙박이 시켜 버린다.
+            (현재 c5의 부모 태그는 <body> 즉, <body>가 기준이라는 것이다.)*/
+            /* c5의 크기 지정 */
+            width: 50px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="c1">1. Lorem Ipsum is simply Lorem Ipsum is simply Lorem Ipsum is simply</div>
+
+    <div>
+        <span>0. Span Lorem Ipsum is simply</span>
+    </div>
+
+    <div class="c2">2. Lorem Ipsum is simply</div>
+    <div class="c3">3. Lorem Ipsum is simply</div>
+    <div class="c4">4. Lorem Ipsum is simply</div>
+    <div class="c5">5. Lorem Ipsum is simply</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float, clear</title>
+    <style>
+        .c1 {
+            /* float: left; */
+            /* 어차피 얘는 float 속성을 적용하지 않아도 왼쪽에 붙는다고 해서 float 속성을 안 적으면 안 된다.*/
+            /* div의 display 속성은 block이기에 만약 해당 요소에 (float: left)을 쓰지 않으면 c1 옆에는 아무것도 올 수가 없다.*/
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+
+        .c2 {
+            float: left;
+            /* c2 또한 만약 (float: left)를 쓰지 않으면 c2 옆에는 아무것도 붙을 수 없다.(display : block 이니까) */
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+
+        .c3 {
+            float: left;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+
+        .c4 {
+            clear: both;
+            /* clear: both; --> 위에서 적용되는 float 흐름을 끊고 원래 나의 배치 방식으로 가겠다. */
+            /* 기존에 <div>가 배치되는 방식으로 출력된다. */
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+    <div class="c1">1. Lorem Ipsum is simply</div>
+    <div class="c2">1. Lorem Ipsum is simply</div>
+    <div class="c3">1. Lorem Ipsum is simply</div>
+    <div class="c4">1. Lorem Ipsum is simply</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float, clear</title>
+    <style>
+        span{
+            /* float: left; */
+            display: inline-block;
+            width: 300px;
+            height: 100px;
+        }
+
+        .c1 {
+            /* float: left; */
+            overflow:auto;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+
+        .c2 {
+            float: left;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+        
+        .c3 {
+            float: right;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+
+        .c4 {
+            position: relative;
+            top: 50px;
+            left: 150px;
+            /* position: relative; --> 나의 자식들아 나를 (0,0)으로 잡아라 앞으로 body가 아니라 내가 absolute의 기준이다.
+            즉, 부모의 위치를 (0,0)으로 셋팅하고 그것을 기준으로 위치를 지정한다.
+            */
+            clear: both;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+
+        .c5 {
+            visibility: visible;
+            position: absolute;
+
+            top: 50px;
+            left: 350px;
+            /* 현재 c5의 기준 위치 부모 태그는 c4*/
+
+            width: 50px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="c1">1. Lorem Ipsum is simply Lorem Ipsum is simply Lorem Ipsum is simply</div>
+
+    <div>
+        <span>0. Span Lorem Ipsum is simply</span>
+    </div>
+
+    <div id="1">
+        <div class="c2">2. Lorem Ipsum is simply</div>
+
+        <div class="c3">3. Lorem Ipsum is simply</div>
+    </div>
+
+    <div class="c4" id="2">
+        4. Lorem Ipsum is simply
+
+        <div class="c5">5. Lorem Ipsum is simply</div>
+    </div>
+</body>
+</html>

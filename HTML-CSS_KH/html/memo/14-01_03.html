@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float, clear</title>
+    <style>
+        .c1 {
+            /* float: left; */
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+
+        .c2 {
+            float: left;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+
+        
+        .c3 {
+            float: left;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+
+        .c4 {
+            clear: both;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="c1">1. Lorem Ipsum is simply</div>
+    <span>0. Span Lorem Ipsum is simply</span>
+
+    <!-- (전체화면처럼 화면이 클 때)
+    - 원래대로라면 <span>의 내용이 c1 다음에 들어가는게 맞다.
+    - 이때 <span>은 inline 속성이므로 width와 height 지정이 불가능하다. 즉, 크기가 없다는 얘기이다.
+    - 현재 c2의 속성이 (float: left)인데 이때 크기가 없는 span을 '0'으로 인식하는 것이다.
+    (공간을 차지하지 않는다고 보는 것이다.)
+    - 이로인해 c2가 <span>을 밀어내고 c1 바로 밑에 출력된다. (현재 c1은 display: block)
+    - c3도 마찬가지로 c2 옆에 공간이 있으니까 <span>을 밀어내고 c2 옆에 붙는다.
+    - c4는 (clear: both)이므로 그제서야 <span>이 붙는다.
+    결론 : <span>은 width가 잡히지 않으므로 밀려났다.
+
+    - 그러나 화면이 줄어들면 다시 원래대로 <span>이 c1 바로 밑에 붙고 c2, c3 순서대로 붙는다.
+    - 즉, 화면의 사이즈에 따라 나타나는 모습이 달라진다.-->
+
+    <div class="c2">2. Lorem Ipsum is simply</div>
+    <div class="c3">2. Lorem Ipsum is simply</div>
+    <div class="c4">2. Lorem Ipsum is simply</div>
+    <!-- <div class="c5">2. Lorem Ipsum is simply</div> -->
+</body>
+</html>

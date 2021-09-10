@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float, clear</title>
+    <style>
+        span{
+            /* float: left; */
+            display: inline-block;
+            width: 300px;
+            height: 100px;
+        }
+
+        .c1 {
+            /* float: left; */
+            overflow:auto;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+
+        .c2 {
+            float: left;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+        
+        .c3 {
+            float: right;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+
+        .c4 {
+            position: relative;
+            top: 50px;
+            left: 150px;
+            /* 이전 (id="1")를 기준으로 위의 사이즈만큼 이동한다. */
+            clear: both;
+            width: 280px;
+            height: 100px;
+            box-sizing: border-box;
+            border: chartreuse 5px solid;
+            line-height: 90px;
+            background-color: antiquewhite;
+        }
+
+        .c5 {
+            position: absolute;
+            top: 50px;
+            left: 350px;
+            width: 50px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="c1">
+        1. Lorem Ipsum is simply Lorem Ipsum is simply Lorem Ipsum is simply
+    </div>
+
+    <div>
+        <span>0. Span Lorem Ipsum is simply</span>
+    </div>
+
+    <div id="1">
+        <div class="c2">2. Lorem Ipsum is simply</div>
+
+        <div class="c3">3. Lorem Ipsum is simply</div>
+    </div>
+
+    <div class="c4" id="2">4. Lorem Ipsum is simply</div>
+    <!-- id 1과 2는 형제 관계, 만약 c4에 float: clear를 안 쓰고 relative 위치 지정이 없으면 c4도 id =1 의 위치에 들어간다.-->
+
+    <div class="c5">5. Lorem Ipsum is simply</div>
+</body>
+</html>

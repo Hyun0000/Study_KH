@@ -1,0 +1,303 @@
+/* 전체 CSS 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+img {
+    border: 0px
+}
+/* header header header header header header header header header header header header */
+/* header header header header header header header header header header header header */
+    header {
+        width: 960px;
+        height: 160px;
+        margin: 0 auto;
+        position: relative;
+    }
+     /* 중앙 정렬 margin: 0 auto;*/
+    /* 위, 아래 ==> 0 / 양 옆 ==> auto를 주면 내용이 센터에 들어온다.
+    단, block 성격을 가지고 있는 태그한테만 적용된다. */
+
+/* title title title title title title title title title */
+header > #title {
+    font-family: 'Henny Penny', cursive;
+    position: absolute;
+    top: 30px;
+    left: 20px;
+}
+
+/* nav 공통 nav 공통 nav 공통 nav 공통 nav 공통 nav 공통 nav 공통 */
+#main_tnb > ul > li > a:hover, #main_bnb > ul > li > a:hover {
+    background-color: black;
+    color: white;
+}
+
+/* nav1 nav1 nav1 nav1 nav1 nav1 nav1 nav1 nav1 nav1 nav1*/
+nav#main_tnb {
+    position: absolute;
+    top: 7px;
+    right: 0;
+}
+
+nav#main_tnb > ul > li {
+    float: left;
+}
+
+nav#main_tnb > ul > li > a{
+    padding: 5px 15px;
+    border: 1px solid black;
+}
+
+nav#main_tnb > ul > li:first-child > a {
+    border-radius: 10px 0 0 10px;
+}
+/* <a> 태그에 border를 그렸으므로 <a>태그에 border-radius를 적용한다. */
+/* (a:first-child)를 이용하면 모든 <a>태그가 <li>의 첫 번째 자식이기에 원하는 태그를 찾을 수 없다. */
+/* 따라서 (li:first-child)를 이용해 첫번째 <li>를 찾았다. */
+
+nav#main_tnb > ul > li:last-child > a {
+    border-radius: 0 10px 10px 0;
+}
+
+/* nav2 nav2 nav2 nav2 nav2 nav2 nav2 nav2 nav2 nav2 nav2 */
+#main_bnb {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+}
+
+nav#main_bnb > ul > li {
+    float: left;
+    overflow: hidden; /* 넘치면 잘라버려야하니까 */
+}
+
+nav#main_bnb > ul > li > a {
+    padding: 10px 30px;
+    border: 1px solid black;
+}
+
+nav#main_bnb > ul > li:first-child > a {
+    border-radius: 10px 0 0 10px;
+}
+
+nav#main_bnb > ul > li:last-child > a {
+    border-radius: 0 10px 10px 0;
+}
+/* section section section section section section section section section section section */
+/* section section section section section section section section section section section */
+#content {
+    width: 960px;
+    margin: 0 auto;
+    /* 높이는 지정을 안해 내용만큼 늘어나게한다. */
+}
+
+#content > section {
+    float: left;
+    width: 750px;
+    margin-top: 10px;
+}
+
+#content article.con_article {
+    margin-bottom: 10px;
+    border: 1px solid black;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+/* 사이드 탭 사이드 탭 사이드 탭 사이드 탭 사이드 탭 사이드 탭 사이드 탭 사이드 탭 사이드 탭 */
+/* 사이드 탭 사이드 탭 사이드 탭 사이드 탭 사이드 탭 사이드 탭 사이드 탭 사이드 탭 사이드 탭 */
+#content > aside {
+    float: right;
+    width: 200px;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+aside > label {
+    box-sizing: border-box;
+    text-align: center;
+    display: block;
+    /* label은 (display: inline) 속성이기에 (display: block)으로 속성을 바꿔야한다. */
+    /* 이때 dinline-block일 때 줄바꿈은 띄어쓰기를 의미하므로 aside의 폭인 200px에 못들어가는 것이다.*/
+    float: left;
+    width: 100px;
+    line-height: 30px;
+    /* 테두리 지정을 하면 그 사이즈도 계산해야 되니까 박스 사이징을 써야한다. */
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+}
+
+aside > #tab_item > ul > li {
+    border: 1px solid black;
+    border-top: none;/* 선 굵은거 해결 */
+    padding: 10px;
+    overflow: hidden; /* 내용이 넘치면 자를것이다. */
+}
+
+/* #tab_item > ul > li > .thumbnail */
+
+aside > #tab_item > ul > li > a > .thumbnail {
+    float: left;
+}
+
+aside > #tab_item > ul > li > a > .description {
+    float: left;
+    margin-left: 10px;
+    width: 120px;
+    /* 말줄임표 표시 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+input[type="radio"] {  display: none; } /*radio 버튼 없애기 */
+
+input:nth-child(1):checked ~ div:nth-of-type(1) {
+    display: block;
+}
+
+input:nth-child(1):checked ~ div:nth-of-type(2) {
+    display: none;
+}
+
+input:nth-child(2):checked ~ div:nth-of-type(2) {
+    display: block;
+}
+
+input:nth-child(2):checked ~ div:nth-of-type(1) {
+    display: none;
+}
+
+input:first-child:checked ~ label:first-of-type {
+    background-color: white;
+    color: black;
+}
+
+input:first-child:checked ~ label:last-of-type {
+    background-color: black;
+    color: white;
+}
+
+input:nth-child(2):checked ~ label:last-of-type {
+    background-color: white;
+    color: black;
+}
+
+input:nth-child(2):checked ~ label:first-of-type {
+    background-color: black;
+    color: white;
+}
+/* footer footer footer footer footer footer footer footer footer footer footer footer footer footer */
+/* footer footer footer footer footer footer footer footer footer footer footer footer footer footer */
+footer {
+    clear: both;
+    width: 960px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+#foot {
+    text-align: center;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    /* 보통 홍페이지에는 아래에 약간의 여백이 있다. */
+    font-size: 12px;
+    padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

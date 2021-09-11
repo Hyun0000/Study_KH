@@ -8,55 +8,42 @@
     <title>Document</title>
 </head>
 <style>
-    body {
-        /* 가장 첫 번째로 할 것이다. */
-        margin: 0;
-    }
+    /* 가장 첫 번째로 할 것이다. */
+    body { margin: 0; }
 
 
     /* header */
     #header {
-        width: 100%;
+        width: 100%; /* width 100% : 현재 화면의 전체 넓이를 의미 */
         height: 125px;
         background-color: white;
     }
 
     #login {
         float: left;
-        /* 머리 부분은 가운데에 빈칸이 있으므로 %가 아니라 px을 이용한다. */
         width: 300px;
+        /* header 부분은 꽉 차지않고 가운데에 빈칸이 있으므로 %가 아니라 px을 이용한다. */
         height: 100%;
     }
 
-    table td {
-        text-align: right;
-    }
-
-    table td:last-child {
-        text-align: left;
-    }
+    /* 로그인 창에서 아이디, 패스워드 텍스트 오른쪽 정렬 */
+    table td { text-align: right; }
 
     #logo {
         float: right;
-        width: 200px;
-        height: 100%;
-        /* 이미지 위치 잡기 */
-        position: relative;
-        /* padding-top: 35px;
-        padding-right: 5px;*/
+        width: 200px; height: 100%;
+        position: relative; /* 이미지 위치 잡기 */
     }
 
     div img {
-        /* 센터 맞추기 위해 td에 넣고 써도 된다. */
-        width: 200px;
-        height: 50px;
+        width: 200px; height: 50px;
         position: absolute;
+        /* 부모 태그인 #logo가 (position: relative)이므로 (position: absolute) 속성 이용 가능 */
+        /* 즉, #logo를 기준으로 위치를 잡는다. 만약 (position: relative)가 없었으면 body가 absolute의 기준
+        즉, relative가 어디냐에 따라 absolute의 기준이 달라진다. */
         right: 5px;
         top: 35px;
-        /*logo를 기준으로 위치를 잡는다. 
-        position: relative 없었으면 body가 기준
-        즉, relative가 어디냐에 따라 absolut의 기준이 달라진다.
-        */
+        /* cf) 센터 맞추기 위해 td에 넣고 써도 된다. */
     }
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
     /* section */
@@ -67,31 +54,44 @@
 
     #nav {
         float: left;
-        /* 몸통부분은 화면을 꽉 채워야 하므로 %를 이용해아한다. */
         width: 20%;
+        /* section은 header와 달리 내용들이 화면을 꽉 채워야 하므로 %를 이용한다. */
         height: 100%;
-        /* 나의 부모(section)의 높이의 100% */
+        /* 나의 부모(#section) 높이의 100%, 전체 화면의 100%를 의미하는 것이 아니다.*/
         background-color: #ccc;
     }
 
+    /* 세로 형태 nav bar 세로 형태 nav bar 세로 형태 nav bar 세로 형태 nav bar 세로 형태 nav bar 세로 형태 nav bar 세로 형태 nav bar */
     ul {
         list-style-type: none;
         padding-left: 0px;
     }
 
-    #nav li {
-        padding: 15px 10px;
-    }
+    #nav li { padding: 15px 10px; }
+
+    /* 가로 형태 nav bar 가로 형태 nav bar 가로 형태 nav bar 가로 형태 nav bar 가로 형태 nav bar 가로 형태 nav bar 가로 형태 nav bar */
+
+    /* ul {
+        margin: 0;
+        line-height: 50px;
+        list-style-type: none;
+        padding-left: 30px; }*/
+    
+    /* #nav li {
+        display: inline-block;
+        padding: 0px 30px;
+    } */
+    
+    /* 가로 형태 nav bar 가로 형태 nav bar 가로 형태 nav bar 가로 형태 nav bar 가로 형태 nav bar 가로 형태 nav bar 가로 형태 nav bar */
+
 
     #article {
         float: left;
         width: 80%;
-        height: 100%;
-        /* 나의 부모(section)의 높이의 100% */
+        height: 100%; /* 나의 부모(#section) 높이의 100% */
         background-color: gray;
-
         position: relative;
-        /* 아티클을 기준으로 0.0 이 생긴다 */
+        /* 자식인 <p> 태그의 속성이 (position: absolute)가 되면 #article을 기준으로 (0, 0) 이 생긴다 */
     }
 
     #article > p {
@@ -99,8 +99,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        /* 변형을 시켜줘
-        지금 있는 위치의 반대 방향으로 -50%(x), -50%(y) 만큼 */
+        width: 100%;
     }
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
     /* footer */
@@ -111,16 +110,15 @@
         background-color: #eee;
         text-align: center;
         padding: 10px;
-        /* 높이 지정없이 (4방향)padding만 주면 middle 효과처럼 보인다. */
+        /* 높이 지정없이 (4방향) padding만 주면 middle 효과처럼 보인다. */
 
-        /* 만약 한 줄 짜리 */
-        /* height: 80px; line-height: 80px; */
+        /* 만약 footer의 내용이 한 줄이라면 line-height 속성을 이용할 수 있다. */
+        /* ex) height: 80px; line-height: 80px; */
     }
 </style>
 
 <body>
     <div id="header">
-        <!-- width 100%, height 300px, width 100% 현재 화면의 넓이를 의미 -->
         <div id="login"><!-- width 500px -->
             <form action="#" method="POST">
                 <!-- table은 따로 선 간격을 안 맞춰도 된다. -->
@@ -146,8 +144,7 @@
             </form>
         </div>
         
-        <!-- 로고 : width 100px -->
-        <div id="logo"><img src="./1.png" alt=""></div>
+        <div id="logo"><img src="../1.png" alt=""></div>
     </div>
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
     <div id="section">
@@ -187,3 +184,15 @@
 </body>
 
 </html>
+
+<!-- 사이즈 정리
+header : width 100%, height 300px (width 100% ==> 현재 화면의 전체 넓이를 의미)
+로그인 : width 500px
+로고 : width 100px
+===================================================================================
+section : width 100%, height 700px
+사이드 메뉴 : width 200px
+내용 : 나머지 width 공간
+===================================================================================
+footer : width 100%, height 200px
+ -->

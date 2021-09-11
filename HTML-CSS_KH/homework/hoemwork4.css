@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+}
+/* header header header header header header header header header header header header header */
+header {
+    width: 960px;
+    height: 150px;
+    margin: 0 auto;
+    position: relative;
+    background-color: antiquewhite;
+}
+
+/* title */
+#title {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-family: 'Henny Penny', cursive;
+}
+
+/* nav nav nav nav nav nav nav nav nav nav nav nav nav nav nav nav nav nav nav nav nav nav */
+/* #top_nav */
+#top_nav {
+    position: absolute;
+    float: right;
+    top: 0px;
+    right: 0;
+}
+
+#top_nav li {
+    float: left;
+    border: 0.5px solid black;
+}
+
+#top_nav li > a {
+    display: block;
+    padding: 5px 20px;
+}
+
+#top_nav li > a:hover {
+    background-color: black;
+    color: white;
+}
+
+#top_nav li:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+#top_nav li:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+/* #bot_nav */
+#bot_nav {
+    position: absolute;
+    float: right;
+    bottom: 0;
+    right: 0;
+}
+
+#bot_nav li {
+    float: left;
+    border: 0.5px solid black;
+}
+
+#bot_nav li > a {
+    display: block;
+    padding: 10px 25px;
+}
+
+#bot_nav li > a:hover {
+    background-color: black;
+    color: white;
+}
+
+#bot_nav li:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+#bot_nav li:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+/* section section section section section section section section section section section section */
+section {
+    width: 960px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* article */
+.sec_article {
+    float: left;
+    width: 750px;
+    border: 1px solid black;
+    padding: 15px;
+    margin: 5px 0;
+}
+
+.sec_article:first-child {
+    margin-top: 10px;
+}
+
+/* tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab tab */
+aside {
+    float: right;
+    border: 1px solid black;
+    width: 175px;
+}
+
+input {
+    display: none;
+}
+
+#fitst_label:checked ~ #tab_first{ display: block; }
+
+#fitst_label:checked ~ #tab_second{ display: none; }
+
+#second_label:checked ~ #tab_second{ display: block; }
+
+#second_label:checked ~ #tab_first{ display: none; }
+
+/* footer footer footer footer footer footer footer footer footer footer footer footer footer */
+footer {
+    width: 960px;
+    margin: 0 auto;
+    clear: both;
+}

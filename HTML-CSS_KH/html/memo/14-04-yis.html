@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹기본 레이아웃</title>
+
+    <!-- reset 초기화 --><!-- reset 초기화 --><!-- reset 초기화 --><!-- reset 초기화 --><!-- reset 초기화 --><!-- reset 초기화 --><!-- reset 초기화 --><!-- reset 초기화 -->
+    <Style>
+    * { margin: 0; padding: 0; }
+    body { font-family: 'Times New Roman', Times, serif; }
+    a { text-decoration: none; }
+    ul, li { list-style: none; }
+    img { border: 0; }
+    </Style>
+
+    <!-- 공통 클래스 형태(같은 거를 일일이 따로 쓰기 귀찮으니까) -->
+    <style>
+    .tab_hover.c_bw a:hover{
+        background-color: black;
+        color: white;
+    }
+    </style>
+
+    <!-- header --><!-- header --><!-- header --><!-- header --><!-- header --><!-- header --><!-- header --><!-- header --><!-- header --><!-- header --><!-- header --><!-- header -->
+    <style>
+        /* 위치 포지셔닝 */
+        header {
+            width: 960px; margin: 0 auto;
+            height: 160px;
+            /* 중앙 정렬 margin: 0 auto;*/
+            /* 위 아래 0 / 양쪽 옆은 auto를 주면 내용이 센터에 들어온다. 단, block 성격, div 성격을 가지고 있는 애들한테만 적용 */
+            position: relative;
+            background-color: aqua;
+        }
+
+        header > #title {
+            position: absolute;
+            top: 30px;
+            left: 20px;
+        }
+
+        header > nav#main_tnb {
+            position: absolute;
+            top: 10px;
+            right: 0px;
+            overflow: hidden;
+        }
+
+        header > nav#main_bnb {
+            position: absolute;
+            right: 0px;
+            bottom: 10px;
+            overflow: hidden;
+        }
+
+        /* 타이틀 */
+        #title {
+            font-family: 'Henny Penny', cursive;
+        }
+
+        /* nav 메뉴1 */
+        #main_tnb > ul > li {
+            overflow: hidden;
+            float: left;
+            /* inline-block이 아니라 이렇게 해도 일렬로 정렬이 된다.  */
+        }
+
+        #main_tnb > ul > li > a {
+            display: block;
+            /* a태그는 크기가 따로 없으므로 자신의 크기를 인지시키게 하기위해
+             display: block속성을 줬다. 
+             자신의 크기를 인지해야 (padding: 10px 30px) 속성값을 a도 인지하고
+             (padding: 10px 30px)만큼 이동할 수 있다.*/
+            padding: 10px 30px;
+            border: 1px solid black;
+            /* 영역에 링크가 적용되게 한다. */
+        }
+
+        /* #main_tnb > ul > li > a:hover {
+            background-color: black;
+            color: white;
+        } */
+
+        #main_tnb > ul > li:first-child > a {
+            /* a 태그에 보더를 그렸으니까 a태그에 border-radius를 적용한다. */
+            /* a 태그는 li의 첫 자식이다. 근데 다 처음이므로 li를 첫번째(li:first-child)인 것을 찾아야한다.*/
+            border-radius: 12px 0px 0px 12px;
+        }
+
+        #main_tnb > ul > li:last-child > a {
+            border-radius: 0px 12px 12px 0px;
+        }
+
+        /* nav 메뉴2 */
+        #main_bnb > ul > li {
+            float: right;
+            overflow: hidden;
+            /* 넘치면 잘라버려야하니까 */
+            /* inline-block이 아니라 이렇게 해도 일렬로 정렬이 된다.  */
+        }
+
+        #main_bnb > ul > li > a {
+            display: block;
+            padding: 10px 30px;
+            border: 1px solid black;
+        }
+
+        /* #main_bnb > ul > li > a:hover {
+            background-color: black;
+            color: white;
+        } */
+
+        #main_bnb > ul > li:first-child > a {
+            border-radius: 0px 12px 12px 0px;
+        }
+
+        #main_bnb > ul > li:last-child > a {
+            
+            border-radius: 12px 0px 0px 12px;
+        }
+
+    </style>
+
+    <!-- content --><!-- content --><!-- content --><!-- content --><!-- content --><!-- content --><!-- content --><!-- content --><!-- content --><!-- content --><!-- content -->
+    <style>
+        /* 위치 포지셔닝 */
+        #content {
+
+            width: 960px;
+            /* 높이는 지정을 안해 내용만큼 늘어나게한다. */
+            margin: 0 auto;
+        }
+
+        #content > section {
+            float: left;
+            width: 750px;
+        }
+
+        #content > aside {
+            float: right;
+            width: 200px;
+        }
+
+        /* 본문 */
+        section > article.main_article {
+            margin-bottom: 10px;
+            padding: 20px;
+            border: 1px solid black;
+        }
+
+        /* 사이드 */
+
+        /* input[type="radio"] { 
+            display: none; 
+        } */
+        /*radio 버튼 없애기 */
+
+        input:nth-of-type(1) {  display: none; }/*radio 버튼 없애기 */
+        /* 나의 형제중에 div들이 있고 걔가 div 중에 첫번쨰인 애 */
+        input:nth-of-type(1) ~ div:nth-of-type(1) { display: none; }
+        input:nth-of-type(1):checked ~ div:nth-of-type(1) { display: block; }
+
+        input:nth-of-type(2) { display: none; }/*radio 버튼 없애기 */
+        input:nth-of-type(2) ~ div:nth-of-type(2) { display: none; }
+        input:nth-of-type(2):checked ~ div:nth-of-type(2) { display: block; }
+
+        /* 탭모양 */
+        aside > label {
+            /* label은 inline 속성이기에 disply 속성을 바꿔야한다. */
+            display: block; float: left;
+            /* inline-block일 때 줄바꿈은 띄어쓰기를 의미하므로 aside의 폭인 200px에 못들어가는 것이다.*/
+            width: 100px; height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            /* 테두리 지정을 하면 그 사이즈도 계산해야 되니까 박스 사이징을 써야한다. */
+            background-color: black;
+            color: white;
+        }
+
+        input:nth-of-type(1):checked ~ label:nth-of-type(1) { 
+            background-color: white;
+            color: black;
+         }
+        input:nth-of-type(2):checked ~ label:nth-of-type(2) { 
+            background-color: white;
+            color: black;
+        }
+
+        /* 탭목록 */
+        .tab_item .item {
+            border: 1px solid black;
+            border-top: none;
+            /* 선 굵은거 해결 */
+            padding: 10px;
+            overflow: hidden;
+            /* 내용이 넘치면 자를것이다. */
+        }
+
+        .item .thumbnail {
+            float: left;
+        }
+
+        .item .discription {
+            float: left;
+            margin-left: 10px;
+            width: 120px;
+            /* 말줄임표 표시 */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+
+    <!-- footer --><!-- footer --><!-- footer --><!-- footer --><!-- footer --><!-- footer --><!-- footer --><!-- footer --><!-- footer --><!-- footer --><!-- footer --><!-- footer -->
+    <style>
+        /* 위치 포지셔닝 */
+        footer {
+            clear: both;
+            width: 960px;
+            margin: 0 auto;
+            margin-bottom: 10px; /* 보통 홍페이지에는 아래에 약간의 여백이 있다. */
+            padding: 10px;
+            border: 1px solid black;
+            text-align: center;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>Rint Development</h1>
+            <h2>HTML5 + CSS3 Basic</h2>
+        </div>
+
+        <nav id="main_tnb" class="tab_hover c_bw">
+            <ul>
+                <li><a href="#">Web</a></li>
+                <li><a href="#">Moblie</a></li>
+                <li><a href="#">Game</a></li>
+                <li><a href="#">Simulation</a></li>
+                <li><a href="#">Data</a></li>
+            </ul>
+        </nav>
+
+        <nav id="main_bnb" class="tab_hover c_bw">
+            <ul>
+                <li><a href="#">HTML5</a></li>
+                <li><a href="#">CSS3</a></li>
+                <li><a href="#">JavaScript</a></li>
+                <li><a href="#">jQuery</a></li>
+                <li><a href="#">Node.js</a></li>
+            </ul>
+            </nav>
+            </header>
+            
+            <div id="content">
+                <section>
+                    <article class="main_article">
+                        <h1>Main Article</h1>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                            into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                            release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                            software like Aldus PageMaker including versions of Lorem Ipsum
+                        </p>
+                    </article>
+
+                    <article class="main_article">
+                        <h1>Main Article</h1>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                                software like Aldus PageMaker including versions of Lorem Ipsum
+                            </p>
+                    </article>
+
+                    <article class="main_article">
+                        <h1>Main Article</h1>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                            into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                            release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                            software like Aldus PageMaker including versions of Lorem Ipsum
+                        </p>
+                    </article>
+                </section>
+
+                <!-- 탭 메뉴에는 radio가 주로 쓰인다.
+                    탭 메뉴는 반드시 하나만 선택해야하는데 그것에 radio가 적합하다. -->
+                <!-- 동그라미는 hidden으로 감춘후 label을 이용해 선택할 수 있게 한다. -->
+                <aside>
+                <!-- 1 --><input type="radio" id="r_first" name="tab" checked><!-- 항상 체크돼 있었으면 좋겠다. -->
+                <!-- 2 --><input type="radio" id="r_second" name="tab"><!-- name이 있어야 복수 선택이 안 되고 단일 선택만 된다. -->
+                <!-- 1 --><label for="r_first">First</label><!-- 2 --><label for="r_second">Seceond</label>
+
+            <!-- 1 -->
+            <div class="tab_item">
+                <ul>
+                    <!-- img와 텍스트를 그냥 쌩으로 집어 넣지는 않는다.
+                                        img를 div로 묶고 텍스트 따로 div로 묶은 후 float: left 정렬한다. -->
+                    <li class="item"><a href="#">
+                            <div class="thumbnail"><img src="https://via.placeholder.com/45"></div>
+                            <div class="discription"><b>HTML5 Canvas</b>
+                                <p>2012-09-10</p>
+                            </div>
+                        </a></li>
+                    <li class="item"><a href="#">
+                            <div class="thumbnail"><img src="https://via.placeholder.com/45"></div>
+                            <div class="discription"><b>HTML5 Audio</b>
+                                <p>2012-09-10</p>
+                            </div>
+                        </a></li>
+                    <li class="item"><a href="#">
+                            <div class="thumbnail"><img src="https://via.placeholder.com/45"></div>
+                            <div class="discription"><b>HTML5 Video</b>
+                                <p>2012-09-10</p>
+                            </div>
+                        </a></li>
+                    <li class="item"><a href="#">
+                            <div class="thumbnail"><img src="https://via.placeholder.com/45"></div>
+                            <div class="discription"><b>HTML5 Semantic Web</b>
+                                <p>2012-09-10</p>
+                            </div>
+                        </a></li>
+                </ul>
+            </div>
+            
+            <!-- 2 -->
+            <div class="tab_item">
+                <ul>
+                    <!-- img와 텍스트를 그냥 쌩으로 집어 넣지는 않는다.
+                    img를 <div>로 묶고 텍스트도 따로 <div>로 묶은 후 float: left 정렬한다. -->
+                    <li class="item"><a href="#">
+                    <!--<li>에 들어가는 item의 크기에 따라 <li>의 크기가 정해진다.
+                    이때 (overflow: hidden)으로 두면 본인의 사이즈를 알아야 자르는 것이므로
+                    자동으로 자신의 자식들의 크기를 파악한 다음에 width와 height의 크기를 계산한다.
+                    visible로 두면 그냥 내용이 넘치는대로 두는것이므로 굳이 사이즈를 파악할 필요가 없다.
+                    반대로 말하면 애초에 부모의 사이즈를 정할 필요도 없다.
+                    (이렇게 앞뒤를 파악해야 한다.)-->
+                            <div class="thumbnail"><img src="https://via.placeholder.com/45"></div>
+                            <div class="discription"><b>CSS3 Transition</b>
+                                <p>2012-09-10</p>
+                            </div>
+                        </a></li>
+                    <li class="item"><a href="#">
+                            <div class="thumbnail"><img src="https://via.placeholder.com/45" ></div>
+                            <div class="discription"><b>CSS3 Animation</b>
+                                <p>2012-09-10</p>
+                            </div>
+                        </a></li>
+                    <li class="item"><a href="#">
+                            <div class="thumbnail"><img src="https://via.placeholder.com/45"></div>
+                            <div class="discription"><b>CSS3 Basic</b>
+                                <p>2012-09-10</p>
+                            </div>
+                        </a></li>
+                    <li class="item"><a href="#">
+                            <div class="thumbnail"><img src="https://via.placeholder.com/45"></div>
+                            <div class="discription"><b>CSS3 Border</b>
+                                <p>2012-09-10</p>
+                            </div>
+                        </a></li>
+                </ul>
+            </div>
+                </aside>
+             </div>
+    <footer>
+        <h3>HTML5 + CSS Basic</h3>
+        <address>Wensite Layout Basuc</address>
+    </footer>
+</body>
+</html>

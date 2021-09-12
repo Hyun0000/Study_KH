@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./14-04-dupli.css" type="text/css">
+    <style>@import url('https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap');</style>
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>Rint Development</h1>
+            <h2>HTML5 + CSS3 Basic</h2>
+        </div>
+
+        <nav id="main_tnb">
+            <ul>
+                <li><a href="#">Web</a></li>
+                <li><a href="#">Moblie</a></li>
+                <li><a href="#">Game</a></li>
+                <li><a href="#">Simulation</a></li>
+                <li><a href="#">Data</a></li>
+            </ul>
+        </nav>
+
+        <nav id="main_bnb">
+            <ul>
+                <li><a href="#">HTML5</a></li>
+                <li><a href="#">CSS3</a></li>
+                <li><a href="#">JavaScript</a></li>
+                <li><a href="#">jQuery</a></li>
+                <li><a href="#">Node.js</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="content">
+    <section>
+            <article class="con_article">
+                <h1>Main Article</h1>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                    into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                    release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                    software like Aldus PageMaker including versions of Lorem Ipsum
+                </p>
+            </article>
+            <article class="con_article">
+                <h1>Main Article</h1>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                    into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                    release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                    software like Aldus PageMaker including versions of Lorem Ipsum
+                </p>
+            </article>
+            <article class="con_article">
+                <h1>Main Article</h1>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                    into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                    release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                    software like Aldus PageMaker including versions of Lorem Ipsum
+                </p>
+            </article>
+    </section>
+
+        <aside>
+            <!-- 탭 메뉴에는 radio가 주로 쓰인다.
+            탭 메뉴는 반드시 하나만 선택해야하는데 그것에 radio가 적합하다. -->
+            <!-- 동그라미는 hidden으로 감춘후 label을 이용해 선택할 수 있게 한다. -->
+            <input type="radio" name="tab" value="tab_fitst" id="radio_f" checked>
+            <input type="radio" name="tab" value="tab_second" id="radio_s">
+            <label for="radio_f">Fitst</label>
+            <label for="radio_s">Second</label>
+
+            <div id="tab_item">
+                <ul>
+                    <li class="item"><a href="#">
+                            <div class="thumbnail"><img src="https://via.placeholder.com/45" alt=""></div>
+                            <div class="description"><b>HTML5 Canvas</b>
+                                <p>2012-09-10</p>
+                            </div>
+                        </a></li>
+                    <!-- img와 텍스트를 그냥 쌩으로 집어 넣지는 않는다.
+                    img를 <div>로 묶고 텍스트도 따로 <div>로 묶은 후 float: left 정렬한다. -->
+
+                    <!--<li>에 들어가는 내용의 크기에 따라 자동으로 <li>의 크기가 정해진다.
+                    이때 (overflow: hidden)으로 두면 본인의 사이즈를 알아야 자르는 것이므로
+                    자동으로 자신의 자식들의 크기를 파악한 다음에 width와 height의 크기를 계산한다.
+                    visible로 두면 그냥 내용이 넘치는대로 두는것이므로 굳이 사이즈를 파악할 필요가 없다.
+                    그래서 <li>에게 (overflow: hidden) 값을 주었다.
+                    (이렇게 앞뒤를 파악해야 한다.)-->
+                    <li class="item"><a href="#">
+                            <div class="thumbnail"><img src="https://via.placeholder.com/45" alt=""></div>
+                            <div class="description"><b>HTML5 Audio</b>
+                                <p>2012-09-10</p>
+                            </div>
+                        </a></li>
+                    <li class="item"><a href="#">
+                            <div class="thumbnail"><img src="https://via.placeholder.com/45" alt=""></div>
+                            <div class="description"><b>HTML5 Video</b>
+                                <p>2012-09-10</p>
+                            </div>
+                        </a></li>
+                    <li class="item"><a href="#">
+                            <div class="thumbnail"><img src="https://via.placeholder.com/45" alt=""></div>
+                            <div class="description"><b>HTML5 Semantic Web</b>
+                                <p>2012-09-10</p>
+                            </div>
+                        </a></li>
+                </ul>
+            </div>
+            
+            <div id="tab_item">
+                <ul>
+                    <li class="item"><a href="#">
+                            <div class="thumbnail"><img src="https://via.placeholder.com/45" alt=""></div>
+                            <div class="description"><b>CSS3 Canvas</b>
+                                <p>2012-09-10</p>
+                            </div>
+                        </a></li>
+                    <li class="item"><a href="#">
+                            <div class="thumbnail"><img src="https://via.placeholder.com/45" alt=""></div>
+                            <div class="description"><b>CSS3 Audio</b>
+                                <p>2012-09-10</p>
+                            </div>
+                        </a></li>
+                    <li class="item"><a href="#">
+                            <div class="thumbnail"><img src="https://via.placeholder.com/45" alt=""></div>
+                            <div class="description"><b>CSS3 Video</b>
+                                <p>2012-09-10</p>
+                            </div>
+                        </a></li>
+                    <li class="item"><a href="#">
+                            <div class="thumbnail"><img src="https://via.placeholder.com/45" alt=""></div>
+                            <div class="description"><b>CSS3 Semantic Web</b>
+                                <p>2012-09-10</p>
+                            </div>
+                        </a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div id="foot">
+            <h2>HTML5 + CSS3 Basic</h2>
+            <h3>Website Layout Basic</h3>
+        </div>
+    </footer>
+</body>
+</html>

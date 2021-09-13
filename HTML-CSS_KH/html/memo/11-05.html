@@ -4,7 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- content="width=device-width 화면 크기를 받아온다.
+        initial-scale=1.0 원래 크기 그대로를 지정 -->
     <title>Document</title>
+    <style>
+        /* ALL */
+        @charset "UTF-8";
+html, body, h1, h2, h3, h4, h5, h6, section, header, aside, footer, nav, article, figure,fieldset, p, ul, ol, li, dl, dt, dd, form {
+    margin: 0;padding: 0;
+    }
+    /* 760px이하 */
+    /* 이경우 중괄호안에 중괄호 넣는거 가능 */
+    @media (max-width:767px){
+        body {
+            font: .8em Arial, sans-serif;
+        }
+    }
+    </style>
 </head>
 <style>
     /* span태그 중에서 첫째 */

@@ -1,0 +1,106 @@
+@charset "UTF-8";
+html, body, h1, h2, h3, h4, h5, h6, section, header, aside, footer, nav, article, figure,fieldset, p, ul, ol, li, dl, dt, dd, form {
+    margin: 0;padding: 0;
+    }
+
+body {
+    font: .8em Arial, sans-serif;
+    }
+
+html {
+    background: #ddd
+    }
+
+.mission_a h1 a {text-decoration: none;}
+
+.mission_a h1 a:hover::after {
+    content:'HTML5! CSS3! 실습입니다';
+    font: .7em Helvetica sans-serif;
+    color:#fff;
+    
+    position:absolute;
+    /* ::before을 줘도 포지션이 absolute이기에 after 때와 위치가 동일하다. */
+    /* body 기준으로 위치를 잡는다.(부모중에 relative가 아무도 없다.) */
+    display: block;
+    /* 수직분할을 하겠다는 의미 */
+    margin-left: 120px;
+    top: 0;
+    padding: 10px;
+    background: #222;
+    border: 1px solid #555;
+
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 15px; /* 없어도 됨 */
+    /* 브라우저마다 설정을 모두 다르게해도 된다. */
+    -ms-border-radius: 8px; /* 없어도 됨 */
+    -o-border-radius: 8px; /* 없어도 됨 */
+    border-radius: 8px; /* 없어도 됨 */
+    /* 디폴트는 꼭 줘야한다. */
+
+    -webkit-box-shadow: #ddd 0 0 10px, #ccc 0 0px 5px inset;
+    -moz-box-shadow: #ddd 0 0 10px, #ccc 0 0px 5px inset; /* 없어도 됨 */
+    -ms-box-shadow: #ddd 0 0 10px, #ccc 0 0px 5px inset; /* 없어도 됨 */
+    -o-box-shadow: #ddd 0 0 10px, #ccc 0 0px 5px inset; /* 없어도 됨 */
+    box-shadow: #ddd 0 0 10px, #ccc 0 0px 5px inset; /* 없어도 됨 */
+    }
+
+.mission_b {
+    position: relative;
+    top: 10px; left: 10px;
+    border: 1px solid #ccc;
+    width: 70px; height: 70px;
+    overflow: hidden;
+    /* 넘치는걸 잘라냈따. */
+    /* 아니면 박스사이징:보더박스를 적용해도 된다. */
+}
+
+.mission_b img{
+    opacity : .3;
+    -webkit-transition: opacity .3s ease-out;
+    /* 브라우저 밴더프리픽스가 적힌게 우선 */
+    -moz-transition: opacity .3s ease-out;
+    -ms-transition: opacity .3s ease-out;
+    -o-transition: opacity .3s ease-out;
+    transition: opacity .3s ease-out;
+    /* 없으면 이게 적용된다. */
+}
+
+.mission_b img:hover{
+    opacity: .9
+    /* 원래 이미지가 0.3이고 마우스를 올리면 투명도가 .9로된다. */
+}
+
+.mission_c ul {
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+.mission_c li {
+    list-style: none;
+}
+
+.mission_c li a {
+    color: #000;
+    font-size: 2em;
+    font-weight: normal;
+    display: block;
+    height: 50px;
+    margin: 10px 0;
+    padding: 10px;
+    text-decoration: none;
+
+    width: 200px;
+    -webkit-text-shadow : rgba(255,255,255,.5), 1px, 1px, 2px;
+    text-shadow : rgba(255,255,255,.5), 1px, 1px, 2px;
+}
+
+.mission_c li a:hover {
+    color: #ffff00;
+    text-shadow: rgba(0,0,0,.7), 1px, 1px, 2px;
+    width: 230px;
+    box-shadow: rgba(0,0,0,.3), 3px, 3px, 5px;
+
+    transition: width .3s ease-in-out;
+}
+
+.mission_c li.ag a:hover {background:rgba(153,0,204, .6);}

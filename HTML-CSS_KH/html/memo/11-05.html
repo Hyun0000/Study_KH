@@ -8,31 +8,85 @@
         initial-scale=1.0 원래 크기 그대로를 지정 -->
     <title>Document</title>
     <style>
-        /* ALL */
-        @charset "UTF-8";
-html, body, h1, h2, h3, h4, h5, h6, section, header, aside, footer, nav, article, figure,fieldset, p, ul, ol, li, dl, dt, dd, form {
+    /* 미디어 쿼리의 경우 중괄호안에 중괄호 넣는거 가능 */
+
+    /* 1. All – 모든 해상도에서 해석하는 코드(미디어 쿼리 적용 안 함) */
+    @charset "UTF-8";
+    html, body, h1, h2, h3, h4, h5, h6, section, header, aside, footer, nav, article, figure,fieldset, p, ul, ol, li, dl, dt, dd, form {
     margin: 0;padding: 0;
     }
-    /* 760px이하 */
-    /* 이경우 중괄호안에 중괄호 넣는거 가능 */
-    @media (max-width:767px){
+
+    body {
+            font: .8em Arial, sans-serif;         
+        }
+
+    a:visited {
+        color: royalblue;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: royalblue;
+        cursor: zoom-in;
+        background-color: #ccc;
+        text-decoration: overline;
+    }
+
+    a:active {
+        color: royalblue;
+        background-color: yellow;
+    }
+
+    /* 2. Mobile – 767px 이하 해상도에서 해석하는 코드 */
+    @media (max-width:767px){ 
         body {
-            font: .8em Arial, sans-serif;
+            font: .8em Arial, sans-serif;         
+        }
+
+        a:visited {
+            color: red;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: red;
+            cursor: zoom-in;
+            background-color: #ccc;
+            text-decoration: overline;
+        }
+
+        a:active {
+            color: red;
+            background-color: tomato;
         }
     }
-    </style>
-</head>
-<style>
+
+    /* 3. Tablet & Desktop – 768px 이상 해상도에서 해석하는 코드 */
+    @media (min-width: 768px){ 
+
+    }
+
+    /* 4. Tablet – 768px~1024px 해상도에서 해석하는 코드 */
+    @media (min-width:768px) and (max-width:1024px){ 
+
+    }
+
+    /* 5. Desktop – 1025px 이상 해상도에서 해석하는 코드 */
+    @media (min-width:1025px){ 
+
+    }
+
     /* span태그 중에서 첫째 */
     span:first-of-type{
-        background-color: red;
+    background-color: red;
     }
 
      /* p태그 중에서 마지막 */
     p:last-of-type{
         background-color: red;
     }
-</style>
+    </style>
+</head>
 <body>
     <div>
         <p>AAA</p>

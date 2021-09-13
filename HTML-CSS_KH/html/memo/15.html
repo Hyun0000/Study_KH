@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/mystyle01.css">
+    <!-- <style>
+        @import url("/CSS/mystyle01.css");
+    </style> -->
+</head>
+<body>
+    <form action="#" method="POST">
+        <input type="text" value="aaa">
+        <textarea value="aa" name="content" rows="3" cols="10" maxlength="20" style="resize: none;" readonly>
+            bbb
+            ccc
+        </textarea>
+        <!-- 줄바꿈, 띄어쓰기가 화면에도 그대로 반영된다. -->
+        <!-- <br> 태그와 주석도 먹히지 않고 '텍스트 그대로 출력'된다. -->
+
+        <!-- rows="속성값" : "속성값"으로 입력한 줄까지 나타낼수 있는 크기의 창을 출력한다. (대략적인 크기 지정, 딱 떨어지진 않는다.) -->
+        <!-- cols="속성값" : 옆으로 글자가 몇개까지 나타나게 할거냐 (대략적인 크기 지정, 딱 떨어지진 않는다.) -->
+        <!-- cf) rows와 cols의 값 만큼만 입력할 수 있다는 것이 아니라 초기화면에서 rows와 cols 사이즈에 맞춰 textarea 창이 보여진다는 의미 -->
+        <!-- maxlength : 최대 입력 가능 글자수 지정 -->
+        <!-- resize: none ==> 사용자가 textarea 창의 크기를 임의로 조정하지 못하게 한다. -->
+        <!-- readonly도 많이 사용되는 속성값이다. -->
+        <input type="submit">
+    </form>
+</body>
+</html>

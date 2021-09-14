@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS IO(입출력)</title>
+    <script>
+        // 위에서부터 한줄씩 실행
+        // 이 위치에 있는 js 코드들은 페이지가 만들어지고 화면에 뿌려지기도 전에 이미 만들어져 있다.
+        // 그래서 <body>가 시작하자마자 가장 먼저 뿌려진다.(<head>부분에 있는 스크립트이기에 가장 먼저 뿌려지는 것)
+        // 그 후 <body> 부분이 순서대로 출력된다.
+
+        window.alert("alert 메세지 1");
+        // [window.] 생략 가능
+        // '확인 버튼'을 누르기전까지는 다음 작업을 수행할 수 없다.(누르기 전까지 wait 상태로 대기)
+
+        document.write("doc write 1");
+        console.log("console에 뿌리는 debug 메세지 1");
+        // 근데 위의 2줄은 왜 <body> 부분의 ("alert 메세지 2") 보다 늦게 떴을까?
+        // alert() method의 우선순위가 높기때문이다.
+        // 단, ajax를 통해 alert 보다 먼저 출력할 수 있다.
+    </script>
+</head>
+<body>
+    <p id="p1">기본p태그</p>
+
+    <script>
+        // 출력 방식 4가지
+        // 1.
+        window.alert("alert 메세지 2");
+
+        // 2.
+        document.write("doc write 2"); // 거의 안 쓴다.
+
+        // 3.
+        console.log("console에 뿌리는 debug 메세지 2"); // 디버깅 용도로 많이 쓰인다.
+
+        // 4.
+        document.getElementById("p1").innerHTML = "바뀐 ppp 태그";
+        // innerHTML --> 태그 엘리먼트의 내용을 변경하여 출력
+        // p1이라는 id를 갖고 있는 element의 innerHTML(기본p태그 부분)을 "바뀐 p 태그"로 바꿔라
+
+        // 입력 방식 2가지
+        // 1.
+        var confirmResult = confirm("정말 삭제 할거임 ?");
+        // 확인 버튼 : boolean으로 ture를 return
+        // 취소 버튼 : boolean으로 false를 return
+        console.log(confirmResult);
+
+        // 2.
+        var promptResult = prompt("바꾸고 싶은 문구를 작성해라");
+        // 사용자가 창에 입력한 값을 return 한다. 이때 입력값의 자료형은 모두 문자형태이다.
+        // 확인 버튼 : 입력값을 return, 아무것도 입력안하고 확인 버튼이면 ""가 return
+        // 취소 버튼 : null 이 들어온다. (false 혹은 "" 이 들어오는게 아니다.)
+        console.log(promptResult);
+    </script>
+</body>
+</html>

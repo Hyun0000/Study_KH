@@ -40,7 +40,7 @@ html {
     border-radius: 8px; /* 기본값(default)는 꼭 줘야한다. */
 
     -webkit-box-shadow: #ddd 0 0 10px, #ccc 0 0px 5px inset;
-    -moz-box-shadow: #ddd 0 0 10px, #ccc 0 0px 5px inset; /* 없어도 된다. */
+    -moz-box-shadow: rgb(184, 184, 184) 0 0 10px, #ccc 0 0px 5px inset; /* 없어도 된다. */
     -ms-box-shadow: #ddd 0 0 10px, #ccc 0 0px 5px inset; /* 없어도 된다. */
     -o-box-shadow: #ddd 0 0 10px, #ccc 0 0px 5px inset; /* 없어도 된다. */
     box-shadow: #ddd 0 0 10px, #ccc 0 0px 5px inset; /* 없어도 된다. */
@@ -104,6 +104,7 @@ html {
 .mission_c li a:hover {
     text-shadow: rgba(0,0,0, .7) 1px 1px 1px;
     width: 230px;
+    transition: width .3s ease-out;
 
     -webkit-box-shadow: rgba(0,0,0, .3) 3px 3px 5px;
     -moz-box-shadow: rgba(0,0,0, .3) 3px 3px 5px;
@@ -115,8 +116,6 @@ html {
     -moz-transition: width .3s ease-out;
     -ms-transition: width .3s ease-out;
     -o-transition: width .3s ease-out;
-    
-    transition: width .3s ease-out;
 }
 
 .mission_c li.ab a:hover {background:rgba(153,0,204, .1);}
@@ -125,3 +124,39 @@ html {
 .mission_c li.ae a:hover {background:rgba(153,0,204, .4);}
 .mission_c li.af a:hover {background:rgba(153,0,204, .5);}
 .mission_c li.ag a:hover {background:rgba(153,0,204, .6);}
+
+/* 공통 속성 공통 속성 공통 속성 공통 속성 공통 속성 공통 속성 공통 속성 공통 속성 공통 속성 공통 속성 공통 속성 공통 속성 공통 속성 공통 속성 공통 속성 공통 속성 */
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

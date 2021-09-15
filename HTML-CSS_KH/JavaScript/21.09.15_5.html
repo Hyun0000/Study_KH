@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var el = document.getElementById ("notExist"); //존재하지 않는 엘리먼트이기에 null 반환
+        var regExp = /^[0-9]*$/;
+        var date = new Date();
+        var f = function(){
+            alert("hello, js~");
+        };
+
+        console.log("el : "+ typeof el);
+        console.log("regExp : "+ typeof regExp);
+        console.log("date : "+typeof date);
+        console.log("f : "+ typeof f);
+
+// (객체 생성과 값 읽기) (객체 생성과 값 읽기) (객체 생성과 값 읽기) (객체 생성과 값 읽기) (객체 생성과 값 읽기) (객체 생성과 값 읽기)
+// (객체 생성과 값 읽기) (객체 생성과 값 읽기) (객체 생성과 값 읽기) (객체 생성과 값 읽기) (객체 생성과 값 읽기) (객체 생성과 값 읽기)
+        console.log("==================================객체 생성과 값 읽기======================================");
+
+        // 객체(object) 생성 방식 2가지
+        // 1. 생성시 애초에 값을 넣고 생성 (key : value 형태로 값을 넣는다.)
+        var obj1 = {
+            attr1 : "hello",
+            attr2 : "javascript"
+        };
+        // 1번 방법에서도 아래와 같은 방식으로 '필드를 만들 수 있다.'
+        obj1.a1 = "v1";
+        obj1.a2 = "v2";
+        obj1.f1 = function () { console.log("obj1의 메소드"); }
+        console.log(obj1);
+        console.log(obj1.attr1);
+        console.log(obj1.attr2);
+        console.log(obj1.f1);
+        // 같은 이름(key)이지만 다른 값을 가지고 있는 멤버 변수는 있을 수 없다.
+        // 아래와 같이 기존 필드의 값을 수정하면 수정된 값이 들어간다.
+        obj1.attr1 = "bye";
+        console.log(obj1.attr1);
+        console.log(obj1);
+
+        // 2. 생성시 아무 값도 넣지 않고 생성
+        var obj2 = new Object();
+        obj2.attr1 = "I’m a object.";
+        obj2.attr2 = 1111;
+        obj2.attr3 = "v1";
+        console.log(obj2);
+        console.log(obj2["attr1"]);
+
+        // 아래와 같은 방식으로도 멤버변수를 추가할 수 있다.
+        obj2["attr4"] = 1234;
+        console.log(obj2["attr4"]);
+        console.log(obj2);
+
+        console.log("======================객체 값 읽기======================");
+        // 값 읽는 방식 1번 - key를 이용한다.
+        console.log(obj1["a2"]); // ["key"] 부분에 반드시 따옴표가 있어야한다.
+
+        // 값 읽는 방식 2번 - 전역변수를 이용한다.
+        serachWord = "a1"; // 전역변수
+        console.log(obj1[serachWord]);
+        // obj1["a1"] 이니까 key("a1")에 해당하는 값이 출력된다.
+
+        // 값 읽는 방식 3번 - 객체명.멤버변수
+        console.log(obj1.a2);
+        console.log(obj1.a1);
+    </script>
+</body>
+</html>

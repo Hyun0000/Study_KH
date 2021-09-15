@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = ['Apple', 'Banana', 'Cherry'];
+
+            for(var i in arr) {
+                console.log(arr[i]);
+            }
+
+        var obj = { "Korea":"Seoul",
+            "US":"Washington D.C",
+            "China":"Beijing",
+            "France":"Paris"
+        }
+
+        for (const key in obj) { // key만 꺼내진다. value는 꺼내지지 않는다.
+                console.log(key + " : " + obj[key]);  // (obj.key) 형태로는 해당 반복문이 제대로 작동하지 않는다.
+                document.write(key + " : " + obj[key] + "<br>");
+            }
+    </script>
+</body>
+</html>

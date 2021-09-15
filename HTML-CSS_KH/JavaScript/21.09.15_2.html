@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// String String String String String String String String String String String String String String String String String String
+// String String String String String String String String String String String String String String String String String String
+        console.log("hello world".charAt(0));
+        console.log("hello world".replace("hello", "bye"));
+        console.log("1,2,3,4,5".split(","));
+        // (",")로 문자열을 분리한 후 '배열 형태로 반환'한다.
+        // 이때 배열의 type은 Object 이다.
+        console.log(typeof ("1,2,3,4,5".split(",")));
+
+// Number Number Number Number Number Number Number Number Number Number Number Number Number Number Number Number Number
+// Number Number Number Number Number Number Number Number Number Number Number Number Number Number Number Number Number
+        // parseInt(), parseFloat()를 이용해 (숫자문자열) --> (숫자)로 변환\
+        console.log(parseInt("010",10));
+        // "010"을 10진수로 해석해서 뿌려라
+        console.log(parseInt("010",2));
+        // "010"을 2진수로 해석해서 뿌려라
+
+        // parseInt() 함수는 소수점 이하 자리를 버리므로 소수점을 유지하고 싶다면 parseFloat() 함수를 사용
+        console.log(parseFloat("010")); // 10진수로 반환
+        console.log(parseFloat("03.1415"));  // 10진수로 반환 & 소수점 유지
+// NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN
+// NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN
+        var a = 0/0;
+        var b = "food" * 1000;
+        // cf) ("food" + 1000)에서 '+'는 연결자
+        var c = Math.sqrt(-9);//음수의 제곱근은 허수이다. js는 허수 표현 불가
+        console.log("a : " + a);
+        console.log("a : " + typeof a);
+
+        console.log("b : " + b);
+        console.log("b : " + typeof b);
+
+        console.log("c : " + c);
+        console.log("c : " + typeof c);
+
+        var d = 10/0;  // Infinity
+        var e = d - d; // Infinity-Infinity
+
+        console.log("d : " + d);
+        console.log("d : " + typeof d);
+
+        console.log("e : " + e);
+        console.log("e : " + typeof e);
+
+        var b1 = "23"*1000;
+        console.log(b1);
+            // "23"이 숫자로 자동 형변환돼 숫자 23이 됐다.
+
+        var b2 = "23" + 1000; // 연결자
+        console.log(b2);
+        // '+'만 연결자 역할을 하고 나머지 연산기호는 문자가 숫자로 자동형변환 후 연산된다.
+
+        var b3 = "23" - 1000;
+        console.log(b3);
+    </script>
+</body>
+</html>

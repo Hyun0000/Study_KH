@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // js --> 변수안에 넣는 값이 바뀔 때마다 변수의 자료형이 바뀐다.
+        var apple;
+        console.log(typeof apple);
+
+        apple = 1;
+        console.log(typeof apple);
+
+        apple = true;
+        console.log(typeof apple);
+
+        var aa = 2;
+        var aa = 3;
+        aa = 4;
+        // 위처럼 aa의 값을 어떤 방식으로 할당하던 오류가 발생하지 않는다.
+        // js는 '선언'이라는 말이 무색할 정도로 선언의 개념이 큰 의미가 없다.
+        // ex)
+        // (var aa = 2;)로 다 썼으면 이제는 내가 (var aa = 9999;)로 같은 변수명으로 선언한 후 쓰고 싶어
+        // 이러한 유연성이 있다.
+        console.log(aa);
+        console.log(window.aa);
+        console.log(this.aa);
+
+        // 위와 같은 방식을 방지할 수 있는 것이 바로 let이다.
+        // let은 같은 변수명으로 '재선언이 불가능'하다.
+        // 물론 '자료형이 서로 다른 값으로 재할당은 가능'하다.
+        // 따라서 let은 전역변수로 쓰인다.
+        // cf) let과 var은 저장되는 영역도 다르다.
+        // cf) let은 window와 this에 적용되지 않는다.
+
+        let b = 3;
+        console.log(b);
+        console.log(window.b);
+        console.log(this.b);
+    </script>
+</body>
+</html>

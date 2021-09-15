@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN()
+// IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN() IsNaN()
+        var x = parseInt("hello",10);
+        if(isNaN(x)) {
+            console.log("변수 x는 NaN입니다.<br>");
+        } else {
+            console.log("변수 x는 NaN이 아닙니다.<br>");
+        }
+
+        var y = 9876;
+        if (isNaN(y)) {
+            console.log("변수 y는 NaN입니다.<br>");
+        } else {
+            console.log("변수 y는 NaN이 아닙니다.<br>");
+        }
+
+        var k = ""; // 빈 문자열
+        var l = " "; //공백만 있는 문자열
+        // 이것들은 number 타입이 아니고 Nan도 아니다.
+        console.log(isNaN(k));
+        console.log(isNaN(l));
+
+// null & undefined null & undefined null & undefined null & undefined null & undefined null & undefined null & undefined
+// null & undefined null & undefined null & undefined null & undefined null & undefined null & undefined null & undefined
+        var test = null;
+        console.log("test : " + typeof test);
+
+        var val1; // 값이 할당되지 않은경우
+        console.log("val1 : " + typeof val1);
+
+        // 정의되지 않은 경우
+        console.log("val2 : " + typeof va2);
+    </script>
+</body>
+</html>

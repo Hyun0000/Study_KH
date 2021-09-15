@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         // 아래 모두 세미콜론 없어도 된다.(사실은 써야한다. 안 써도 무방하다는 의미)
+        // '1'  1   따옴표 있으묜 String 없으면 넘버
+
+        var str1 = "abcdef";
+
+        /* 큰 따옴표 */
+        var str2 = 'abcdef';
+        /* 작은 따옴표 */
+        // 스크립트 언어는 따옴표 구분 없이 모두 String으로 취급, character 개념이 없다.
+        var num = 1234;
+        var bool = true;
+        var obj = {"abcdef":1234, "aaa":222};
+        // 오브젝트 --> 클래스 모양
+        // key:value의 개념
+        // "abcdef" --> 멤버변수
+        // 1234 --> 멤버변수의 값으로 볼 수 있다.
+        console.log(typeof obj);
+        console.log(obj);
+        console.log(obj.abcdef);
+
+        var arr = [1,2,3,4];
+        // 배열모양
+        console.log(typeof arr);
+        console.log(arr);
+        console.log(arr.length);
+        console.log(arr[0]);
+        console.log(arr[3]);
+        arr[5] = 100;
+        // 이래도 값이 잟 들어간다. 4번째는 empty가 된다.
+        console.log(arr);
+        
+
+        var val;
+        var el = document.getElementById("notExist"); //존재하지 않는 엘레먼트
+
+        var regExp = /^[0-9]*$/; // 숫자를 검사하는 정규표현식
+
+        var date = new Date(); //오늘날짜를 담은 날짜객체 생성.
+        var f = function() {
+            alert("hello js")
+            // 세미콜론 없어도 된다.(사실은 써야한다. 안 써도 된다는 의미)
+        }
+
+
+
+        console.log("str1 => "+ typeof str1);
+        console.log("str2 => "+ typeof str2);
+        console.log("num => "+ typeof num);
+        console.log("bool => "+ typeof bool);
+        console.log("obj => "+ typeof obj);
+        console.log("arr => "+ typeof arr);
+        console.log("val => "+ typeof val);
+        console.log("el => "+ typeof el);
+        console.log("regExp => "+ typeof regExp);
+        console.log("date => "+typeof date);
+        console.log("f => "+ typeof f);
+
+        // (js-->변수안에 넣는 값이 바뀔때마다 자료형이 바뀐다.)
+        var apple;
+        console.log(typeof apple);
+
+        apple = 1;
+        console.log(typeof apple);
+
+        apple = true;
+        console.log(typeof apple);
+
+        var tq = document.getElementById("p1");
+        console.log("tq => "+ typeof tq);
+        console.log(tq);
+        // <head> 태그에 썼다는 가정하에
+        // 왜 console.log(tq); null인가?
+       //  위치때문이다. <body>보다 위에 있기 때문
+        // head는 도큐먼트가 완성되기전에, 페이지가 만들어지기전에 먼저 형성되고 수행되는 것이다.
+        // 따라서 <body>의 내용을 알 수 없는것이다.
+
+            var str3 = "aaaa";
+            console.log(str3.length);
+            console.log("=============================================")
+    </script>
+        <script>
+            var tq = document.getElementById("p1");
+            console.log("tq => "+ typeof tq);
+            console.log(tq);
+        </script>
+        <!-- 얘도 null이 된다. 이것이 인터프리터 언어의 가장 큰 특징이다. -->
+        <!-- java도 동일하다. 위치가 중요하다. -->
+        <!-- 다만 java는 컴파일을 통해 해결할 수라도 있지만 js는 인터프리터이기에
+        null이 항상 나온다. -->
+        <!-- 따라서 <script></script>는 </body>직전에 있는게 가장 안정적이다. 
+        근데 실제로는 <head>에 두는 경우가 많다.
+            이것을 어떻게 해결?
+            <body>의 내용을 먼저 파악하고 <head>에 있는 <script>를 실행하는게 좋다.
+            
+        -->
+
+    <p id="p1">aaaaaaa</p>
+
+    <script>
+        var tq = document.getElementById("p1");
+        console.log("tq => "+ typeof tq);
+        console.log(tq);
+    </script>
+</body>
+</html>

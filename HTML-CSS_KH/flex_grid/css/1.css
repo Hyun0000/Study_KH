@@ -1,0 +1,135 @@
+.container {
+    padding-top: 100px;
+    background: beige;
+    height: 100vh;
+    /* 100vh --> 부모에 상관없이 현재 화면 전체를 채우고 싶다. */
+
+    /* container 속성 값을 지정해보자 */
+    
+    display: flex;
+    /* container를 flex box로 만들어 준다. */
+
+        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+    /* flex-direction: row; */
+        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+    /* row : 왼쪽 ~ 오른쪽 정렬 (기본값)
+    row-reverse : 오른쪽 ~ 왼쪽 정렬
+    이때 중심축은 수평축
+
+    column : 위 ~ 아래 정렬
+    column-reverse : 아래 ~ 위 정렬
+    이때 중심축은 수직축
+    */
+
+        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+    /* flex-wrap: nowrap; */
+        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+    /* nowrap : item들이 한 줄을 가득 채워도 모두 다 한줄에 출력 (기본값)
+wrap :  item들이 한줄에 꽉차면 자동적으로 다음 줄에 출력
+wrap-reverse : 아래 ~ 위로 wrap 된다.
+    */
+
+    /* flex-flow: row nowrap; */
+    /* flex-direction과 flex-wrap을 합한것 */
+
+        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+    /* justify-content: flex-start; */
+        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+    /* justify-content: 아이템들을 어떻게 배치할 것인가 */
+    /* 
+    flex-start : 처음부터, 왼쪽 ~ 오른쪽 (기본값)
+    (수직축이 중심축이면 처음부터, 위 ~ 아래)
+    flex-end : 오른쪽부터 아이템들을 배치
+    단. 아이템들의 순서는 그대로 유지한다.
+
+    flex-direction: column;이고 justify-content: flex-end; 이면
+    순서는 그대로 유지화되 밑~아래로 배치
+
+    // 헷갈리지 않게
+    flex-direction: column-reverse;이면 아이템이 밑에서 부터 1 ~ 10으로 쌓인다면
+    flex-direction: column;과 justify-content: flex-end;이면
+    아이템들의 순서는 그대로 유지하면서 밑 ~ 위로 배치된다.
+
+    justify-content: center;
+    item들이 센터에 배치
+
+    justify-content: space-around;
+    박스를 둘러싸는 스페이스를 넣어준다.
+    제일 처음과 끝에 있는 itme은 양옆 사이드 한줄만 space를 가지므로 space가 작다.
+    사이에 있는 item들은 양옆의 space를 가지므로 공간이 넓다.
+
+    justify-content: space-evenly;
+    모든 item의 간격이 동일
+
+    justify-content: space-between;
+    제일 처음, 끝에 있는 item은 화면에 딱 맞게 배치하고
+    중간에만 space를 넣어준다.
+
+    즉, justify-content는 중심축에서 item을 어떻게 배치할 지 결정한다.
+    */
+
+    /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+    /* align-items: baseline; */
+        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+    /* 
+    align-items: 반대축에서 item을 배치하는 속성값
+    align-items: center; --> container를 반대축을 기준으로 화면 중앙에 놓고 싶을때 
+
+    align-items: baseline;
+    각 item에 서로 다른 사이즈가 적용돼 그 안에 있는 텍스트의 위치가 모두 다 달라졌을때
+    모든 텍스트가 균등하게 보여지도록 baseline을 기준으로 아이템이 배치된다.
+    */
+
+    /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+    /* align-content: center; */
+    /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+    /* justify-content가 중심축을 기준으로 아이템들을 배치한다면 */
+    /* align-content는 반대축을 중심으로 아이템들이 배치되게 한다.  justify-content의 속성값들을 모두 쓸 수 있다. */
+}
+
+.item {
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+    /* 17분 10초 */
+}
+
+.item1 {
+    background: red;
+}
+
+.item2 {
+    background: slateblue;
+}
+
+.item3 {
+    background: green
+}
+
+/* .item4 {
+    background: blue;
+}
+
+.item5 {
+    background: pink;
+}
+
+.item6 {
+    background: royalblue;
+}
+
+.item7 {
+    background: brown;
+}
+
+.item8 {
+    background: coral;
+}
+
+.item9 {
+    background: skyblue;
+}
+
+.item10 {
+    background: peru
+} */

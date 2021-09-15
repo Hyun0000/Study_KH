@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>102~129의 for, continue까지</title>
+</head>
+<body>
+    <span id="notExist"></span>
+    <span id="exist"></span>
+
+    <script>
+        var val2 = [];
+        // 안에 들어있는 값이 없을뿐 Object 모양을 갖추고 있으므로 참이다.
+        // '' 얘는 String 모양을 갖추고 있지만 거짓이다(특이한 놈)
+        console.log("val typeof : " + typeof val2);
+        console.log("val2 : " + val2);
+        // 뻥 뚫려있다.
+        // 즉, Object 모양일 때는 거기에 들어있는 것이 null인지 아닌지 일일이 체크해야한다.
+        // 그래서 참인지 거짓으로 구별을 해야한다.
+
+        var element1 = document.getElementById("exist");
+        // typeof : object 이자 참
+        console.log(element1);
+        var element2 = document.getElementById("existㅁㄴㅇㅁㄴㅇ");
+        // typeof : object는 맞지만 안에 들어있는게 없으므로 거짓이다.
+        console.log(element2);
+        // null
+
+
+
+
+        console.log("hello".length);
+        console.log('hello world'.charAt(0));
+        console.log('hello world'.replace("hello", "hi"));
+        console.log("hello world".toUpperCase());
+        console.log("1,2,3,4,5".split(","));
+        // 분리한 후 배열에 넣어준다. 타입은 Object array
+
+        // number
+        console.log(parseInt("010",10));
+        // "010"을 10진수로 해석해서 뿌려라
+        console.log(parseInt("010",2));
+        // "010"을 2진수로 해석해서 뿌려라
+        console.log(parseInt("0110",2));
+        console.log("======8진수======");
+        console.log(parseInt("010", 8)); // 8
+        console.log(parseInt("10")); // 10
+        console.log(parseInt("010")); // 8  --> 8진수로 인식
+        console.log(parseInt("0X10")); // 16
+        console.log(parseInt("0X010")); // 16
+        console.log(parseFloat("010"));
+        console.log(parseFloat("03.1415"));
+
+        var a = 0/0;
+        var b = "food"*1000;
+        // cf) 문자 + 1000 = 문자1000
+        // + 연결자
+        console.log(b);
+        console.log(typeof b); // 타입은 넘버
+
+
+        var b2 = "23"*1000;
+        // 23이 자동형변환으로 인해 숫자 23이 됐다.
+        console.log("=============b2 : " + b2);
+
+        var b3 = "23" + 1000;
+        console.log("=============b3 : " + b3);
+
+        var b4 = "23" - 1000;
+        console.log("=============b4 : " + b4);
+        // +만 연결자로 되고 나머지 연산기호는 문자가 숫자로 자동형변환 후 연산된다.
+
+        var c = Math.sqrt(-9); // 허수
+        console.log(c); // NaN
+
+
+
+        console.log("a => " + a);
+        // NaN 숫자로 계산 결과를 출력하지는 못하지만 number인것 같다.
+        console.log("typeof a => "+typeof a);
+        console.log("b => " + b);
+        console.log("c => " + c);
+
+        var d = 10/0; // Infinity
+        console.log("d => " + d);
+        console.log("======= d : " + typeof d); // 타입은 number
+
+        var e = d - d; // Infinity - Infinity
+        console.log("e => " + e);
+        console.log("typeof e => "+typeof e);
+
+        var x = parseInt("hello",10);
+        if (isNaN(x)) {
+            document.write("변수 x는 NaN입니다.<br>");
+        }
+
+        var y = 9876;
+        if (isNaN(y)) {
+            document.write("변수 y는 NaN입니다.<br>");
+        } else {
+            document.write("변수 y는 NaN이 아닙니다.<br>");
+        }
+
+        // 빈 문자열, 공백만 있는 문자열을 isNaN() 함수를 통해 검사하면, false가 나오므로, 유효성 검사시 주의하자.
+        // 빈문자열은 NaN이 아니다.
+        var k = ""; //빈문자열
+        var l = ''; //공백만 있는 문자열
+        console.log(isNaN(k));
+        console.log(isNaN(l));
+        console.log("typeof l : " + typeof l); //String
+        // Nan : 넘버이면서 넘버가 아닌것
+        
+
+        console.log(1/0);
+        console.log(-1/0);
+
+        console.log(isFinite(1/0));
+        console.log(isFinite(1));
+
+        var test = null;
+        console.log("typeof test =>" +typeof test);
+
+        //정의되지 않았거나, 값이 할당되지 않은경우
+        var val1;
+        console.log("typeof val =>" +typeof val);
+        console.log("val2(정의된적없음) => "+ typeof val2);
+
+        console.log(123 < 1000);
+
+        // false로 처리되는 데이터 값 --> undefinde, null, 0, "", NaN
+        var test_undefined;
+        if (test_undefined) {
+            //test_undefined 는 undefined의 값을 가지고, 조건식에서 false로 처리된다
+        }
+
+        // 그 외 데이터들은 모두 true로 처리된다.
+        if([]){
+            console.log("빈 객체 object는 참이다.");
+        }
+
+        var element = document.getElementById("notExist");
+        if (element) {
+            element.innerHTML = "존재하는 엘레먼트는 참이므로 이것이 실행된 것이다";
+        }
+        // js는 큰 따옴표 작은 따옴표 구분없다.
+        // 배열
+        var arr1 = new Array(3);
+        // 그냥 애초에 ()안에 숫자를 안 적어도된다.
+        arr1[0] = "a";
+        arr1[1] = "b";
+        arr1[2] = "c";
+
+        // 지정 크기보다 더 집어넣을 수 있다.
+        arr1[3] = "c";
+
+        console.log('arr1 = ', arr1);
+        console.log('typeof arr1 = ', typeof arr1); // Object
+        console.log(arr1[0]);
+
+        var arr2 = new Array("l", "m", "n");
+        console.log("arr2 = ", arr2);
+        console.log(arr2[1]);
+
+        var arr3 = ["x", "y", "z"];
+        // 그냥 애초에 []안에 숫자를 안 적어도된다.
+        console.log("arr3 = ", arr3);
+        console.log(arr3[2]);
+        arr3.push("1");
+        console.log(arr3[3]);
+
+        var el = document.getElementById("notExist");
+        var regExp = /^[0-9]*$/;
+        // 정규표현식
+        var date = new Date();
+
+        // f에 우항의 함수를 저장하는 것이다.
+        // function은 object로 안 나오지만 object의 일부분이다.
+        var f = function() {
+            alert("hello, js~");
+        }
+        console.log("el => "+ typeof el);
+        console.log("regExp => "+ typeof regExp);
+        console.log("date => "+typeof date);
+        console.log("f => "+ typeof f);
+
+
+        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        // 객체
+        // 결론 : 객체 접근방식2개 / 객체 생성방식 2개
+        // 오브젝트 생성 방법 2가지
+
+        // 1. 생성시 애초에 값을 넣고 생성(key : value 형태로 값을 넣는다.)
+        var obj1 = {
+            attr1 : "hello",
+            attr2 : "javascript"
+        }
+
+        // 1번 방법에서도 이렇게 넣을 수도 있다. (이렇게 필드를 만드는 것이다.)
+        obj1.a1 = "v1";
+        obj1.a2 = "v2";
+        obj1.a3 = 1111;
+        obj1.f3 = function () {console.log("obj1의 메소드");};
+        console.log(obj1);
+        // 같은 이름의 멤버 변수(key)가 있을 수 없다.
+        // 없으면 값을 생성해서 넣어준다.
+        obj1.a3 = "23";
+        console.log(obj1);
+        // 객체를 읽어보자(하나만 읽어보자)
+        console.log("===========객체 읽기=============");
+        console.log(obj1["attr1"]); // 접근방식1
+        // key에 따옴표가 꼭 있어야한다.
+
+        // console.log(obj1[attr1]);
+        // 변수 attr1이라는 의미 --> 전역변수 중에 attr1이 있는지 찾는다.
+        // 없으니까 오류가 뜬다. console.log(attr1); --> 이게 없다는 의미
+        console.log("====전역변수 추가 후 다시 읽어보자====");
+        attr1 = "a2";
+        console.log(attr1);
+        console.log(obj1[attr1]);
+        // obj1["a2"]니까 값이 나온다.
+
+        console.log(obj1.a3); // 접근방식2
+        console.log(obj1.f3);
+        // 멤버변수니까 이렇게 읽을 수 있다.
+
+        
+        //object 객체 접근시 기존 없는 키이면 새로 추가, 있는 키라면 값 변경
+        // 즉, ket(멤버 필드)가 동일한것이 존재할 수 없는 것이다.
+
+
+        // 2. 생성시 아무 값도 넣지 않고 생성
+        var obj2 = new Object();
+        obj2.att1 = "v1";
+        obj2.a2 = "v2";
+        obj2.a3 = 1111;
+
+        console.log(obj1);
+        console.log(obj2);
+        console.log(obj1.attr1);
+        console.log(obj1.attr2);
+        console.log(obj2["a1"]);
+        // console.log(obj_[attr1123]);
+
+
+        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        // 변수
+        let aa = 2;
+        // a = 'aaa';
+        // var a = 'aaa'; 이렇게 해도 된다.
+        // js는 선언의 개념이 없을만큼 큰 의미가 없다.
+        /*
+        너 ( var a = 2;)로 쓸만큼 썼지
+        그럼 이제는 내가  var a = 3; 로 같은 변수명을 써서 선언한 후 쓰고 싶어
+        유연성이 있다.
+
+        근데 이런 식으로 하지마
+        let
+        나는 전역으로 쓰일 거야 그러니까 함부로 내 이름 갖다 쓰지마
+        let로 쓰이면 같은 이름의 변수선언이 불가능하다.
+        let으로 선언하면 저장되는 영역도 다르다.
+        let --> 윈도우 디스에는 적용되지 않는다.
+        */
+        console.log(aa);
+        console.log(window.aa);
+        console.log(this.aa);
+
+        b = 3;
+        console.log(b);
+        console.log(window.b);
+        console.log(this.b);
+
+        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
+
+        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
+
+        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
+
+        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        // alert("아유 하기 싫어");
+        
+        var txt = "안녕\n시발";
+        // alert(txt);
+
+        console.log("1" == true);
+        console.log("1" === true);
+
+        console.log("====================================");
+        var test = null;
+        console.log("typeof test => "+ typeof test); // typeof test => object
+        //정의되지 않았거나, 값이 할당되지 않은경우
+        console.log("test : " + test);
+        console.log("typeof test : " + typeof test);
+
+        var val1;
+        console.log("val1 => "+ typeof val1);
+
+        var vall; // 선언만 하고 값을 넣지 않으면 언디파인드가 나타난다.
+        if (test) {
+            console.log("참")
+        } else {
+            console.log("거짓")
+        }
+        // 거짓 : null, 0 , 언디피인드, 공백 없는 빈 문자열 등
+        var val2 = "food"*1000; // NaN 거짓
+        // var val2 = 10/0; // 인피니티 --> 참
+        // var val2 = ''; // 거짓(빈문자열)
+        // 공백이 하나라도 있으면 true이다. 공백이 하나도 없이 딱 붙으면 거짓이다.
+        // 즉, 공백에 따라서 참 거짓이 나뉜다.
+
+        // 참 거짓이 달라지기 때문에 인피니티와 NaN 상황을 구분한 것이다.
+        if (val2) {
+            console.log("참")
+        } else {
+            console.log("거짓")
+        }
+
+
+
+    </script>
+</body>
+</html>

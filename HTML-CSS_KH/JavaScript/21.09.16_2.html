@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 아래 3개 전역변수
+        var gv_date = "11/01";
+        var gv_str = "저는 전역변수 입니다.";
+        var gv_name = "한석봉";
+
+        helloJS(gv_name);
+
+        function helloJS(name) {
+            var weather = "좋네요";
+            // name, weather --> 지역변수
+            console.log("안녕하세요, " + name + ". " + gv_date + " 오늘 날씨가 " + weather);
+        }
+        console.log(gv_name);
+        console.log(weather); // 지역변수이므로 함수 밖에서 사용 불가
+        console.log("===================================================================");
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        // 아래 3개 전역변수
+        var gv_date = "11/01";
+        var gv_str = "저는 전역변수 입니다.";
+        var gv_name = "한석봉";
+        
+        helloJS(gv_name);
+        
+        function helloJS(name) {
+            weather = "좋네요";
+            console.log("안녕하세요, " + name + ". " + gv_date + " 오늘 날씨가 " + weather);
+        }
+        console.log(gv_name);
+            console.log(weather);
+            console.log("===================================================================");
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            function hello() {
+                console.log("Hello JavaScript");
+            }
+            var func = hello;
+            func();
+            console.log("===================================================================");
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            function hello1() {
+                console.log("Hello JavaScript");
+            }
+            function hello2() {
+                console.log("안녕하세요");
+            }
+            function exam(func) {
+                func();
+            }
+            exam(hello1); // var func = hello1 --> hello1(); 실행
+            exam(function () { console.log("Hello JavaScript"); } );
+            // var func = function () { console.log("Hello JavaScript"); }
+            // func(); 실행 결과 --> Hello JavaScript
+
+            exam(hello2); // var func = hello2 --> hello2(); 실행
+            exam(function () { console.log("안녕하세요"); } );
+            // var func = function () { console.log("안녕하세요"); }
+            // func(); 실행 결과 --> 안녕하세요
+            console.log("===================================================================");
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            function makeHello() {
+                function hello(name) { //얘도 지역변수(지역함수)이다.
+                    console.log("안녕하세요, " + name);
+                }
+                return hello;
+            }
+            var result = makeHello();
+            // result = hello  -->  result(); = hello();
+            result("홍길동");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var fruit = ['apple', 'banana', 'kiwi'];
+        fruit.forEach(function (element) {
+            console.log(element)
+        });
+        /*
+        forEach() --> 배열에서 제공하는 method
+        forEach()에 들어가는 parameter ==> function 모양
+        즉, 원하는 기능을 작성한 function을 forEach()의 매개변수로서 넣어주면 된다.
+        * 이때 function은 배열의 요소(element)를 인자로 받을 수 있게 매개변수가 있어야한다.
+        그러면 배열에 있는 요소(element)를 하나씩 꺼내어 매개변수로 집어넣은 function에 넣어준다.
+        */
+
+        // 이런식으로 작성할 수도 있다.
+        var color = ['red', 'blue', 'yellow'];
+
+        var func = function (e) {
+            console.log("색깔은 " + e + " 입니다.");
+        }
+
+        color.forEach(func);
+    </script>
+</body>
+
+</html>

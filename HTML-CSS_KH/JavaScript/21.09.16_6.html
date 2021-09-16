@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 이게 위에 있으면
+        // window.onload = pageLoadedHandler;
+        // onload 이벤트가 발생하면 pageLoadedHandler 'function'을 실행하라는 의미가 아니다.
+        // pageLoadedHandler은 function이 아닌 '변수의 이름'이다.
+        // 변수 var pageLoadedHandler에 onload 이벤트가 발생하면 실행될 기능을 작성한 function을 대입한 것이다.
+
+        var pageLoadedHandler = function () {
+            document.getElementById("p1").innerHTML = "head 스크립트에서 내용을 바꾼 부분(head 부분)";
+            document.getElementById("b1").onclick = function () {
+                document.getElementById("p1").innerHTML = "버튼으로 바꿈";
+            }
+        }
+        window.onload = pageLoadedHandler;
+        // 밑에 있으면
+        // onload 이벤트 발생시 pageLoadedHandler() 호출(실행)하라는 의미
+    </script>
+</head>
+    <!-- cf) html에서는 console.log('세미콜론으로 함수 구분') ==> 이렇게 '작은 따옴표'로 값을 감싸야한다.  -->
+<body onload="pageLoadedHandler(); console.log('세미콜론으로 함수 구분');">
+<!-- 안된다. <body onload = "pageLoadedHandler; console.log('세미콜론으로 함수 구분');" > -->
+
+    <!-- 여기서는 html의 문법을 따라야한다. 그래서 꼭 따옴표를 붙여야한다. -->
+    <!-- 실제 '이벤트 실행도 html이 수행'한다.(그래서 html의 문법을 따라야하는 것이다.) -->
+    <!-- 또한 js 문법처럼 onload="pageLoadedHandler'; 함수의 이름으로만 호출하는 것도 안 된다.-->
+    
+    <!-- 즉, 함수명(callback function)이 아니라 '함수호출 형태로 이용'해야한다. -->
+    <!-- html에서의 onload와 js에서의 onload는 서로 다른 onload이다. -->
+    <!-- js가 html용 onload를 따로 만들었다고 생각하면 된다. -->
+    <!-- cf) js에서는 역으로  window.onload = pageLoadedHandler(); 이렇게 쓰면 안 된다.-->
+    <!-- 결론 : js와 html은 이벤트를 등록하는 방식이 다르다. -->
+    <p id="p1">첫 p태크(body 부분)</p>
+    <input type="button" value="콜백함수 예제실행" id="b1">
+</body>
+</html>

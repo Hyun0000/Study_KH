@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // window --> 자바스크립트가 관리하는 내장객체
+        // onload --> 그 내장겍체 속 onload
+
+        // document.getElementById("p1").innerHTML = "head 스크립트에서 <p> 내용을 바꾼 부분";
+        // 현재 <script>가 <head> 부분에 있으므로 위의 코드는 실행되지 않는다.
+        // why? <head> 부분에 있는 코드는 페이지가 다 만들어지기 전에 먼저 실행되므로 이 위치에서 (#p1)은 없는 것이다.
+        // 이러한 문제를 해결해주는 것이 'onload 이벤트'이다.
+
+        // 방법 1
+        window.onload = pageLoadedHandler;
+        // onload 이벤트가 발생하면 pageLoadedHandler()을 호출(실행)해라
+
+        function pageLoadedHandler() {
+            // 페이지가 load 되면 수행될 기능을 넣는다.
+            document.getElementById("p1").innerHTML = "head 스크립트에서 내용을 바꾼 부분(head 부분)";
+            document.getElementById("b1").onclick = clickFunc;
+            // 여기서 또 다시 onclick에 대한 callback function 등록
+            // 얘만 따로 밖으로 뺀 후 button을 누르면 실행이 안 된다.
+            // why?
+            // 현재 (document.getElementById("b1").onclick = clickFunc;)가 들어있는
+            // pageLoadedHandler function은 (window.onload = pageLoadedHandler;)에서 볼 수 있듯이
+            // 페이지가 onload 된 후에야 실행되는 것이다.
+            // 페이지가 onload 된 후라면 <body> 부분에서 (#b1)의 정보를 가져올 수 있다.
+            // 그러나 onload 전이라면 (#b1)의 정보를 가져올 수 없기에 onclick 이벤트를
+            // pageLoadedHandler function 밖으로 빼버리면 실행이 안 되는 것이다.
+            // (null한테 onclick 이벤트를 실행시키는 모습이 되는 것이다.)
+        }
+        
+        var clickFunc = function () {
+            document.getElementById("p1").innerHTML = "버튼으로 바꿈";
+        }
+    </script>
+</head>
+<body>
+    <p id="p1">첫 p태크(body 부분)</p>
+    <input type="button" value="콜백함수 예제실행" id="b1">
+</body>
+</html>

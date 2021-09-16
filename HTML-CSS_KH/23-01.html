@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js 함수 이벤트</title>
+    <script>
+        // document.getElementById("p1").innerHTML = "head 스크립트에서 바꾼<br>부분";
+        // head 시점은 페이지가 이미 다 만들어지기전에 먼저 실행되므로 위 부분의 값은 실행되지 않는다.
+        // 이 시점에 #p1은 없는 것이다.
+        // 그렇다고 <script>를 매번 맨 아래에 놓을 수는 없다.
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        // 방법 1
+        // 이것을 해결하는것
+        // window.onload = pageLoadedHandler;
+        // // // onload 이벤트가 발생하면 pageLoadedHandler가 호출 된다는 의미
+
+        // function pageLoadedHandler() {
+        //     // 정의 (정의가 곧 수행이 아니다. 호출이 돼야 수행 된다.)
+        //     // 페이지가 로드 되면 하고 싶은 행동을 넣는다.
+        //     document.getElementById("p1").innerHTML = "head 스크립트에서 바꾼<br>부분";
+        //     document.getElementById("b1").onclick = f1;
+        // }
+        // onload가 되면은 function을 실행해라
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        // 방법 2
+        // window.onload = function () {
+        //     document.getElementById("b1").onclick = f1;
+        //     document.getElementById("p1").innerHTML = "head 스크립트에서 바꾼<br>부분";
+        // };
+        // onload가 되면은 function을 실행해라
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        // 방법3
+        var pageLoadedHandler = function () {
+            // document.getElementById("b1").onclick = f1; 안됨
+
+        // 해결 방법1
+        //     document.getElementById("b1").onclick = function () {
+        //     document.getElementById("p1").innerHTML = "버튼으로 바꿈";
+        // }
+
+        // 해결 방법2
+        window.onload = pageLoadedHandler
+
+        // 해결 방법3
+        // var f2 = function () {
+        //     document.getElementById("p1").innerHTML = "버튼으로 바꿈";
+        // }
+        // document.getElementById("b1").onclick = f2;
+
+            
+
+        document.getElementById("p1").innerHTML = "head 스크립트에서 바꾼<br>부분";
+        }
+        // window.onload = pageLoadedHandler; //등록 (얘가 위에 있으면 실행이 안 된다.)
+        // 왜 이것은 안 되는가?
+        // onload가 되면은 function을 실행해라 --> No
+        // 변수 var pageLoadedHandler에 function을 미리 대입하는 형태
+        // 강사 설명이 이해가 안 된다.(자기도 명확히 모르는 듯)
+        // 결론 : 3번 방법은 안되는 방법이다.
+
+        // window.onload = pageLoadedHandler;
+        // pageLoadedHandler()로 호출해줄게 라는 의미
+        /*
+        window --> 자바스크립트가 관리하는 내장객체
+        onload --> 그 내장겍체 속 onload
+        */
+
+
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        // 방법 1~3 모두에 넣어도 상관없다.
+
+        // document.getElementById("b1").onclick = f1;
+        // 이거자체는 null이다. 따라서 onload안에 넣어줘야한다.
+        // document.getElementById("b1") = 버튼이 온 클릭이 되면 f1을 수행해라
+
+        var f1 = function () {
+            document.getElementById("p1").innerHTML = "버튼으로 바꿈";
+        }
+    </script>
+</head>
+<body>
+<!-- <body onload="pageLoadedHandler(); console.log('로드끝');"> -->
+<!-- 여기서는 html의 문법을 따라야한다. (그래서 꼭 따옴표를 붙여야한다.)
+여기서의 onload는 js가 관리하는 다른 onload이다.(위와 다른 onload이다.)
+js가 html을 위해 새로 만든 onload라고 생각하면 된다.
+body가 onload되면 거기 안에 있는 것을 실행시켜줘 따라서 실행이 가능한 코드가 '=' 뒤에 들어있어야한다.(함수명이아니라 함수호출형태로 있어야한다.)
+html이 이것을 수행시킨다.(그래서 html의 문법을 따라야하면 그래서 ""도 들어가는 것이다.)
+
+결론 : js와 html에서 이벤트를 등록하는 것은 다르다.
+js에서는 window.onload = pageLoadedHandler(); 이렇게 쓰면 안 된다.
+
+-->
+    <p id="p1">첫 p태크<br>내용</p>
+
+    <input type="button" value="콜백함수예제실행" id="b1">
+    <script>
+        // document.getElementById("p1").innerHTML = "body 아래 스크립트에서 바꾼<br>부분";
+    </script>
+</body>
+</html>

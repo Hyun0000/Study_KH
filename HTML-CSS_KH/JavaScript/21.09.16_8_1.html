@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="Mybutton">버튼</button>
+    <script>
+        var btn = document.querySelector("#Mybutton");
+        function btnClickHandler(apple) {
+            var target = apple.target;
+            console.log(target.id + "을 눌렀다.");
+
+            // 이벤트 핸들러의 인자로 받은 이벤트 객체의 정보를 열람하는 코드를 추가
+            for (var key in apple)
+                console.log("key : " + key + ", value : " + apple[key]);
+                // var apple = {
+                //     isTrusted: true,
+                //     pointerId : 1,
+                //     width : 1,
+                //     ...... 현재 이런 형식으로 apple 객체가 이루어져 있는 것이다.
+                // }
+        }
+        btn.onclick = btnClickHandler;
+    </script>
+
+</body>
+
+</html>
+

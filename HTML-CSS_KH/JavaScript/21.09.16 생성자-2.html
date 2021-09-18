@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Person 생성자함수 선언
+        function Person(name, age, gender, nationality) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            this.nationality = nationality;
+            this.speak = function () {
+                console.log("나는 [" + this.nationality + "] 말하는 [" + this.name + "] 입니다.");
+                }
+            }
+
+            // Developer 생성자함수 선언 및 Person 생성자 상속
+            function Developer(name, age, gender, nationality, job, exp) {
+                // this.name = name;
+                // this.age = age;
+                // this.gender = gender;
+                // this.nationality = nationality;
+                // 이 부분이 중복되니까 상속을 이용해보자
+
+                // 부모 객체(Person)의 생성자 호출
+                Person.call(this, name, age, gender, nationality);
+                // Developer가 만들어질 this를 들고 들어가야한다.
+                // Person 생성자 ==> "니가 들고온 this에 (name, age, gender, nationality)를 넣어주겠다."
+
+                this.job = job;
+                this.exp = exp;
+                this.work = function () {
+                    return (job + "에서 " + exp + "년동안 일하고 있습니다.");
+                }
+            }
+
+            var kido = new Developer("brite", 25, "F", "일본", "도요타", 10);
+            kido.speak();
+            console.log(kido.work());
+    </script>
+</body>
+
+</html>

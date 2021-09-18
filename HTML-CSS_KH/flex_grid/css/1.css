@@ -2,100 +2,137 @@
     padding-top: 100px;
     background: beige;
     height: 100vh;
-    /* 100vh --> 부모에 상관없이 현재 화면 전체를 채우고 싶다. */
+    /*
+    height: 100%
+    - (.container)의 부모의 높이의 100%를 채우겠다.
+    - 만약 100% 설정으로 화면 전체를 채우고 싶으면 (.container)의 부모인
+    body 태그의 높이도 100%로 설정해야한다.
+    - 또한 body 태그의 부모인 html의 높이도 100%로 설정해야한다.
 
-    /* container 속성 값을 지정해보자 */
-    
-    display: flex;
-    /* container를 flex box로 만들어 준다. */
+    height: 100vh
+    - (.container)의 부모의 높이와 상관없이 현재 화면 전체를 채우고 싶다.
+    */
 
-        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+    /* 1. container 속성 값을 지정해보자 */
+    display: flex; /* container를 flex box로 만들어 준다. */
+
+    /* 2. flex-direction */
     /* flex-direction: row; */
-        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-    /* row : 왼쪽 ~ 오른쪽 정렬 (기본값)
-    row-reverse : 오른쪽 ~ 왼쪽 정렬
+    /*
+    1. flex-direction: row --> 왼쪽 ~ 오른쪽 정렬 (기본값)
+    2. flex-direction: row-reverse --> 오른쪽 ~ 왼쪽 정렬
     이때 중심축은 수평축
 
-    column : 위 ~ 아래 정렬
-    column-reverse : 아래 ~ 위 정렬
+    3. flex-direction: column --> 위 ~ 아래 정렬
+    4. flex-direction: column-reverse --> 아래 ~ 위 정렬
     이때 중심축은 수직축
     */
 
-        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+    /* 3. flex-wrap */
     /* flex-wrap: nowrap; */
-        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-    /* nowrap : item들이 한 줄을 가득 채워도 모두 다 한줄에 출력 (기본값)
-wrap :  item들이 한줄에 꽉차면 자동적으로 다음 줄에 출력
-wrap-reverse : 아래 ~ 위로 wrap 된다.
+    /*
+    1. flex-wrap: nowrap --> item들이 한 줄을 가득 채워도 모두 다 한 줄에 출력 (기본값)
+    (대신 기존에 지정한 사이즈가 줄어든다.)
+    2. flex-wrap: wrap --> item들이 한줄에 꽉차면 자동적으로 다음 줄에 출력
+    (기존에 지정한 사이즈 그대로 유지)
+    3. flex-wrap: wrap-reverse --> 아래 ~ 위로 wrap 된다. (wrap 속성 그대로 유지)
     */
 
-    /* flex-flow: row nowrap; */
-    /* flex-direction과 flex-wrap을 합한것 */
-
-        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-    /* justify-content: flex-start; */
-        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-    /* justify-content: 아이템들을 어떻게 배치할 것인가 */
     /* 
-    flex-start : 처음부터, 왼쪽 ~ 오른쪽 (기본값)
-    (수직축이 중심축이면 처음부터, 위 ~ 아래)
-    flex-end : 오른쪽부터 아이템들을 배치
-    단. 아이템들의 순서는 그대로 유지한다.
+    cf)
+    flex-flow: --> flex-direction과 flex-wrap을 합한것
+    (border: 1px solid black)과 같은 의미
+    flex-flow: row nowrap;
+    */
 
-    flex-direction: column;이고 justify-content: flex-end; 이면
-    순서는 그대로 유지화되 밑~아래로 배치
+    /* 4. justify-content --> 아이템들을 어떻게 배치할 것인가 */
+    /* justify-content: flex-start; */
+    /* 
+    1. justify-content: flex-start : 처음부터, 왼쪽 ~ 오른쪽 (기본값) (수직축이 중심축이면 처음부터, 위 ~ 아래)
+    2. justify-content: flex-end : 오른쪽부터 아이템들을 배치 (아이템들의 순서(1~10)는 그대로 유지하면서 오른쪽에 배치하는 것)
+    cf)
+    (flex-direction: column; & justify-content: flex-end;)이면
+    아이템들의 순서(1~10)는 그대로 유지하면서 밑~아래로 배치
 
     // 헷갈리지 않게
-    flex-direction: column-reverse;이면 아이템이 밑에서 부터 1 ~ 10으로 쌓인다면
-    flex-direction: column;과 justify-content: flex-end;이면
-    아이템들의 순서는 그대로 유지하면서 밑 ~ 위로 배치된다.
+    (flex-direction: column-reverse;)이면 아이템이 (아래 ~ 위 : 1 ~ 10) 순서대로 쌓인다면
+    (flex-direction: column; & justify-content: flex-end;)이면 아이템들의 순서가 그대로 유지되면서 (밑 ~ 위)로 배치된다.
 
-    justify-content: center;
-    item들이 센터에 배치
+    3. justify-content: center; --> item들이 센터에 배치
 
-    justify-content: space-around;
-    박스를 둘러싸는 스페이스를 넣어준다.
-    제일 처음과 끝에 있는 itme은 양옆 사이드 한줄만 space를 가지므로 space가 작다.
-    사이에 있는 item들은 양옆의 space를 가지므로 공간이 넓다.
+    4. justify-content: space-around;
+    박스(각 item)을 둘러싸는 space(여백)를 넣어준다.
+    제일 처음, 끝에 있는 itme들은 위치로 인해 space(여백)가 좁다.
+    사이에 있는 item들은 양옆의 space(여백)를 가지므로 공간이 넓다.
 
-    justify-content: space-evenly;
-    모든 item의 간격이 동일
+    5. justify-content: space-evenly;
+    모든 item들의 간격이 동일하다.
 
-    justify-content: space-between;
-    제일 처음, 끝에 있는 item은 화면에 딱 맞게 배치하고
-    중간에만 space를 넣어준다.
+    6. justify-content: space-between;
+    제일 처음, 끝에 있는 item들은 화면 끝에 딱 맞게 배치하고 중간에만 space를 넣어준다.
 
-    즉, justify-content는 중심축에서 item을 어떻게 배치할 지 결정한다.
+    즉, justify-content는 '중심축을 기준'으로 item을 어떻게 배치할 지 결정한다.
     */
 
-    /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+    /* 5. align-items */
     /* align-items: baseline; */
-        /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-    /* 
-    align-items: 반대축에서 item을 배치하는 속성값
-    align-items: center; --> container를 반대축을 기준으로 화면 중앙에 놓고 싶을때 
-
-    align-items: baseline;
+    /*
+    align-items는 '반대축을 기준'으로 item 배치를 결정하는 속성이다.
+    1. align-items: center; --> 수직을 기준으로 중앙에 놓고 싶을 때(물론 수평축이 중심축일 때 얘기)
+    
+    2. align-items: baseline;
     각 item에 서로 다른 사이즈가 적용돼 그 안에 있는 텍스트의 위치가 모두 다 달라졌을때
     모든 텍스트가 균등하게 보여지도록 baseline을 기준으로 아이템이 배치된다.
     */
 
-    /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-    /* align-content: center; */
-    /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-    /* justify-content가 중심축을 기준으로 아이템들을 배치한다면 */
-    /* align-content는 반대축을 중심으로 아이템들이 배치되게 한다.  justify-content의 속성값들을 모두 쓸 수 있다. */
+    /* 6. align-content: center; */
+    
+    /* 
+    justify-content가 중심축을 기준으로 아이템들을 배치한다면
+    align-content는 반대축을 중심으로 아이템들이 배치되게 한다.
+    (justify-content의 속성값들을 모두 쓸 수 있다.)
+    */
 }
 
 .item {
     width: 40px;
     height: 40px;
     border: 1px solid black;
-    /* 17분 10초 */
 }
 
 .item1 {
     background: red;
+    /* order: 3; */
+    /* flex-grow: 2; */
+    /* flex-shrink: 10; */
+    /* flex-basis: 20%; */
+    /* align-self: center; */
+    
+    /* 
+    1. order (기본값 = 0)
+    각 item들이 몇 번째 순서로 출력될지 결정한다.
+    
+    2. flex-grow (기본값 = 0)
+    flex-grow의 크기를 지정하지 않으면 각 item들은 기존에 정해진 사이즈만큼의 공간만 차지한다.
+    그러다가 화면이 줄어들면 그에 맞춰 사이즈가 줄어든다. (현재 기존 설정 사이즈 : width: 40px; & height: 40px;)
+    flex-grow의 크기를 지정하면 정해진 숫자만큼의 비율로 화면을 채우게 된다.
+    
+    3. flex-shrink (기본값 = 0)
+    container의 크기가 변함에 따라 그 안에 담겨있는 item들도 어떻게 사이즈가 변해야 하는지 결정
+    쉽게말해 화면이 변할 때 이에 맞춰 item들이 어느 정도의 비율(?), 속도(?)로 크기가 변경돼야하는지 결정한다.
+    ex) 속성값이 커질수록 더 빨리 줄어든다.
+
+    4. flex-basis (기본값 = auto)
+    각 item들이 화면을 얼마나 차지해야 하는지 좀 더 디테일하게 결정할 수 있다.
+    auto --> flex-grow나 flex-shrink에 지정된 대로 사이즈 변경
+    flex-grow나 flex-shrink 설정이 없는 상태에서는 flex-basis에서 지정한 사이즈대로 화면을 차지한다.
+
+    cf) flex: 2 2 auto; --> (grow, shrink, basis)
+    
+    5. align-self
+    각 item별로 item들의 위치를 지정할 수 있다.
+    즉, container 차원에서 지정된 범위를 벗어나서 각 item의 위치를 개별적으로 정할 수 있다.
+    */
 }
 
 .item2 {
@@ -103,7 +140,7 @@ wrap-reverse : 아래 ~ 위로 wrap 된다.
 }
 
 .item3 {
-    background: green
+    background: green;
 }
 
 /* .item4 {

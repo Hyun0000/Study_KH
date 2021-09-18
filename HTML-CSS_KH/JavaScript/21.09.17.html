@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 방법 4 (인라인 방식) : HTML 문법을 따라야한다. -->
+<!-- (function ~) 부터 적으면 function '정의를 적은 것'이기에 실행이 되지 않는다. -->
+<!-- 따라서 function 호출 문장이나 실행 문구를 적어야한다. -->
+<!-- cf) 세미콜론(;)으로 각 기능을 구분, 속성값을 "큰 따옴표"가 감싸기에 '작은 따옴표'만 이용해야한다.  -->
+<!-- <body onload="console.log(document.querySelector('#content')); console.log(document.querySelector('#btn_content'));"> -->
+<body>
+    <script>
+        // 방법 1
+        // var f1 = function () {
+        //     console.log(document.querySelector("#content"));
+        //     console.log(document.querySelector("#btn_content"));
+        // };
+        // window.onload = f1;
+        // window.addEventListener("load", f1);
+//==================================================================================================================
+        // 방법 2
+        // onload라는 window 객체의 멤버 변수에 우항의 function을 넣어준 것이다.
+        // window.onload = function () {
+        //     console.log(document.querySelector("#content"));
+        //     console.log(document.querySelector("#btn_content"));
+        // };
+//==================================================================================================================
+        // 방법 3
+        window.addEventListener("load", function () {
+            console.log(document.querySelector("#content"));
+            console.log(document.querySelector("#btn_content"));
+
+            // 버튼 클릭 이벤트 등록
+            document.getElementById("btn_content").addEventListener("click", function () {
+                document.querySelector("#content").innerHTML = "버튼 눌러서 바꿈";
+            });
+
+            // cf)
+            // querySelector --> 태그 선택자, class 선택자, ID 선택자 모두 구분해야한다.
+            // getElementById --> 애초에 아이디 중에서만 검색하는 것이기에 '#'이 필요없다.
+        });
+
+        // (버튼 클릭 이벤트 등록)
+        // load가 돼야 버튼을 인식하고, 버튼을 인식해야 버튼에 이벤트 등록도 가능하다.
+        // 따라서 'load 이벤트 안에 버튼 클릭 이벤트를 등록 헤야'한다.
+    </script>
+
+    <p id="content">첫 태그 문구</p>
+    
+    <script>
+        console.log(document.querySelector("#content"));
+        console.log(document.querySelector("#btn_content"));
+    </script>
+
+    <button id="btn_content">바꾸기</button>
+</body>
+</html>
+
+
+

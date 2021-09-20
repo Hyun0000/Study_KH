@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    // 시간, 분, 초, 밀리초 알아내기 – getHours(), getMinutes(), getSeconds(), getMilliseconds()
+    var d = new Date();
+    console.log(d.getHours());
+    console.log(d.getMinutes());
+    console.log(d.getSeconds());
+    console.log(d.getMilliseconds());
+    console.log(d.getHours() + "시" + d.getMinutes() + "분"+ d.getSeconds() + "초");
+
+    // 년, 월, 일, 요일 알아내기 – getFullYear(), getMonth(), getDate(), getDay()
+    console.log(d.getFullYear());
+    console.log(d.getMonth() + 1); // 0-11의 정수, 즉 인덱스값으로 반환하므로 (+ 1)
+    console.log(d.getDate());
+    console.log(d.getDay()); //0(일)-6(토)의 정수로 요일 반환
+    var day = "";
+    switch (d.getDay()) {
+        case 0: day = '일'; break;
+        case 1: day = '월'; break;
+        case 2: day = '화'; break;
+        case 3: day = '수'; break;
+        case 4: day = '목'; break;
+        case 5: day = '금'; break;
+        case 6: day = '토'; break;
+    }
+
+    console.log(d.getFullYear() + "년 " + (d.getMonth() + 1) + "월 " + d.getDate() + "일 " + day + "요일");
+
+    // 실시간 년, 월, 일, 날짜, 시간
+    var func = function () {
+        var d = new Date();
+        var year = d.getFullYear();
+        var month = d.getMonth()+1;
+        var date = d.getDate();
+        var day = d.getDay();
+        var hour = d.getHours();
+        var min = d.getMinutes();
+        var sec = d.getSeconds();
+        var milisec = d.getMilliseconds();
+
+        month = (month > 9 ? "" : "0") + month;
+        date = (date > 9 ? "" : "0") + date;
+        hour = (hour>9?"":"0")+hour;
+        min = (min>9?"":"0")+min;
+        sec = (sec>9?"":"0")+sec;
+
+        switch (day) {
+            case 0: day = "일"; break;
+            case 1: day = "월"; break;
+            case 2: day = "화"; break;
+            case 3: day = "수"; break;
+            case 4: day = "목"; break;
+            case 5: day = "금"; break;
+            case 6: day = "토"; break;
+        }
+        console.log(year+"-"+month+"-"+date+" ("+day+") "+hour+":"+min+":"+sec+":"+milisec);
+    }
+    
+    // setInterval(func, 1000);
+    </script>
+</head>
+<body>
+    getDate()               로컬시간을 사용하여 일을 반환
+
+    getDay()                로컬시간을 사용하여 요일을 반환
+
+    getFullYear()           로컬시간을 사용하여 년도를 반환
+
+    getHours()              로컬시간을 사용하여 시간을 반환
+
+    getMinutes()            로컬시간을 사용하여 분을 반환
+
+    getMilliseconds()       로컬시간을 사용하여 밀리초를 반환
+
+    getMonth()              로컬시간을 사용하여 월을 반환
+
+    getSeconds()            로컬시간을 사용하여 초를 반환
+
+    getTime()               1970년 1월 1일 00시 00분 00초를 기준으로 현재까지 경과한 시간을 밀리초로 반환
+
+    getYear()               로컬시간을 사용하여 년도를 반환. getFullYear()를 사용하는 것이
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    // length
+    console.log("banana".length);
+    var str = new String("kiwi");
+    console.log(str.length);
+
+    // indexOf()
+    // 문자열의 특정문자 index 구하기 – indexOf()
+    // 해당문자가 존재하면 해당 인덱스 값 리턴, 없으면 -1을 리턴
+    // 두번째 인자값은 검색을 시작할 인덱스
+    console.log('khacademy_kh정보교육원'.indexOf('kh'));
+    console.log('khacademy_kh정보교육원'.indexOf('khh'));
+    console.log('khacademy_kh정보교육원'.indexOf('kh',0));
+    console.log('khacademy_kh정보교육원'.indexOf('kh',5));
+    console.log('khacademy_kh정보교육원'.indexOf('에이치',7));
+    console.log('khacademy_kh정보교육원'.indexOf(''));
+    console.log('khacademy_kh정보교육원'.indexOf('',9));
+    console.log('khacademy_kh정보교육원'.indexOf('',10));
+    console.log('khacademy_kh정보교육원'.indexOf('',18));
+
+    // 문자열의 특정문자 뒤에서부터 찾아 index 값을 구하기 – lastIndexOf()
+    // 두번째 인자값은 검색을 시작할 인덱스
+    'canal'.lastIndexOf('a'); 
+    'canal'.lastIndexOf('a', 2);
+    'canal'.lastIndexOf('a', 0); 
+    'canal'.lastIndexOf('x'); 
+    'canal'.lastIndexOf('c', -5); 
+    'canal'.lastIndexOf('c', 0); 
+    'canal'.lastIndexOf(''); 
+    'canal'.lastIndexOf('', 2);
+
+    // 특정 위치 문자 구하기 – charAt()
+    var alpha = "ABCDEFG";
+    console.log(alpha.charAt(2));
+
+    // 특정 문자열을 원하는 문자열롤 변경하기. – replace()
+    var str = 'khacademy_KHACADEMY';
+    var cStr = str.replace('KH', 'bitcamp');
+    console.log(cStr);
+
+    // 정규식
+    // 문자열 전체를 의미하는 g, 대소문자를 구분하지 않는 i를 추가
+    var str = 'khacademy_KHACADEMY';
+    var newstr = str.replace(/academy/gi, 'bitcamp');
+    console.log(newstr);
+
+    // 문자열을 지정한 구분자로 쪼개어 배열로 돌려받기 – split()
+    function splitStrig(str, split) {
+        var splitedStr = str.split(split);
+        return splitedStr;
+    }
+    var str1 = "kh_케이에이치_KH";
+    var str2 = "2016,2017,2018,2019";
+    var str3 = "안녕, 나 자바스크립트야!";
+    console.log("[" + splitStrig(str1, '_') + "]");
+    console.log("[" + splitStrig(str2, ',') + "]");
+    console.log("[" + splitStrig(str3, '') + "]");
+    
+    // 문자열 추출하는 함수 – substring(), substr()
+    // substring(startIndex, endIndex) : startIndex 인덱스값 문자열 ~ endIndex 인덱스값 '전'까지 추출
+    // 두번째 인자를 생략하면 문자열 끝까지 출력
+    var namestr = "홍길동신사임당유관순";
+    let name1 = namestr.substring(0, 3);
+    let name2 = namestr.substring(3, 7);
+    let name3 = namestr.substring(7);
+    console.log(name1);
+    console.log(name2);
+    console.log(name3);
+
+    // substr(startIndex, length) : startIndex 문자열 ~ length만큼 문자열을 추출.
+    // 두번째 인자를 생략하면 문자열 끝까지 출력
+    var namestr = "홍길동신사임당유관순";
+    const name4 = namestr.substr(0, 4);
+    const name5 = namestr.substr(3, 3);
+    const name6 = namestr.substr(7);
+    console.log(name4);
+    console.log(name5);
+    console.log(name6);
+
+    // 좌우공백 제거함수 – trim()
+    var strtrim = "            white                     Space                     ";
+    var str = strtrim.trim();
+    console.log(str);
+    </script>
+</head>
+<body>
+    length                                  문자열 길이
+
+    indexOf(str)                            문자열이 위치한 인덱스 구하기, 앞에서부터 검색
+
+    lastIndexOf(str)                        문자열이 위치한 인덱스 구하기, 뒤에서부터 검색
+
+    match(reg)                              정규표현식을 활용한 문자열 검색
+
+    replace(reg, reg)                       정규표현식을 활용한 문자열 교체
+
+    search(reg)                             정규표현식을 활용한 문자열 위치 검색
+
+    slice(start, end)                       start번째부터 end번째 문자열 검색
+
+    split(str)                              문자열을 str로 분할해 배열로 생성
+
+    substring(startIndex, endIndex)         start 번째부터 문자열 추출
+
+    substr(start, length)                   start 번째부터 count개수만큼 문자열 추출
+
+    toLowerCase()                           모든 문자열을 소문자로 변환
+
+    toUpperCase()                           모든 문자열을 대문자로 변환
+
+    trim()                                  좌우 공백 제거
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+// ==========================================================Timer==========================================================
+// ========================================================================================================================
+    // 일정 시간마다 주기적인 실행 – setInterval()
+    // var timerID = setInterval;
+    // function hello() {
+    //     alert("Hello");
+    // }
+    // timerID(hello, 5000);
+
+    // hello() 함수를 익명 함수로 작성한 예제
+    // setInterval(() => { alert("Hello");}, 3000);
+
+    // 일정 시간 후 한번만 실행 – setTimeout()
+    // setTimeout(() => {alert("Hello2");}, 3000);
+
+    // 타이머 멈추기 – clearInterval(timerID);
+    // clearInterval(() => {alert("Hello2");}, 3000);
+
+    // 1초 마다 증가하는 숫자를 출력하고, 숫자가 5가 되면 타이머를 종료하는 예제
+    // for (let i = 0; i <= 10; i++) {
+    //     setInterval(plus(i), 1000);
+    //     if (i === 5) {
+    //         break;
+    //     }
+    // }
+    // function plus(i) {
+    //     console.log(i);
+    // }
+// ==========================================================Math==========================================================
+// ========================================================================================================================
+    // var value = Math.random() * (경우의 수) + 최소값
+    // for (let i = 0; i < 5; i++) {10
+    //     var num = Math.random() * 50 + 50;
+    //     setInterval(console.log(num), 1000)
+    //     if (i == 5) {
+    //         break;
+    //     }
+    // }
+
+    // 작은 값, 큰 값 알아내기 – Math.min(), Math.max()
+    // var max = Math.max(10, 10.1);
+    // var min = Math.min(10, 10.1);
+    // console.log(max);
+    // console.log(min);
+
+    // 올림값, 내림값, 반올림값 구하기 – Math.floor(), Math.ceil()
+    console.log(Math.abs('-1'));
+    console.log(Math.abs(-2)); 
+    console.log(Math.abs(-0.43)); 
+    console.log(Math.abs(null));
+    console.log(Math.abs('')); 
+    console.log(Math.abs([]));
+    console.log(Math.abs([2])); 
+    console.log(Math.abs([1,2])); 
+    console.log(Math.abs({})); 
+    console.log(Math.abs('string')); 
+    console.log(Math.abs()); 
+
+    console.log(Math.ceil(.95)); 
+    console.log(Math.ceil(4));
+    console.log(Math.ceil(7.004));
+    console.log(Math.ceil(-0.95));
+    console.log(Math.ceil(-4)); 
+    console.log(Math.ceil(-7.004)); 
+
+    var num = 345.678;
+    num = Math.ceil(num*100)/100;
+    console.log(num);
+
+    // (괄호)안의 수보다 하나 더 작은수로 반환
+    console.log(Math.floor(45.95)); 
+    console.log(Math.floor(45.05)); 
+    console.log(Math.floor(4));
+    console.log(Math.floor(-45.05)); 
+    console.log(Math.floor(-45.95)); 
+
+    var num = 345.678;
+    num = Math.floor(num*100)/100;
+    console.log(num);
+
+    console.log(Math.round(20.49)); 
+    console.log(Math.round(20.5)); 
+    console.log(Math.round(42)); 
+    console.log(Math.round(-20.5)); 
+    console.log(Math.round(-20.51)); 
+
+    var num = 345.678;
+    num = Math.round(num*100)/100;
+    console.log(num);
+</script>
+<body>
+    
+</body>
+</html>

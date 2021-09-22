@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+            // 드랍 영역 이벤트 등록
+            var dropbox = document.getElementById("dropbox");
+
+            // 이벤트 핸들러 할당
+            // dragEnter, dragExit, dragOver --> 이벤트의 이상 증식 현상을 중지시키는 역할
+            dropbox.addEventListener("dragenter", dragEnter, false);
+            dropbox.addEventListener("dragexit", dragExit, false);
+            dropbox.addEventListener("dragover", dragOver, false);
+            dropbox.addEventListener("drop", drop, false);
+            event.stopPropagation();
+            event.preventDefault();
+
+            // drop 이벤트 헨들러 작성하기
+            var files = event.dataTransfer.files;
+            var count = files.length;
+            // 오직 한개 이상의 파일이 드랍된 경우에만 처리기를 호출
+            if (count > 0) {
+                handleFiles(files);
+            }
+
+            var file = files[0];
+            document.getElementById("droplabel").innerHTML = "Processing " + file.name;
+            var reader = new FileReader(); // 파일 리더의 이베트 핸들러 정의
+            reader.onloadend = handleReaderLoadEnd; // 파일을 읽는 작업 시작
+            reader.readAsDataURL(file);
+
+            var img = document.getElementById("preview");
+            img.src = event.target.result;
+    </script>
+</head>
+<body>
+    <!-- 드랍 영역 마크업하기 -->
+    <!-- 아이템을 드래그할 수 있는 영역과 미리볼 수 있는 이미지를 등록한다. -->
+    <div id="dropbox">
+        <span id="dropable">
+            이곳에 파일을 드랍해 주세요
+        </span>
+    </div>
+    <img id="preview" alt="[ preview will display here ]" src=""/>
+</body>
+</html>

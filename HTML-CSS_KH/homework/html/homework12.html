@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var svgDocument;
+        var svgns = 'http://www.w3.org/2000/svg';
+        var xlinkns = 'http://www.w3.org/1999/xlink';
+
+        function startup(evt) {
+            P = document.getElementById("P")
+            animate()
+            stop("S")
+            stop("L")
+        }
+
+        limit = 720
+        blu = 4
+        speed = 6
+        running = true
+        function animate() {
+            if (!running) return
+            B = "rotate(" + blu + " 360 150)"
+            C = "rotate(" + (-blu / 2) + " 360 150)"
+            P.setAttribute("transform", C);
+            blu = blu + speed
+            if ((blu < 0) || (blu > limit)) speed = -speed
+            window.setTimeout("animate()", 10)
+        }
+        runAnim = new Object
+        runAnim["S"] = false
+        runAnim["L"] = false
+        function stop(id) {
+
+            if (runAnim[id]) {
+                document.getElementById(id).firstChild.nextSibling.endElement()
+                document.getElementById("E" + id).endElement()
+            }
+            else {
+                document.getElementById(id).firstChild.nextSibling.beginElement()
+                document.getElementById("E" + id).beginElement()
+            }
+            runAnim[id] = !runAnim[id]
+        }
+        //]]>
+    </script>
+</head>
+
+<body>
+    <svg width="100%" height="100vh" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        onload="startup(evt)">
+
+        <defs>
+            <clipPath id="CL">
+                <ellipse cx="360" cy="150" rx="40" ry="90" />
+            </clipPath>
+            <clipPath id="CS">
+                <ellipse cx="560" cy="150" rx="40" ry="90">
+                    <animateTransform id="ES" attributeName="transform" type="rotate" dur="1s" end="indefinite"
+                        begin="indefinite" from="360 560 150" to="0 560 150" repeatCount="indefinite" />
+                </ellipse>
+            </clipPath>
+            <filter id="Compo" filterUnits="userSpaceOnUse">
+                <feImage id="feI" xlink:href="다운로드.jfif" x="40" y="20" width="240" height="300">
+                    <animateTransform id="EL" attributeName="transform" type="rotate" dur="3s" end="indefinite"
+                        begin="indefinite" from="360 140 150" to="0 140 150" repeatCount="indefinite" />
+                </feImage>
+                <feComposite operator="in" in2="SourceGraphic" />
+            </filter>
+        </defs>
+
+        <rect x="0" y="0" width="100%" height="100vh" fill="#304" />
+
+        <ellipse filter="url(#Compo)" id="L" cx="150" cy="150" rx="40" ry="90">
+            <animateTransform attributeName="transform" type="rotate" dur="4s" end="indefinite" begin="indefinite"
+                from="0 150 150" to="360 150 150" repeatCount="indefinite" />
+        </ellipse>
+
+        <text x="70" y="260" font-size="13" fill="#e1d">ellipse with feImage,</text>
+        <text x="70" y="280" font-size="13" fill="#e1d">feComposite, and SMIL</text>
+        <text x="300" y="260" font-size="13" fill="#e1d">image with ellipse as clipPath</text>
+        <text x="300" y="280" fill="#e1d">and JavaScript</text>
+        <text x="520" y="260" font-size="13" fill="#e1d">image with ellipse as clipPath</text>
+        <text x="520" y="280" fill="#e1d">and SMIL</text>
+
+        <image id="P" clip-path="url(#CL)" x="240" y="0" width="240" height="300" xlink:href="다운로드.jfif.jpg" />
+        <image id="S" clip-path="url(#CS)" x="440" y="0" width="240" height="300" xlink:href="다운로드.jfif.jpg">
+            <animateTransform attributeName="transform" type="rotate" dur="1.5s" end="indefinite" begin="indefinite"
+                from="0 560 150" to="360 560 150" repeatCount="indefinite" />
+        </image>
+
+        <g id="left" onclick="stop('L')">
+            <rect x="90" y="310" width="100" height="30" fill="#ca7" />
+            <text x="98" y="330" font-size="18" fill="#304">Start/stop</text>
+        </g>
+        <g id="center" transform="translate(220,0)" onclick="running=!running;animate()">
+            <rect x="90" y="310" width="100" height="30" fill="#ca7" />
+            <text x="98" y="330" font-size="18" fill="#304">Start/stop</text>
+        </g>
+        <g id="right" transform="translate(440,0)" onclick="stop('S')">
+            <rect x="90" y="310" width="100" height="30" fill="#ca7" />
+            <text x="98" y="330" font-size="18" fill="#304">Start/stop</text>
+        </g>
+
+    </svg>
+</body>
+</html>

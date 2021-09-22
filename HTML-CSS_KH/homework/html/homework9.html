@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 새로운 window 객체 생성
+        // open() method는 새로운 window 객체를 생성하는 method
+        // open([URL, name, features, replace]);
+        // 첫번째 매개변수 : HTML 페이지의 URL지정. 미지정시 about:blank로 열림.
+        // 두번째 매개변수 : 윈도우 이름 속성 혹은 새로운 윈도우의 타겟설정
+        // 세번째 매개변수 : 윈도우를 어떤 모양으로 출력할지 지정
+        // 네번째 매개변수 : 히스토리 목록에 현재 문서를 대체 혹은 새 항목 여부
+        window.onload = function () {
+            document.querySelector("#blank").onclick = function () {
+                window.open("https://naver.com","_blank", "", true);
+            }
+
+            document.querySelector("#parent").onclick = function () {
+                window.open("https://naver.com","_parent", "width=500, height=300", true);
+            }
+
+            document.querySelector("#self").onclick = function () {
+                window.open("https://naver.com","_self", "width=500, height=300", false);
+            }
+
+            document.querySelector("#top").onclick = function () {
+                window.open("https://naver.com","_top", "width=500, height=300", true);
+            }
+        
+
+        // window 객체의 기본 메서드
+        // 자신의 형태와 위치를 변경할 수 있는 메서드를 제공
+        // var child = window.open('', '', 'width=300, height=200');
+        // child.moveTo(0, 0);
+        // setInterval(function () {
+        //     child.moveBy(10, 10);
+        // }, 1000);
+
+        // location 객체 --> 프로토콜의 종류, 호스트 이름, 문서 위치 등의 정보
+        // output = "";
+        // for (var v in location) {
+        //     output += v + " : " + location[v] + "<br>"
+        // }
+        // document.body.innerHTML = output;
+
+        // location 객체의 기본메소드
+        // reload() : 새로고침
+        // assign(URL) : 지정 URL로 페이지 이동
+        // replace(URL) : 지정 URL로 페이지 이동(뒤로가기불가)
+        document.querySelector("#btnReload").onclick = function () {
+            location.reload();
+        }
+        document.querySelector("#btnAssign").onclick = function () {
+            location.assign("https://naver.com");
+        }
+        document.querySelector("#btnReplace").onclick = function () {
+            location.replace("https://naver.com");
+        }
+
+        // navigator 객체
+        // 브라우저의 정보를 제공하는 객체, 주로 호환성 문제등을 위해서 사용
+        console.dir(navigator);
+
+        // 사용자가 방문한 URL 히스토리를 가지고 있는 객체이다
+        // back() : 히스토리 리스트의 이전 url을 로드한다. ex) history.back();
+        // forward() : 히스토리 리스트의 다음url을 로드한다. ex) history.forward()
+        // go() : 입력받은 수에 따라 앞뒤로 이동
+        // - 1 : 이전 url 로딩(back()과 동일) / 1 : 다음 url 로딩(forward()과 동일) / - 2 : 이전 두번째 url 로딩 / 0 :현재페이지 리로딩
+        document.querySelector("#back").addEventListener("click", function () {
+            history.back();
+        })
+        document.querySelector("#back").addEventListener("click", function() {
+            var num = document.querySelector("#num").value;
+            history.go(num);
+        })
+        document.querySelector("#forward").addEventListener("click", function () {
+            history.forward();
+        });
+        document.querySelector("#goNaver").addEventListener("click", function () {
+            location.assign("https://naver.com");
+        });
+
+        // screen 객체
+        console.dir(screen);
+    }
+    </script>
+</head>
+<body>
+    <button id="blank">blank</button>
+    <button id="parent">parent</button>
+    <button id="self">self</button>
+    <button id="top">top</button>
+    <br>
+    <button id="btnReload">reload()</button>
+    <button id="btnAssign">assign()</button>
+    <button id="btnReplace">replace()</button>
+    <br>
+    <button id="back">back()</button>
+    <button id="go">go()</button><input type="number" id="num">
+    <button id="forward">forward()</button>
+    <button id="goNaver">히스토리쌓기::네이버</button>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var example = document.getElementById("example");
+            var context = example.getContext("2d");
+            context.fillStyle = "rgb(255, 0, 0)";
+            context.fillRect(30, 30, 50, 50);
+        }
+    </script>
+</head>
+<body>
+    <!-- Canvas 요소 -->
+    <!-- 2차원의 비트맵 이미지 프로세싱이 가능하고 동적인 그래픽 렌더링을 스크립트로 제어할 수 있다. -->
+    <!-- 웹 페이지에 인터랙티브한 그래픽 컨텐츠를 만들어 제공할 수 있음을 뜻한다. -->
+    <canvas id="example" width="200" height="200">
+        이 메시지는 사용자의 브라우저에서 HTML5 캔버스를 지원하지 않는 경우 표시 된다.
+    </canvas>
+
+    <!-- SVG 요소 -->
+    <!-- SVG는 확장 가능한 백터 그래픽(Scalable Vector Graphics)의 줄임말 -->
+    <!-- SVG 의 작성은 HTML 과 매우유사하다. -->
+    <!-- <circle>,<rect> 등과 같은 그래픽 태그들을 이용하여 작성하면 된다. -->
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <rect x="10" y="10" width="100" height="100" style="stroke:#ff0000; fill: #0000ff"/>
+    </svg>
+
+</body>
+</html>

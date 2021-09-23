@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <script>
+        // 이러면 또 호출이 가능하다.
+        function f1() {
+            console.log("f1호출");
+        }
+    </script>
+
+    <script>
+        // 함수정의는 아래와 같은 호출 방식이 가능하다. (위치 상관 X)
+        f1();
+        // function f1() {
+        //     console.log("f1호출");
+        // }
+
+        // 그러나 변수는 '선언 위치'와 그것을 '호출하는 곳의 위치의 영향'을 받는다. (위치 상관 O)
+
+        // 불가능
+        console.log(a1);
+        var a1 = 50;
+
+        // 불가능
+        f2();
+        var f2 = function () { /* (함수 정의에 변수 선언을 이용) */
+            console.log("f2호출");
+        }
+    </script>
+    
+
+</head>
+<body>
+    <script>
+        // function f1() {
+        //     console.log("f1호출");
+        // }
+        // 함수 정의식이 순서(위치)에 상관없다 하더라도 <head>와 <body>의 영향은 받는다.
+        // <body> ~ </body>에 있는것은 page가 load된 후에 인식되는 것이다.
+        // 따라서 아무리 함수 정의 방식이라 하더라도 호출이 불가능한 것이다.
+        // <head>면 <head>, <body>면 <body> 안 같은 영역에 있어야한다.
+    </script>
+</body>
+</html>
+
+

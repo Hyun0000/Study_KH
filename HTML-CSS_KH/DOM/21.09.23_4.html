@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 요구조건
+        // (1). 비밀번호 첫글자는 대문자, 6글자 이상 ~ 12글자 이하
+        // (2). (1)번 조건 충족 못할 시 경고 팝업 "pw는 6자 이상 ~ 12자 이하로 작성해주세요" & action으로 이동되지 않는다.
+
+        window.addEventListener("load", pageLodedHandler);
+        function pageLodedHandler() {
+            // 보통 load 관련 function은 <script> 전체를 감싼다.
+
+            // button 이벤트 등록
+            // 이벤트 등록은 반드시 여기서 해야한다.
+            document.getElementById("btn1").addEventListener("click", btnSubmit);
+            // btnSubmit이 코드적으로만 등록돼있는 상태이다.(onload 전까지는)
+        }
+
+         // load가 아니라 button이 눌러지면 아래의 내용이 실행돼야 한다.
+        function btnSubmit() {
+            // 버튼을 누르는 시점에 제대로 진입했는지 console로 확인
+            console.log("btnSubmit 진입");
+
+            var pw1 = document.getElementById('pwd');
+            var pw2 = document.getElementById('repwd');
+
+            var pw1Value = pw1.value;
+            var pw2Value = pw2.value;
+
+            // 경고 팝업 순서대로 코드 작성
+
+            // 경고 팝업 순서
+            // 1. 입력되지 않은칸을 입력해라 (required)
+            // 2. 비밀번호를 6자 이상 ~ 12자 이하로 작성해야하는 조건에 맞지않다.
+            // 3. (비밀번호)와 (비밀번호 확인)을 동일하게 입력해라
+
+            // 1. 입력되지 않은칸을 입력해라 (required)
+            // submit 관련 function 안에 있어도 되고 밖에 있어도 된다.
+
+            // 1-1.
+            // if (document.getElementById('id').value.length == 0) {
+            //     alert('id 입력해주세요');
+            //     document.getElementById('id').focus(); // 포커스 맞추기
+            //     return false;
+            // }
+            // if (document.getElementById('pwd').value.length == 0) {
+            //     alert('pwd 입력해주세요');
+            //     document.getElementById('pwd').focus(); // 포커스 맞추기
+            //     return false;
+            // }
+            // if (document.getElementById('repwd').value.length == 0) {
+            //     alert('repwd 입력해주세요');
+            //     document.getElementById('repwd').focus(); // 포커스 맞추기
+            //     return false;
+            // }
+            // if (document.getElementById('name').value.length == 0) {
+            //     alert('name 입력해주세요');
+            //     document.getElementById('name').focus(); // 포커스 맞추기
+            //     return false;
+            // }
+
+            // 1-2. 위의 내용이 반복되니 함수를 이용하자
+            // common function
+            function checkNullValue(n) {
+                if (n.value.length == 0) {
+                    alert('입력해주세요');
+                    n.focus(); // 포커스 맞추기
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            // var cnv = checkNullValue(document.getElementById('id'));
+            // if (cnv == false) { return false; }
+            // var cnv = checkNullValue(document.getElementById('pwd'));
+            // if (cnv == false) { return false; }
+            // var cnv = checkNullValue(document.getElementById('repwd'));
+            // if (cnv == false) { return false; }
+            // var cnv = checkNullValue(document.getElementById('name'));
+            // if (cnv == false) { return false; }
+
+            // 1-3. for
+            var inputElements = document.getElementsByClassName("input");
+            for (let i = 0; i < inputElements.length; i++) {
+                var cnv = checkNullValue(inputElements[i]);
+                if (cnv == false) { return false; }
+            }
+            
+            // var inputElements = document.getElementsByTagName("input");
+            // inputElements.forEach(checkNullValue);
+
+            // element 형태인 경우 forEach() method가 작동하지 않는다.
+            // 따라서 기본 for문을 사용해야한다.
+
+
+            // 2. 비밀번호를 6자 이상 ~ 12자 이하로 작성해야하는 조건에 맞지않다.
+            if (pw1Value.length < 6 || pw1Value.length > 12) {
+                alert('pw는 6자 이상 ~ 12자 이하로 작성해주세요');
+                return false;
+                // action으로 이동하지 않게 한다.
+            }
+
+            // 3. (비밀번호) & (비밀번호 확인)이 동일한지 검사
+            if (pw1Value != pw2Value) {
+                alert("동일하게 입력해주세요");
+                return false;
+                // action으로 이동하지 않게 한다.
+            }
+            // <script>에서 false를 줘도 <body>의 button은 원래 기능을 수행한다.
+            // 따라서 button의 submit 기능을 막기위해서는 '인라인 방식으로 스크립트를 작성'해야한다.
+            // 인라인 방식외에 <script>를 통해 button의 submit 기능을 막을 방법은 없다.
+            // 즉, <script> 안에서의 false, true들은 서로의 조건문끼리에만 영향을 미칠 수 있지
+            // <body>에 있는 button이나 input의 submit에는 영향을 미칠 수 없는 것이다.
+
+            // 그렇기에 submit 관련 함수는 onload 함수 밖에서 정의하는 경우가 많다.
+            // why?
+            // 인라인 형태로 호출될 가능성이 높은데 onload 함수안에 있으면 '지역함수'가 되어 호출이 불가능하기 때문이다.
+
+            // 위의 조건들을 모두 통과하면 action으로 data 전달하면서 이동
+            else {
+                var frm1 = document.getElementById('frmId1');
+
+                // document.getElementById('frmId1') --> <form> 태그를 가져왔으므로 아래와 같이 설정할 수 있다.
+                // <form action="#" method="GET">와 같이 작성안해도 된다.
+                if (document.getElementById('id').value == 'admin') {
+                    frmId1.action = "#관리자 페이지";
+                } else {
+                    frmId1.action = "#일반 페이지";
+                }
+                frmId1.method = 'post';
+                frmId1.submit(); // action으로 submit해라
+                // (return true;)도 필요없다.
+            }
+        }
+    </script>
+</head>
+<body>
+    <form id="frmId1"> <!-- action과 method를 작성할 필요없다. by var frm1 = document.getElementById('frmId1'); -->
+    <!-- <form action="#" method="GET"> -->
+        <fieldset>
+            <legend>회원가입</legend>
+            <label for="id">아이디 : </label>
+
+            <input type="text" name="id" id="id" required class="input">
+            <span id="checkid"></span>
+
+            <br><br>
+
+            <label for="pwd">비밀번호 : </label>
+            <input type="password" name="pwd" id="pwd" required class="input">
+
+            <br><br>
+
+            <label for="repwd">비밀번호 확인 : </label>
+            <input type="password" name="repwd" id="repwd" required class="input">
+            <span id="checkpw"></span>
+            <!-- 어차피 (id="pwd")에서 (name="pwd")을 통해 비밀번호를 action에 전달할 것이기에 여기서는 별도로 name을 지정할 필요가 없다. -->
+            <!-- 즉, 비밀번호와 비밀번호 확인을 둘 다 전달할 필요없다. -->
+            <br><br>
+
+            <label for="name">이름 : </label>
+            <input type="text" name="name" id="name" required class="input">
+            <!-- name="name"이어도 상관없다. -->
+            <br><br>
+
+            <button type="button" id="btn1">버튼타입 제출</button>
+            <!-- {onclick="return btnSubmit();"} 오직 인라인 방식을 통해서만 submit 기능을 컨트롤 할 수 있다. -->
+            <!-- {"return btnSubmit();"}가 false면 submit을 못한다.  -->
+            <!-- <button type="submit" id="submit" onclick="return btnSubmit();">버튼타입 제출</button> -->
+
+            <!-- 위와 같이 작성하면 {onclick="return btnSubmit();}이 먼저 호출되기에 <input>태그에 있는 required를 체크할 수가 없다. -->
+            <!-- required를 먼저 체크하고 싶다면 <input>이 아니라 <script> 영역에서 required를 체크해야한다. -->
+
+            <!-- 따라서 submit 기능이 없는 일반 button을 먼저 만들어야한다. -->
+            <!-- submit을 통제하고 싶으니까 일반 button으로 만드는 것이다. -->
+       </fieldset>
+    </form>
+</body>
+</html>

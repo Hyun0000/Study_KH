@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            // 노드생성
+            var n1 = document.createElement('h1');
+            var n2 = document.createElement('img');
+            var t1 = document.createTextNode('hello');
+
+            // 속성 지정하기
+            n2.src = "https://via.placeholder.com/45";
+            n2.width = 100;
+            n2.height = 100;
+            
+            // 여기까지만 하면 화면에 아무것도 나오지 않는다.
+            // 생성한 노드를 <body> 태그에 연결
+            document.body.appendChild(n1);
+            document.body.appendChild(n2);
+            document.body.appendChild(t1);
+            // body의 자식으로 n1, n2, t1을 추가한다는 의미
+            // body는 자주쓰기에 바로 body만 쓰면 된다. getElementById 같은 걸 쓸 필요가 없다.
+            
+            // innerHTML 속성 사용
+            var n3 = ""; 
+
+            n3 += "<ul>";
+            n3 += "<li>JavaScript</li>";
+            n3 += "<li id='id2'>DOM</li>";
+            n3 += "<li>jQuery</li>";
+            n3 += "</ul>";
+
+            // document.body.appendChild(n3);
+            // n3는 createElement()로 생성된 것이 아니므로 appendChild 불가
+
+            // 따라서 innerHTML 형태로 작성해야 한다.
+            // document.body.innerHTML = n3;
+            // 문제는 기존 <body>안에 있던 내용들이 전부 사라지고 오직 n3의 내용만 출력된다는 것이다.
+            // (위치와 상관없이 기존 내용이 전부 사라진다.)
+
+            // innerHTML ==> 기존 내용을 싹다 지워버린 후 새로운 것을 집어넣는다.(onload 했던게 다 사라지는 것이다.)
+
+            // 따라서 아래와 같은 방법을 이용한다.
+            document.getElementById('forInner').innerHTML = n3;
+            // p태그 안에 n3의 내용이 들어가게 한다.
+            // 그러면 <body>의 내용이 전부 사라지는게 아니라 <p>의 내용만 새로 갈아 엎어진다.
+
+            // 노드 추출
+            var title_1 = document.getElementById('title_1');
+            var title_2 = document.getElementById('title_2');
+
+            // 추출 후 속성값 변경
+            title_1.innerHTML = "TITLE에서 TITLETITLE로 변경"
+            title_2.innerHTML = "JS에서 JSJS로 변경"
+            
+
+            // tagName과 일치하는 문서 객체를 '배열로 추출'
+            var h1Elements = document.getElementsByTagName("h1");
+            console.log(h1Elements);
+            console.log(h1Elements[0]);
+            console.log(h1Elements[1]);
+            // 배열이니까 index를 이용해 배열의 각 요소를 출력한다.
+                
+            // 추출 후 속성값 변경
+            h1Elements[0].innerHTML = '배열을 이용해 속성값 TITLETITLE에서 red로 변경';
+            h1Elements[1].innerHTML = '배열을 이용해 속성값 JSJS에서 pink로 변경';
+            // h1Elements에 요소를 추가하고 싶으면 <body> 부분에 <h1> 태그를 새로 작성할 것
+            // 이상하게 여기서 새로 추가하지 말고
+
+            // 문서 객체 제거(노드 제거)
+            var e1 = document.getElementById('t2');
+            document.body.removeChild(e1);
+            // <body>의 자식 중 e1(id="t2")을 삭제하겠다.
+            // (id="t2")의 자식이 사라지는게 아니라 '<body>의 자식이 사라지는 것'이다.
+
+            var e2 = document.getElementById('forInner');
+            // 지우는 방법 1
+            // document.body.removeChild(e2);
+
+            // 지우는 방법 2
+            // document.getElementById("forInner").remove();
+            // remove() 왼쪽에 있는 것 자체를 삭제하겠다는 의미
+            // 따라서 remove(괄호)안에 인자를 따로 넣을 필요가 없다.
+
+            // document.body.removeChild(h1Elements);
+            // 오류 ==> Uncaught TypeError: Failed to execute 'removeChild' on 'Node': parameter 1 is not of type 'Node'. at window.onload 
+            // removeChild는 Argument(인자)를 '하나만 받을 수' 있다. 배열은 받을 수 없다.
+
+            var e3 = document.getElementById("id2");
+            // 삭제 실패
+            document.body.removeChild(e3);
+
+            // 삭제 실패
+            document.getElementById("forInner").removeChild(e3);
+            // innerHTML로 들어있어서 꺼낼 수 없다.
+        }
+    </script>
+</head>
+<body>
+    <h1 id="title_1">TITLE</h1>
+    <h1 id="title_2">JS</h1>
+    <p id="forInner"></p>
+    <!-- p태그 안에 n3의 내용이 들어가게 한다. -->
+    <!-- 그러면 <body>의 내용이 전부 사라지는게 아니라 <p>의 내용만 새로 갈아 엎어진다. -->
+    <h2 id="t2">t2내용</h2>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var arr = ['apple','banana','kiwi'];
+        arr.forEach( function(element) {
+            document.write(element+"<br>")
+        });
+        // forEach() method
+        /*
+        - 배열에서 제공하는 method이다.
+        - forEach()의 인자(argument)로는 function을 넣어줘야한다.
+        - 그러면 배열의 요소(element)를 하나씩 꺼내 인자로 넣은 function에 넣어서 실행시켜준다.
+        - 따라서 인자(argument)로 들어오는 function은 parameter를 갖고 있어야한다.
+        (실행하고 싶은 내용도 직접 작성해야한다.)
+        */
+        
+        var f4 = function (e) { console.log(e); }
+    </script>
+</head>
+<body>
+    <!-- url에서 값 확인할 것 -->
+    <script>
+        function frmAction() {
+            // 변수에 무언가를 넣는 시점에 그것이 '값'으로 돼있냐, object로 돼있냐가 중요하다.
+            // 값만 읽고 & 사용한다면 그냥 값을 집어넣으면 된다.
+            // 그러나 object에 속해 있는 값의 변경이나 속성의 조작이 필요하다면 반드시 object를 넣어줘야한다.
+
+            // 1. "id1"의 value를 뽑아 v1에 담는다.
+            var v1 = document.getElementById("id1").value;
+
+            // 2. "id1"라는 object를 v1에 담는다.
+            var v2 = document.getElementById("id1");
+
+            console.log(v1);
+            console.log(v1.length);
+
+            console.log(v2);
+            // 콘솔에 찍히는 값 : <input type="text" name="a1" id="id1">
+           
+            // id1에 입력된 값이 3글자 이상이면 action으로 이동 (submit 기능 작동)
+            // 아니라면 alert 창으로 경고메세지 팝업 후 다시 id1에 내용을 입력하도록 한다.
+            if (v1.length >= 3) {
+                return true;
+            } else {
+                alert("3자 이상 입력하세요");
+
+                // 3자 미만으로 입력했을 때 input 창을 깨끗하게 해보자
+                // 1.
+                // document.getElementById("id1").value = "";
+                
+                // 2.  var v1 = document.getElementById("id1").value; ==> (var v1 = 값)
+                v1 = "";
+                // input 창을 깨끗히 할 수 없다.
+                // why?
+                // v1은 34번 라인이 실행되는 시점의 ("id1")의 value(값)를 꺼내서 대입한 것이다.
+                // 즉, document.getElementById("id1")라는 'object가 아니라 값을 넣어준 것'이다.
+
+                // 3. var v2 = document.getElementById("id1"); ==> (var v2 = object)
+                v2.value = "";
+                // input 창을 깨끗히 할 수 있다.
+                // why?
+                // v2에는 document.getElementById("id1")라는 object가 들어온 것이다.
+                // 즉, v2가 <input type="text" name="a1" id="id1"> 자체가 되는 것이다.
+                // 일종의 '얕은복사'라고 보면된다.
+                // object 자체를 v2에 넘겨준 것이기에 해당 object의 value(값)를 변경할 수 있는 것이다.
+
+                v2.focus();
+                /* 커서 깜빡깜빡 */
+                return false;
+            }
+        }
+    </script>
+
+    <br><br>
+
+    <form action="#" method="GET">
+        <input type="text" name="a1" id="id1">
+        <!-- a1에 입력된 값이 3글자 이상이면 action으로 이동 (submit 기능 작동) -->
+        <!-- 아니라면 alert 창으로 경고메세지 팝업 후 다시 a1에 내용을 입력하도록 한다. -->
+
+        <input type="reset">
+        <input type="submit" onclick="return frmAction();">
+        <!-- onclick이 됐을 때 순서 -->
+        <!-- (1번) frmAction() 실행  /  (2번) return true 혹은 return false -->
+        <!-- return true ==> submit 기능 실행 / return false ==> submit 기능 실행 불가 -->
+    </form>
+
+    <br><br>
+    <button onclick="f4('버튼 누르면 콘솔에 찍힌다.');">인라인 스크립트 버튼</button>
+    <!-- js 함수를 인라인 방식으로 호출할 때는  "함수명();" 식으로 작성해야한다. -->
+    <!-- button을 누르는 시점에 함수가 호출된다. -->
+</body>
+</html>

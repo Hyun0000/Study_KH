@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #enroll {
+            width: 50%;
+        }
+
+        td:first-child {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #btn_border {
+            padding-top: 5px;
+        }
+
+        table {
+            border-top: 1px solid tomato;
+            border-bottom: 1px solid tomato;
+        }
+
+        #btn {
+            margin-left: 250px;
+        }
+
+        select {
+            width: 164.8px;
+        }
+    </style>
+</head>
+<body>
+    <div id="enroll">
+        <form action="index.html" method="POST">
+            <table>
+                <tr>
+                    <td>이름</td>
+                    <td><input type="text" name="name" required></td>
+                </tr>
+
+                <tr>
+                    <td>아이디</td>
+                    <td><input type="text" name="id" required style="margin-right: 10px;"><a href="#">중복확인</a></td>
+                </tr>
+
+                <tr>
+                    <td>비밀번호</td>
+                    <td><input type="password" name="pw" required style="margin-right: 5px;">
+                        <span style="font-size: 8px;">6자이상</span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>비밀번호 확인</td>
+                    <td><input type="password" name="re_pw" required></td>
+                </tr>
+
+                <tr>
+                    <td><label for="hint">비밀번호 힌트/답변</label></td>
+                    <td><select size="1" id="hint">
+                            <option value="">선택하세요</option>
+                            <option value="30">졸업한 초등학교 이름은?</option>
+                            <option value="31">제일 친한 친구의 핸드폰 번호는?</option>
+                            <option value="32">아버지 성함은?</option>
+                            <option value="33">어머니 성함은?</option>
+                            <option value="34">어릴 적 내 별명은?</option>
+                            <option value="35">가장 아끼는 물건은?</option>
+                            <option value="36">좋아하는 동물은?</option>
+                            <option value="37">좋아하는 색깔은?</option>
+                            <option value="38">좋아하는 음식은?</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>답변</td>
+                    <td><input type="text" name="reply"></td>
+                </tr>
+
+                
+                <tr>
+                    <td>이메일</td>
+                    <td><input type="email" name="email"></td>
+                </tr>
+
+                <tr>
+                    <td>전화번호</td>
+                    <td><input type="number" name="number"></td>
+                </tr>
+
+                <tr>
+                    <td>메일/sns 정보 수신</td>
+                    <td><input type="radio" name="request" value="y" id="request_y" checked>
+                        <label for="request_y">수신</label>
+                        <input type="radio" name="request" value="n" id="request_n">
+                        <label for="request_n">수신거부</label>
+                    </td>
+                </tr>
+
+                <tr id="table_down">
+                    <td>관심분야</td>
+                    <td>
+                        <input type="checkbox" name="hope" value="sangdu" id="id_sangdu">
+                        <label for="id_sangdu">생두</label>
+                        <input type="checkbox" name="hope" value="onedu" id="id_onedu">
+                        <label for="id_onedu">원두</label>
+                        <input type="checkbox" name="hope" value="loasting" id="id_loasting">
+                        <label for="id_loasting">로스팅</label>
+                        <input type="checkbox" name="hope" value="hand" id="id_hand">
+                        <label for="id_hand">핸드드립</label>
+                        <input type="checkbox" name="hope" value="espre" id="id_espre">
+                        <label for="id_espre">에스프레소</label>
+                        <input type="checkbox" name="hope" value="chicken" id="id_chicken">    
+                        <label for="id_chicken">창업</label>
+                    </td>
+                </tr>
+            </table>
+
+            <div id="btn_border">
+                <div id="btn">
+                    <input type="submit" value="회원가입">
+                    <input type="reset" value="취소">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

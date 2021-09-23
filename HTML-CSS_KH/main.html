@@ -5,18 +5,81 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./header.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
     <title>Petmaru</title>
 </head>
 <body>
-    <h1>Petmaru</h1>
-    <hr>
-    <span class="material-icons">pets</span>
-    <span class="material-icons">checkroom</span>
-    <span class="material-icons">house</span>
-    <span class="material-icons">food_bank</span>
+    <header>
+        <div id="top_login">
+            <ul>
+                <li><a href="#">로그인</a></li>
+                <li><a href="#">회원가입</a></li>
+                <li><a href="#">마이페이지</a></li>
+            </ul>
+        </div>
 
-    <span class="material-icons">production_quantity_limits</span>
-    <!-- 장바구니 -->
+        <div id="logo_search">
+            <div id="logo">
+                <h1>Petmaru</h1>
+            </div>
+
+            <div id="search">
+                <form action="#" method="GET">
+                    <div class="material-icons">search</div>
+                    <input type="text" name="keyword">
+                </form>
+            </div>
+        </div>
+
+        <div id="header_line_top"></div>
+
+        <div id="icon">
+            <table id="left_icon">
+                <tr>
+                    <td><span class="material-icons"><a href="#">pets</a></span><br><span class="icon_text">옷</span></td>
+                    <td><span class="material-icons"><a href="#">checkroom</a></span><br><span class="icon_text">악세서리</span></td>
+                    <td><span class="material-icons"><a href="#">house</a></span><br><span class="icon_text">옷</span></td>
+                    <td><span class="material-icons"><a href="#">food_bank</a></span><br><span class="icon_text">옷</span></td>
+                    <td><span class="material-icons"><a href="#">production_quantity_limits</a></span><br><span class="icon_text">옷</span></td>
+                </tr>
+            </table>
+
+            <table id="right_icon">
+                <tr>
+                    <td><span class="material-icons"><a href="#">article</a></span><br><span class="icon_text">자유게시판</span></td>
+                    <td><span class="material-icons"><a href="#">task_alt</a></span><br><span class="icon_text">공지사항</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="header_line_bottom"></div>
+    </header>
+    <script>
+        // 함수는 가능(위치 상관 X)
+        f1();
+        function f1() {
+            console.log("f1호출");
+        }
+
+        // 변수는 안 됨(위치 상관 O)
+        console.log(a1);
+        var a1 = 50;
+
+        // 이렇게 해도 안 된다.(함수 정의에 변수 선언을 이용)
+        f2();
+        var f2 = function () {
+            console.log("f2호출");
+        }
+    </script>
+
+    <script>
+        // 순서에 상관없다 해도 헤더에 있는 거랑 바디에 있는것은 다르다
+        /// 바디에 있는것은 로드된후에 인식되는것이기에
+        // 아무리 함수라도 해도 인식이 되지 않는데
+        // 헤더면헤더면 바디면 바디 같은 영역안에 있기는 해야한다.
+    </script>
 </body>
 </html>
+
+

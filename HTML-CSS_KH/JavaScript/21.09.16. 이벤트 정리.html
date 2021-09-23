@@ -53,6 +53,12 @@
             // onload 이벤트 방법 3
             var pageLoadedHandler = function () {
             document.getElementById("p1").innerHTML = "이벤트를 통해 바꾼 p태그 내용";
+            // 등록하는 시점에는 document.getElementById("p1") 얘를 인식 못해도 상관이 없다.
+            // 그냥 document.getElementById("p1")에 코드적으로 때려박아 놓기만 하는 것이다.(코드적으로 등록만 한다.)
+            // 실행은 '호출되는 시점'에 실행이 된다.(등록만 해놓는것이고 실제로 찾는 것은 호출시점에 찾는다는 것)
+            // 즉, 이런 함수를 일일이 load 이벤트 후에 정의되도록 만들 필요가 없다는 뜻이다.
+            // document.getElementById("p1").innerHTML = f1 일때
+            // f1의 위치는 중요하다. f1의 위치가 이상해 언디파인드가 되면 언디파인드 등록 상태로 계속 가는것이다.(코드적으로 등록이 될 수 없다는 것이다.)
             
             var btnClickFunc = function () {
                 document.getElementById("p1").innerHTML = "버튼을 통해 바꾼 p태그 내용";
@@ -65,9 +71,12 @@
         // 아래의 두 방법이 변수 (var pageLoadedHandler)보다 위에 있으면 event 실행이 되지 않는다.
         // onload 이벤트 방법 3-1
         // window.onload = pageLoadedHandler;
+        // 이 부분이 54번 라인보다 위에 있으면 event 작동이 안 된다.
 
         // onload 이벤트 방법 3-2
         // window.addEventListener("load", pageLoadedHandler);
+        // 이 부분이 54번 라인보다 위에 있으면 event 작동이 안 된다.
+        // "load" 이벤트에 undefined를 등록하는 모습이 된다.
     </script>
 </head>
 <!-- onload 이벤트 방법 4 -->

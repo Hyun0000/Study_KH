@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 생성</title>
+    <script>
+        window.onload = function () {
+            // 노드생성
+            var n1 = document.createElement('h1');
+            var n2 = document.createElement("img");
+            n2.src = "https://via.placeholder.com/45"
+            n2.width = 200;
+            n2.height = 100;
+            var t1 = document.createTextNode("hello");
+            // 여기까지만 하면 아무것도 화면에 나오지 않는다.
+
+            // 생성한 노드를 연결
+            n1.appendChild(t1);
+            // n1의 자식으로 t1을 추가
+            document.body.appendChild(n1);
+            document.body.appendChild(n2);
+            // body는 자주쓰기에 바로 body만 쓰면 된다.
+
+
+            var n3 = "";
+            // element로 생성된 것이 아니므로 appendChild 불가
+
+            n3 += '<ul>';
+            n3 += '<li>js</li>';
+            n3 += '<li id="id2">DOM</li>';
+            n3 += '<li>jquery</li>';
+            n3 += '</ul>';
+
+            // document.body.appendChild(n3);
+            // element로 생성된 것이 아니므로 appendChild 불가
+            // 따라서 innerHTML 형태로 작성해야 한다.
+
+            // document.body.innerHTML = n3; 아래로 이동
+
+            var title_1 = document.getElementById('title_1');
+            var title_2 = document.getElementById('title_2');
+            console.log(title_1);
+            console.log(title_2);
+
+            
+            document.getElementById("forInner").innerHTML = n3;
+
+            // innerHTML --> 기존 내용을 싹다 지워버린다.
+            // title_1.innerHTML = "pink";
+            // title_2.innerHTML = "red";
+            // document.body.innerHTML = n3;
+
+            var h1Elements = document.getElementsByTagName("h1");
+            console.log(h1Elements);
+            console.log(h1Elements[0]);/* 배열 형태니까 */
+            console.log(h1Elements[1]);
+            h1Elements[1].innerHTML = "SVG";
+
+            // h1Elements[2].innerHTML = "배열에 새로운 추가가 된다.";
+            // 새로운 h1이 만들어진다???
+            // 이런 방법은 왠만하면 하지말것
+            // 새로 넣고 싶으면 body 부분에 끼워넣고 여기에 스크립트 작성
+
+            // h2 태그의 자식을 없앨것이다.
+            var e1 = document.getElementById("t2");
+            document.body.removeChild(e1);
+            // 'body'의 자식중에 document.getElementById("t2"); 자체가 삭제된다
+            // document.getElementById("t2")의 자식이 사라지는게 아니다.
+            // 바디의 자식이 사라지는 것이다.
+
+            // var e2 = document.getElementById("forInner");
+            // document.body.removeChild(e2);
+            // f12 - element 탭에서 p 태그 자체가 사라진다.
+
+            var e3 = document.getElementById("id2");
+            document.body.removeChild(e3);/* 이것만으로는 지워지지 않는다. */
+            document.getElementById("forInner").removeChild(e3);
+            // innerHTML로 들어있어서 꺼낼 수 없다.
+
+            document.getElementById("forInner").remove();
+            // 왼쪽에 있는거 자체를 삭제 (괄호)안에 따로 넣을 필요 없다.
+
+        }
+    </script>
+</head>
+<body>
+    <h1 id="title_1">TITLE</h1>
+    <h1 id="title_2">JS</h1>
+    <p id="forInner"></p>
+    <!-- p태그 안에  n3 내용이 들어가게 한다. 그러면 body가 싹 다
+    사라지는게 아니라 p태그 내용만 갈아 엎어지는 것이다.-->
+
+    <h2 id="t2">t2내용</h2>
+</body>
+</html>

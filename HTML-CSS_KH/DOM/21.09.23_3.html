@@ -9,10 +9,11 @@
         window.onload = function () {
             // 노드생성
             var n1 = document.createElement('h1');
+            // n1이 노드(element) 형태가 된다. 쉽게말해 태그 시작 ~ 끝까지의 범위이다.
             var n2 = document.createElement('img');
             var t1 = document.createTextNode('hello');
 
-            // 속성 지정하기
+            // 속성(property) 지정하기
             n2.src = "https://via.placeholder.com/45";
             n2.width = 100;
             n2.height = 100;
@@ -36,6 +37,7 @@
 
             // document.body.appendChild(n3);
             // n3는 createElement()로 생성된 것이 아니므로 appendChild 불가
+            // 즉, n3는 노드로 생성된 것이 아니라 그냥 String 형태로 생성된 것이므로 appendChild()를 사용할 수 없는 것이다.
 
             // 따라서 innerHTML 형태로 작성해야 한다.
             // document.body.innerHTML = n3;
@@ -45,9 +47,20 @@
             // innerHTML ==> 기존 내용을 싹다 지워버린 후 새로운 것을 집어넣는다.(onload 했던게 다 사라지는 것이다.)
 
             // 따라서 아래와 같은 방법을 이용한다.
-            document.getElementById('forInner').innerHTML = n3;
+            // document.getElementById('forInner').innerHTML = n3;
+            document.getElementById('forInner').innerText = n3;
             // p태그 안에 n3의 내용이 들어가게 한다.
             // 그러면 <body>의 내용이 전부 사라지는게 아니라 <p>의 내용만 새로 갈아 엎어진다.
+
+            // 왜 얘가 밑에 있으면 안 되지?
+            // document.getElementById('id1').innerText = 'abc';
+            // document.getElementById('id1').innerHTML = 'abc';
+            document.getElementById('id1').value = 'abc';
+            // innerText는 열리는 태그 ~ 닫히는 태그 사이에 넣어준다는 의미
+            // 그러나 <input>은 열리는 태그 ~ 닫히는 태그의 개념이 없기에 innerText가 적용되지 않는다.
+            // 즉, <input>은 inner라는 개념자체가 없다.(당연히 innerHTML도 적용 불가)
+            // value로 넣은 글자는 글자색을 일일이 다르게 하거나 글자 크기를 일일이 다르게 지정할 수 없다.(textarea도 마찬가지)
+            // 열리는거 닫히는거의 개념이 없으면 inner 적용이 불가능하다.
 
             // 노드 추출
             var title_1 = document.getElementById('title_1');
@@ -72,12 +85,12 @@
             // 이상하게 여기서 새로 추가하지 말고
 
             // 문서 객체 제거(노드 제거)
-            var e1 = document.getElementById('t2');
-            document.body.removeChild(e1);
+            // var e1 = document.getElementById('t2');
+            // document.body.removeChild(e1);
             // <body>의 자식 중 e1(id="t2")을 삭제하겠다.
             // (id="t2")의 자식이 사라지는게 아니라 '<body>의 자식이 사라지는 것'이다.
 
-            var e2 = document.getElementById('forInner');
+            // var e2 = document.getElementById('forInner');
             // 지우는 방법 1
             // document.body.removeChild(e2);
 
@@ -98,6 +111,8 @@
             document.getElementById("forInner").removeChild(e3);
             // innerHTML로 들어있어서 꺼낼 수 없다.
         }
+
+
     </script>
 </head>
 <body>
@@ -107,5 +122,7 @@
     <!-- p태그 안에 n3의 내용이 들어가게 한다. -->
     <!-- 그러면 <body>의 내용이 전부 사라지는게 아니라 <p>의 내용만 새로 갈아 엎어진다. -->
     <h2 id="t2">t2내용</h2>
+
+    <input type="text" name="aaa" id="id1">
 </body>
 </html>

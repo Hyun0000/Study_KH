@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JS 회원가입 유효성체크</title>
     <script>
         // 요구조건
         // (1). 비밀번호 첫글자는 대문자, 6글자 이상 ~ 12글자 이하
@@ -94,7 +94,11 @@
             // inputElements.forEach(checkNullValue);
 
             // element 형태인 경우 forEach() method가 작동하지 않는다.
+            // 배열은 배열인데 element 형태(태그 모양)의 배열인 경우 작동을하지 않는다.
+            // 아무리 간단한 태그일지라도 작동이 되지 않는다.
             // 따라서 기본 for문을 사용해야한다.
+
+            // 단, jquery에서는 element 형태(태그 모양)도 사용 가능하다.
 
 
             // 2. 비밀번호를 6자 이상 ~ 12자 이하로 작성해야하는 조건에 맞지않다.

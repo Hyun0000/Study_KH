@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <script>
+        // $(document).ready(function 짧게 써도 된다.
+        $(document).ready(function () {
+            var $list = $("ul li");
+            // ul의 후손으로 있는 li 전부 선택
+
+            // 1.
+            // li 하나씩 꺼내서 실행
+            $list.each(function () {
+                console.log($(this).text());
+                // li 한개 꺼낸 그것이 바로 this --> <li class="myFavourite">html</li>
+                // $(this) --> this를 제이쿼리로 형변환 시킨것
+
+                console.log(this.innerText);
+                // 이렇게 뿌릴수도 있다.
+                // js dom 모양 그대로 사용
+                // 이때 this는 dom 형태이다.
+            });
+            // 얘는 forEach와 다르게 함수에 파라미터가 없어도 된다.
+            // 파라미터를 아무것도 안 정하면 들어오는 것을 dom의 this 형태로 취급할 것이다.
+
+            // 2.
+            $list.each(f1);
+            // 파라미터명은 아무거나 해도 상관없다.
+            // 파라미터를 하나만 정하면 나는 그것을 index로 취급할 것이다.
+
+            // 3.
+            // $list.each(f2);
+            // 이렇게 쓸 수도 있다.
+            //document.write(element.textContent);
+            //document.write($(element).text());
+
+            function f1 (index) {
+                console.log(index);
+            }
+
+            function f2 (index, element) {
+                document.write(element.innerText);
+            }
+            // 파라미터명은 아무거나 해도 상관없다.
+            // 파라미터가 2개면 index자리에는 index개념이고, element 자리는 this 개념으로 취급할 것이다.(이떄 this는 하나씩 꺼내어진 element이다.)
+            // 이때 this는 dom 형태이다.
+
+            $("#backEnd").find(".java").eq(0).css("background", "yellow");
+            $("#backEnd").find(".java").get(0).style.background = 'yellow';
+            // 두 개가 같은 의미이다.
+
+            $("#backEnd").children(".java").eq(0).css("background", "yellow");
+            // 설사 children을 찾지 못하더라도 오류가 발생하지 않느다.
+            // 뒤쪽의 코드 내용을 계속해서 수행한다.
+            // 즉, 제이쿼리 형태는 뽑아져 나오는 값이 없더라도 오류가 발생하지 않는다.
+            // $("#backEnd").children(".java").eq(0) --> 결과 node가 없다.
+
+            // $("#backEnd").children(".java").get(0).style.background = 'yellow';/* 오류 */
+            // $("#backEnd").children(".java").get(0) 없으면 오류가 발생하고 뒤쪽의 코드 내용을 실행하지 않는다.
+
+            $("#ul").children('.java').eq(0).css("background", "yellow");/* 정상작동 */
+
+            $("#DOM").parents().css("border","1px solid black");
+            // body와 html까지 border가 생긴다.
+
+            var newFirstDiv = '<div>새로운 블록</div>'
+            $('body').prepend(newFirstDiv);
+            $('body').prepend('<div>또 새로운 블록</div>');/* 이렇게 직접 타이핑 할수도 있다. */
+
+            $('body').append("마지막");
+
+            $('body').before("내용");
+            // 바디 태그 이전에 추가
+
+            // $('body').append("<button id='btnRemove'>삭제</button>");
+            // append()의 (괄호)안에 들어아는 것은 제이쿼리가 아니여도 상관없다.
+            
+            // ("<button id='btnRemove'>삭제</button>").appendTo('body')
+            // 불가능, 제이쿼리 형태로 만들어줘야 작동한다.
+            // appendTo()의 (괄호)안에는 제이쿼리가 들어가야한다.
+            // appendTo()의 잎에도 제이쿼리 형태가 와야한다.
+
+            // 삭제
+            $().remeve
+
+            $("<button id='btnRemove'>삭제</button>").appendTo($('body'));
+
+            // 클래스 추가
+            $('#btnRemove').addClass('c1'); /* class=c1 추가 됨 */
+            $('li.java').addClass('c1'); /* class=c1 추가 됨 */
+
+            // 클래스만이 아니라 각종 속성 추가 가능
+            $('li.java').attr('value', 20)
+            // =  $('li.java').prop('value', 20)
+            // attr --> attribute 추가
+            // html에서 적용 가능한 (li 속성명='값')  을 추가한다. 따라서 인자를 2개를 넣어줘야한다.
+            // 없는 속성 쓰면 당연히 적용이 안 된다.
+        });
+    </script>
+</head>
+<body>
+    <div id="frontEnd">
+        <h2>Front End</h2>
+        <ul>
+            <li class="myFavourite">html</li>
+            <li class="myFavourite">css</li>
+            <li class="js">javascript
+                <ul>
+                    <li id="JS_CORE"><a href="./JavaScript_Core.html"></a>JavaScript Core</li>
+                    <li id="DOM"><a href="./DOM.js"></a>DOM</li>
+                    <li id="BOM"><a href="./BOM.js"></a>BOM</li>
+                </ul>
+            </li>
+            <li class="js">jQuery</li>
+        </ul>
+    </div>
+
+    <div id="backEnd">
+        <h2>Back End</h2>
+        <ol>
+            <li class="java myFavourite">java</li>
+            <li class="java">jsp/servlet</li>
+            <li class="myFavourite">oracle</li>     
+        </ol>
+    </div>
+</body>
+</html>

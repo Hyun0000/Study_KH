@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery 시작 CDN</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            var $myF = $('#content');
+            $myF.css('color', 'red');
+            // $myF에 $를 붙이든 말든 상관없다.
+            // 여기서의 $는 제이쿼리를 의미하는 $가 아니다.
+            // 무조건 '$()' 모양이어야 제이쿼리를 의미한다.
+            // 위의 변수명은 그냥 이름이다. 다른 기능이 없다.
+
+            // var $myF2 = document.getElementById('content2');
+            // $myF2.css('color', 'red');
+            // 사용불가, $가 붙었다고 속지마라, 얘는 js의 문법을 따라야한다.
+            // $myF2.style.color = 'green';
+            // js dom 형태에 적용가능한 문법
+
+            var myF2 = document.getElementById('content2');
+            myF2.style.color = 'green';
+
+            // 제이쿼리 Node형 변환 (말이 그런거지 실제 형변환은 아니다.)
+            var $myF2 = $(myF2);
+
+            $myF2.css('color');
+            // 읽기 기능 --> 'color';의 값이 무엇인지 읽기
+            console.log($myF2.css('color'));
+            // 즉, 값을 알고싶다면 속성이름만 적으면 된다.
+
+            $myF2.css('color', 'red');
+            // 속성값을 설정(변경) --> 'color'의 값을 red로 변경
+            // cf) 제이쿼리 Node형을 dom 형태로 바꾸는 방법도 있다.
+            console.log($myF2.css('color'));
+        });
+
+        // 이것만 쓰면 적용이 안 된다.
+        // var $myF = $('#content');
+        // $myF.css('color', 'red');
+    </script>
+</head>
+<body>
+    <div id="content">content부분</div>
+    <div id="content2">content부분</div>
+    <button id="btn1">버튼1</button>
+    <button id="btn2">버튼2</button>
+    <button id="btn3">버튼3</button>
+    <button id="btn4">버튼4</button>
+</body>
+</html>

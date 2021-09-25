@@ -5,15 +5,111 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+        window.onload = login;
+
+        function login() {
+            document.getElementById('id').onkeydown = loginCheck;
+            document.getElementById('repw').onkeyup = focusde;
+            document.getElementById('btn').onclick = nullCheck;
+        }
+
+        function loginCheck() {
+            var id = document.getElementById('id').value;
+            if (id === 'user01') {
+                document.getElementById('idCheck').style.color = 'red';
+                document.getElementById('idCheck').innerText = '이미 존재하는 아이디입니다.'
+            } else {
+                document.getElementById('idCheck').style.color = 'green';
+                document.getElementById('idCheck').innerText = '사용 가능한 아이디입니다.'
+            }
+        }
+
+        function focusde() {
+            var pw = document.getElementById('pw');
+            var repw = document.getElementById('repw');
+
+            pwVal = pw.value;
+            pwReVal = repw.value;
+
+            repw.onblur = focus;
+
+            function focus() {
+                if (pwVal === pwReVal) {
+                    document.getElementById('pwCheck').style.color = 'green';
+                    document.getElementById('pwCheck').innerText = '비밀번호가 일치합니다.'
+                } else {
+                    document.getElementById('pwCheck').style.color = 'red';
+                    document.getElementById('pwCheck').innerText = '비밀번호가 일치하지 않습니다.'
+                }
+            }
+        }
+
+        function nullCheck() {
+            var idObj = document.getElementById('id');
+            var pwObj = document.getElementById('pw');
+            var rePwObj = document.getElementById('repw');
+            var nameObj = document.getElementById('name');
+
+            // common function
+            function checkFunc(n) {
+                if (n.value.length == 0) {
+                    return false;
+                }
+            }
+
+            var checkNull = checkFunc(idObj);
+            if (checkNull == false) { console.log("아이디를 입력해라"); return false; }
+
+            var checkNull = checkFunc(pwObj);
+            if (checkNull == false) { console.log("비번을 입력해라"); return false; }
+
+            var checkNull = checkFunc(rePwObj);
+            if (checkNull == false) { console.log("비번확인을 입력해라"); return false; }
+            
+            var checkNull = checkFunc(nameObj);
+            if (checkNull == false) { console.log("이름을 입력해라"); return false; }
+
+            // var idNull = document.getElementById('id').value;
+            // var pwNull = document.getElementById('pw').value;
+            // var rePwNull = document.getElementById('repw').value;
+            // var nameNull = document.getElementById('name').value;
+            // if (idNull.length == 0) { console.log("아이디를 입력해라"); return false; }
+            // if (idNull.length == 0) { console.log("비번을 입력해라"); return false; }
+            // if (idNull.length == 0) { console.log("비번확인을 입력해라"); return false; }
+            // if (idNull.length == 0) { console.log("이름을 입력해라"); return false; }
+
+            if (pwObj.value != rePwObj.value) {
+                document.getElementById('repw').value = "";
+                document.getElementById('repw').focus();
+                console.log("비밀번호가 일치하지 않습니다.");
+                return false;
+            }
+
+            if (idObj.value == 'user01') {
+                document.getElementById('id').value = "";
+                document.getElementById('id').focus();
+                console.log("사용할 수 없는 아이디입니다.");
+                return false;
+            }
+            alert(nameObj.value + "님 가입 축하염 ^^");
+        }
+
+    </script>
 </head>
 <body>
     <fieldset>
-        <legend>회원가입</legend>
-        <label for="id">아이디 : </label><input type="text" name="id" id="id"><br>
-        <label for="pw">비밀번호 : </label><input type="password" name="pw" id="pw"><br>
-        <label for="reid">비밀번호 확인 : </label><input type="password" id="repw"><br>
-        <label for="name">이름 : </label><input type="text" name="name" id="name"><br>
-        <button type="button">회원가입</button>
+        <form action="#" method="GET">
+            <legend>회원가입</legend>
+            <label for="id">아이디 : </label><input type="text" name="id" id="id"><span id="idCheck"></span><br>
+
+            <label for="pw">비밀번호 : </label><input type="password" name="pw" id="pw"><br>
+
+            <label for="repw">비밀번호 확인 : </label><input type="password" id="repw" onblur="focusde()"><span id="pwCheck"></span><br>
+
+            <label for="name">이름 : </label><input type="text" name="name" id="name"><br>
+            <button type="button" id="btn">회원가입</button>
+        </form>
     </fieldset>
 </body>
 </html>

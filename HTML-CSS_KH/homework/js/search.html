@@ -8,10 +8,46 @@
     <style>
         fieldset {
             width: 500px;
+            text-align: center;
         }
 
-        
+        #titleS, #dateS, #writerS {
+            padding: 10px;   
+            width: 510px;
+            height: 50px;
+            background-color: gainsboro;
+            margin-top: 20px;
+            display: none;
+        }
+
+        #titleS #serachBar {
+            width: 400px;
+        }
     </style>
+
+    <script>
+        window.onload = search;
+
+        function search() {
+            document.getElementById('title').addEventListener('click', function () {
+                document.getElementById('titleS').style.display = 'block';
+                document.getElementById('dateS').style.display = 'none';
+                document.getElementById('writerS').style.display = 'none';
+            })
+
+            document.getElementById('date').addEventListener('click', function () {
+                document.getElementById('titleS').style.display = 'none';
+                document.getElementById('dateS').style.display = 'block';
+                document.getElementById('writerS').style.display = 'none';
+            })
+
+            document.getElementById('writer').addEventListener('click', function () {
+                document.getElementById('titleS').style.display = 'none';
+                document.getElementById('dateS').style.display = 'none';
+                document.getElementById('writerS').style.display = 'block';
+            })
+        }
+    </script>
 </head>
 <body>
     <fieldset>
@@ -31,7 +67,7 @@
         <label for="dateBar">검색할 날짜를 선택하세요 : </label><br>
         <input type="date" name="dates1" id="dateBar">
         -
-        <input type="datetime" name="dates2" id="dateBar">
+        <input type="datetime" name="dates2" id="dateBar" value="연도-월-일">
         <input type="submit" value="검색">
     </div>
 

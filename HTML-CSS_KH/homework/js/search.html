@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset {
+            width: 500px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>검색할 항목을 선택하세요.</legend>
+        <input type="radio" name="search" value="name" id="title"><label for="title">제목</label>
+        <input type="radio" name="search" value="date" id="date"><label for="date">날짜</label>
+        <input type="radio" name="search" value="writer" id="writer"><label for="writer">작성자</label>
+    </fieldset>
+
+    <div id="titleS">
+        <label for="serachBar">검색할 제목을 입력하세요 : </label><br>
+        <input type="text" name="content" id="serachBar">
+        <input type="submit" value="검색">
+    </div>
+
+    <div id="dateS">
+        <label for="dateBar">검색할 날짜를 선택하세요 : </label><br>
+        <input type="date" name="dates1" id="dateBar">
+        -
+        <input type="datetime" name="dates2" id="dateBar">
+        <input type="submit" value="검색">
+    </div>
+
+    <div id="writerS">
+        <label for="writerBar">검색할 작성자 아이디를 입력하세요 : </label><br>
+        <input type="text" name="content" id="writerBar">
+        <input type="submit" value="검색">
+    </div>
+
+
+    
+</body>
+</html>

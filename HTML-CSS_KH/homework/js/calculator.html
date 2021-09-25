@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            document.getElementById('btn').onclick = f1;
+        }
+
+        function f1() {
+            var first = document.getElementById('first').value;
+            var second = document.getElementById('second').value;
+            var oper = document.getElementById('operators').value;
+            var math = 0;
+
+            console.log(oper);
+            console.log(first);
+            console.log(second);
+
+            black_white();
+
+            switch (oper) {
+                case '+':
+                math = parseInt(first) + parseInt(second);
+                document.getElementById('over').value = math;
+                    break;
+
+                case '-':
+                math = first - second;
+                document.getElementById('over').value = math;
+                break;
+            
+                case '/':
+                if (parseInt(second) === 0) {
+                    document.getElementById('over').style.color = 'white';
+                    document.getElementById('over').style.background = 'red';
+                    document.getElementById('over').value = '연산불가';
+                } else {
+                    math = first / second;
+                    document.getElementById('over').value = math;
+                }
+                
+                break;
+
+                case '%':
+                if (parseInt(second) === 0) {
+                    document.getElementById('over').style.color = 'white';
+                    document.getElementById('over').style.background = 'red';
+                    document.getElementById('over').value = '연산불가';
+                } else {
+                    math = first % second;
+                    document.getElementById('over').value = math;
+                }
+                break;
+
+                case '*':
+                math = first * second;
+                document.getElementById('over').value = math;
+                break;
+            }
+                console.log(oper);
+                console.log(first);
+                console.log(second);
+            }
+
+            function black_white() {
+                document.getElementById('over').style.color = 'black';
+                document.getElementById('over').style.background = 'white';
+            }
+        
+    </script>
+</head>
+<body>
+    <input type="text" name="firstnum" id="first">
+    <select name="operator" id="operators">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="/">/</option>
+        <option value="*">*</option>
+        <option value="%">%</option>
+    </select>
+    <input type="text" name="secondnum" id="second">
+    <input type="button" value="=" id="btn">
+    <input type="text" name="math" id="over" readonly>
+</body>
+</html>

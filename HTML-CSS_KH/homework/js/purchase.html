@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            document.getElementById('btn').onclick = f1;
+        }
+        function f1() {
+            var list = document.getElementsByTagName('li');
+            var inputs = document.getElementById('content');
+            var text = '';
+            for (let i = 0; i < inputs.length; i++) {
+                text += inputs.elements[i].value + "<br>";
+            }
+
+            document.getElementById('result').innerHTML = text;
+
+        }
+    </script>
+
+    <style>
+        #result{
+            border: 1px solid black;
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    
+    <form id="content">
+        <fieldset>
+            <legend>구매 정보</legend>        
+                <ul>
+                    <li><label for="customer">구매자 : </label><input type="text" id="customer" required></li>
+                    <li><label for="product_name">상품명 : </label><input type="text" id="product_name" required></li>
+                    <li><label for="price">가격 : </label><input type="text" id="price" required></li>
+                    <li><label for="count">구매 수량 : </label><input type="number" id="count" min="10" max="100" step="10"></li>
+                    <li><label for="grade">납품 등급 : </label><input type="range" id="grade" min="1" max="9" step="2"></li>
+                    <li><label for="detail">기타 사항 : </label><textarea name="" id="detail" cols="30" rows="10"></textarea></li>
+                </ul>
+        </fieldset>
+        <button type="submit" id="btn">제출</button>
+    </form>
+    <div id="result">
+        <ul style="list-style-type: none;">
+            <li>구매자 명 : </li>
+            <li>상품명 : </li>
+            <li>가격 : </li>
+            <li>구매 수량 : </li>
+            <li>납품등급 : </li>
+            <li>기타사항 : </li>
+        </ul>
+    </div>
+</body>
+</html>

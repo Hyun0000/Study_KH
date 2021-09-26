@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            // 노드 생성/추가/삭제/이동
+            // 1. 노드 생성
+            // var $신규노드 = $(“신규 생성 DOM”);
+            // js DOM 객체로 만들어진 정보는 jQuery DOM 객체로 변환하여 반환한다.
+
+            // div 노드 생성
+            var $div = $('<div>나는 제이쿼리이다.</div>')
+            $('body').append($div);
+
+            // div 노드 생성을 자바스크립트 DOM으로 구현
+            var div = document.createElement("div");
+            var txt = document.createTextNode("나는 자바스크립트이다.");
+            div.appendChild(txt);
+            document.body.appendChild(div);
+    //====================================================================================================
+            // 2. 노드 추가
+            // 2-1. 첫 번째로 추가
+            // $부모노드.prepend($추가노드) = $추가노드.prependTo($부모노드)
+            // 기능은 동일한대 문법이 다른 것이다.
+            // 생성한 노드를 첫 번째 자식 노드로 추가(무조건 첫 째로 진입한다.)
+            var $newMenu = "<li>신메뉴</li>";
+            var $newMenu2 = "<li>신메뉴2</li>";
+            // 이벤트 등록 - $대상노드.이벤트명(이벤트핸들러함수);
+            $('#btnAdd').click(function() {
+                $('.menu').prepend($newMenu);
+                $('.menu').prepend("<div>또 새로운 블록</div>");
+                // 위와 같이 직접 타이핑 할수도 있다.
+                // (괄호)안에 들어가는 것은 jQuery 형식이 아니여도 상관없다.
+                // why? 순수 타이핑이 들어가는 거니까
+                $($newMenu2).prependTo($('.menu'));
+            })
+            // prependTo : 문자열로 생성한 $newMenu2를 다시 jQuery 객체화 해야 하기
+            // 때문에, $($newMenu)처럼 생성하고, prependTo를 구현
+            //====================================================================================================
+            // 2-2. 생성한 노드를 마지막 자식 노드로 추가
+            // $부모노드.append($추가노드) = $추가노드.appendTo($부모노드)
+            var $newMenu3 = "<li>신메뉴3</li>";
+            var $newMenu4 = "<li>신메뉴4</li>";
+            $('#btnAdd').click(function() {
+                $('.menu').append($newMenu3);
+                $($newMenu4).appendTo($('.menu'));
+                // appendTo()의 (괄호)안에는 jQuery 형식이 들어가야한다.
+                // appendTo()의 앞에도 jQuery 형식이 와야한다.
+                // why? method 정의 자체가 jQuery 형식을 받는것으로 돼있기 때문이다.
+            })
+//====================================================================================================
+            // 3. 생성한 노드를 특정 노드의 '이전 위치'에 추가
+            // 신규 노드를 특정 노드의 이전 '형제 노드로 추가'
+            // $기준노드.before($추가노드) = $추가노드.insertBefore($기준노드)
+            var $newMenu5 = "<li>신메뉴 before</li>";
+            var $newMenu6 = "<li>신메뉴 before2</li>";
+            $('#select').before($newMenu5);
+            $($newMenu6).insertBefore($('#select'));
+//====================================================================================================
+            // 3-1. 생성한 노드를 특정 노드의 '다음 위치'에 추가
+            // 신규 노드를 특정 노드의 다음 '형제 노드'로 추가
+            // $기준노드.after($추가노드) = $추가노드.insertAfter($기준노드)
+            var $newMenu7 = "<li>신메뉴 after</li>";
+            var $newMenu8 = "<li>신메뉴 after2</li>";
+            $('#select').after($newMenu7);
+            $($newMenu8).insertAfter($('#select'));
+//====================================================================================================
+            // 4. 노드 이동
+            // 4-1. 노드를 첫 번째 자식 노드로 이동
+            // $부모노드.prepend($이동노드) = $이동노드.prependTo($부모노드)
+            var $move = $('#select');
+            $('.menu').prepend($move);
+//====================================================================================================
+            // 4-2. 노드를 마지막 자식 노드로 이동
+            // $부모노드.append($이동노드) = $이동노드.appendTo($부모노드)
+            var $move2 = $('#second');
+            $($move2).appendTo($('.menu'));
+//====================================================================================================
+            // 5-1. 생성한 노드를 특정 노드의 이전 위치로 이동
+            // $이동노드.insertBefore($기준노드) = $기준노드.before($이동노드)
+            // 특정 노드의 이전 형제 노드로 이동
+            var $move3 = $('#five');
+            $('#second').before($move3);
+//====================================================================================================
+            // 5-2. 생성한 노드를 특정 노드의 다음 위치로 이동
+            // $이동노드.insertAfter($기준노드) = $기준노드.after($이동노드)
+            // 신규 노드를 특정 노드의 다음 형제 노드로 이동
+            var $move4 = $('#first');
+            $($move4).insertAfter($('#five'));
+//====================================================================================================
+            // 6. 노드 삭제
+            // 6-1. 특정 노드 삭제
+            // $대상.remove()
+            $move4.remove();
+//====================================================================================================
+            // 6-2. 모든 자식 노드 삭제
+            // $대상.children().remove()
+            // $('#content').children().remove(); --> 주석처리 (작동 잘 된다.)
+        })
+
+    </script>
+</head>
+<body>
+    <div id="frontEnd">
+        <h2>Front End</h2>
+        <ul>
+            <li class="myFavourite">html</li>
+            <li class="myFavourite">css</li>
+            <li class="js">JavaScript
+                <ul>
+                    <li id="JS_CORE"><a href="./JavaScript_Core.html">JavaScript Core</a></li>
+                    <li id="DOM"><a href="./DOM.js">DOM</a></li>
+                    <li id="BOM"><a href="./BOM.js">BOM</a></li>
+                </ul>
+            </li>
+            <li class="js">jQuery</li>
+        </ul>
+    </div>
+    <div id="backEnd">
+        <h2>Back End</h2>
+        <ul>
+            <li class="java myFavourite">java</li>
+            <li class="java">jsp/servlet</li>
+            <li class="myFavourite">oracle</li>
+        </ul>
+    </div>
+
+    <div id="content">
+        <ul class="menu">
+            <li id="first">menu1</li>
+            <li id="second">menu2</li>
+            <li id="select">menu3</li>
+            <li>menu4</li>
+            <li id="five">menu5</li>
+            <li>menu6</li>
+        </ul>
+    </div>
+    <button id="btnAdd">추가</button>
+</body>
+</html>

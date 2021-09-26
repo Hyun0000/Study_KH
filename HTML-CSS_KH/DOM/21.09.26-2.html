@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery 시작 CDN</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            var $myF = $('#content');
+            $myF.css('color', 'red');
+            // 변수명 $myF에 $를 붙이든 말든 jQuery의 기능과는 일절 상관이 없다.
+            // $myF에서 $는 jQuery를 의미하는 $가 아니다. 무조건 '$()' 모양이어야 jQuery를 의미한다.
+            // $myF은 그냥 변수명(이름)이다. 다른 기능이 없다.
+
+            // var $myF2 = document.getElementById('content2');
+            // $myF2.css('color', 'blue');  -->  오류
+            // $myF2.style.color = 'blue';  -->  정상(js dom 형태에 적용가능한 문법)
+            // $가 붙었다고 속지마라, $myF2는 js의 문법을 따라야한다.
+            
+            var myF2 = document.getElementById('content2');
+            myF2.style.color = 'green';
+
+            // js dom 형태를 jQuery Node형으로 변환 (말이 그런거지 실제 형변환은 아니다.)
+            // cf) jQuery Node형을 js dom 형태로 바꾸는 방법도 있다.
+            var $myF2 = $(myF2);
+
+            console.log($myF2.css('color'));
+            // 읽기 기능 --> $myF2의 'color' 값이 무엇인지 읽기
+            // 즉, 값을 알고싶다면 속성 이름만 적으면 된다.
+
+            $myF2.css('color', 'blue');
+            // 속성값을 설정(변경) --> 'color'의 값을 blue로 변경
+            console.log($myF2.css('color'));
+        });
+    </script>
+    </head>
+    <body>
+    <div id="content">content부분1</div>
+    <div id="content2">content부분2</div>
+    </body>
+</html>

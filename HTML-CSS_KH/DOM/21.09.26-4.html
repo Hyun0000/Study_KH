@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() { /* window.onload */
+            // (1). 일반 노드 찾기(그냥 태그 찾는거다.)
+            // 1. ID 이름으로 노드 찾기
+            $("#frontEnd").css("border","1px solid #ff00ff");
+            $("#backEnd").css("border","1px solid #00ffff");
+            // css()라는 method 형태이다 보니 기존 css style을 지정하는 모습과는 조금 다르다.
+            // "border"가 "따옴표"가 없으면 border라는 변수명으로 인식해 버린다.
+            // 따라서 아예 변수 지정을 하거나 그게 아니라면 '따옴표'를 작성해야한다.
+            // 속성값도 마찬가지이다.
+
+            // 2. class 이름으로 노드 찾기
+            $('.java').css('background', 'wheat');
+
+            // 3. 태그 이름으로 노드 찾기
+            $('h2').css("text-decoration", 'underline');
+
+            // 4. 속성 이름으로 노드 찾기  -->  $("속성옵션")
+            // 속성 옵션을 매개변수로 이용(옵션값이 아니라 '옵션'이다.)
+            $('a[href]').css('background', 'pink');
+            $('a[href$=js').css('background', 'green');
+//============================================================================================================
+            // (2). 찾은 노드 다루기
+            // $( ) 함수를 통해 노드를 찾으면 '찾은 노드에 해당하는 객체를 반환'한다.
+            // 찾은 노드를 변수에 담아 활용하거나 반환된 객체를 이용해 노드를 다룰 수 있다
+
+            // myFavourite 클래스 노드를 $myF 변수에 담기
+            var $myF = $('.myFavourite');
+
+            // 찾은 노드 개수 구하기 – length 프로퍼티(jQuery의 몇 안 되는 프로퍼티 중 하나)
+            console.log("$myF.lengt = " + $myF.length);
+            
+            // n번째 노드 접근하기 – eq() method
+            // eq() method를 이용하여 n 번째 노드에 접근 --> 첫 번째 노드의 index = 0
+
+            // ul의 내부 노드(li 태그) 중 0번째, 2번째 노드의 border CSS 스타일 지정
+            $('.myFavourite').eq(0).css('border', '10px solid red'); /* 0번째 */
+            var $myF2 = $myF.eq(2); /* 2번째 */
+            $myF2.css('border', '1px solid gray');
+
+            // DOM 객체 접근하기 – get() 메소드
+            // get() 메소드를 이용하면 jQuery 객체 내부의 n번째 노드의 'DOM 객체를 얻을 수' 있다.
+            var $list = $('ul li');
+            // 이때 얻어진 DOM 객체는 jQuery 객체가 아니다.
+            var list_1 = $list.get(1);
+            list_1.style.border = '1px solid green';
+
+            // jQuery 객체를 '배열처럼 접근'하여 DOM 객체를 알아올 수도 있다(get() 메소드와 동일)
+            var $list = $('ul li');
+            var list_1 = $list[1];
+            list_1.style.border = '10px solid green';
+        })
+    </script>
+</head>
+
+<body>
+    <div id="frontEnd">
+        <h2>Front End</h2>
+        <ul>
+            <li class="myFavourite">html</li>
+            <li class="myFavourite">css</li>
+            <li class="js">JavaScript
+                <ul>
+                    <li id="JS_CORE"><a href="./JavaScript_Core.html">JavaScript
+                            Core</a></li>
+                    <li id="DOM"><a href="./DOM.js">DOM</a></li>
+                    <li id="BOM"><a href="./BOM.js">BOM</a></li>
+                </ul>
+            </li>
+            <li class="js">jQuery</li>
+        </ul>
+    </div>
+    <div id="backEnd">
+        <h2>Back End</h2>
+        <ul>
+            <li class="java myFavourite">java</li>
+            <li class="java">jsp/servlet</li>
+            <li class="myFavourite">oracle</li>
+        </ul>
+    </div>
+</body>
+
+</html>

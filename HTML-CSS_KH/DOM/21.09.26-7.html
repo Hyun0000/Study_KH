@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        div{ width:300px; height:200px; border:1px solid black; }
+        .border{ border: 5px dashed blue; }
+    </style>
+
+    <script>
+        $(function () {
+            // 노드 내용 읽기/변경
+            // 1. 노드 내용을 문자열로 읽기 & 수정
+            // 읽기 : $대상.html()  /  $대상.text()
+            // 둘다 '문자열로 반환'하지만 html()은 마크업 정보까지 return, text()는 태그안의 문자만 return
+
+            // 수정 : $대상.html(수정할 태그 포함 문자열) / $대상.text(수정할 텍스트)
+
+            // 읽기 1. html()
+            // 노드의 내용을 '마크업 태그까지 확인'할 수 있다.
+            // 반환된 결과는 단순 문자열이며 자바스크립트 DOM 객체가 아니다.
+            // 읽기 2. text()
+            // 노드의 내용을 '마크업 태그를 제외한 내용만을 문자열로 반환'
+            console.log($('#read').html());
+            console.log($('#read').text());
+
+            // 쓰기 1. $대상.html(수정할 태그 포함 문자열)
+            // html() : 노드의 내용으로 '마크업을 포함하는 문자열'로 수정
+            // '마크업 문자는 태그문자로 인식'되어 노드의 내용이 변경
+            // 쓰기 2. $대상.text(수정할 텍스트)
+            // 마크업 태그를 단순 문자열로 인식하여 변경
+            var markUpTag = "<h2>마크업태그를 추가해보자.</h2>";
+            $('#container').html(markUpTag);
+            $('#write').text(markUpTag);
+//====================================================================================================
+            // 스타일 다루기
+            // jQuery를 이용하연 웹문서의 스타일을 동적으로 다룰 수 있다.
+            // 문서를 재실행하여 갱신해 줄 필요가 없다.
+
+            // 1. 스타일 값 구하기
+            // 스타일의 속성 이름을 이용해 해당 스타일 속성값을 알아낸다.
+            // 여러 스타일 속성을 한꺼번에 구하려면 [속성이름1, 속성이름2, …] 과 같이 배열 형식을 이용
+            console.log($('#test').css('border'));
+            console.log($('#test').css('width'));
+            console.log($('#test').css('height'));
+            var style = $('#test').css(['border', 'width', 'height'])
+            console.log(style.border);
+            console.log(style.width);
+            console.log(style.height);
+//====================================================================================================
+            // 2. 스타일 설정하기
+            // $대상.css("속성 이름", "속성 값");
+            // 첫 번째 매개변수로 속성 이름, 두 번째 매개변수로 속성 값 지정
+//====================================================================================================
+            // 3. 클래스 추가
+            // $대상.addClass("클래스이름1 클래스이름2...")
+            // addClass() method를 이용하여 하나 이상의 클래스를 추가할 수 있다
+            $("<button id='addClass'>클래스추가</button>").appendTo($("body"));
+            $("<button id='removeClass'>클래스삭제</button>").appendTo($("body"));
+            $('#addClass').addClass("classplus classplus2 classplus3");
+//====================================================================================================
+            // 4. 클래스 삭제
+            // $대상.removeClass() --> 모든 클래스 삭제
+            // $대상.removeClass("클래스이름1 클래스이름2 …")
+            $('#addClass').removeClass("classplus classplus2 classplus3");
+//====================================================================================================
+            // 5. 속성
+            // 태그의 속성(Attribute)에는 일반 속성과 사용자 정의 속성이 있다.
+            // attr(), prop() 두 메소드 모두 태그의 속성에 접근할 수 있다.
+            // attr() : html 태그에 기술되어 있는 속성을 반환
+            // prop() : 동적처리시 처리되는 값을 리턴한다.
+            // var 변수 = $(“대상”).attr(“속성이름”) 또는 $(“대상”).attr(“속성이름”, “변경할값”)
+            // var 변수 = $(“대상”).prop(“속성이름”) 또는 = $(“대상”).prop(“속성이름”, “변경할값”)
+            // 없는 속성을 쓰면 당연히 적용이 안 된다.
+        })
+    </script>
+</head>
+<body>
+    <div id="read">
+        <div id="container">hello, kh~</div>
+        <button id='btnHTML'>html()</button>
+        <button id='btnTEXT'>text()</button>
+    </div>
+
+    <div id="write"></div>
+    <div id="test"></div>
+
+    <a href="#" id="a">링크#hello</a> <br>
+    <input type="checkbox" id="checked" checked="checked"> <br>
+    <input type="checkbox" id="unchecked"> <br>
+    <img id="sample_img" src="https://via.placeholder.com/150" width="200px" data-userattr1="사용자지정속성값" data-userattr2="123456789"> <br>
+</body>
+</html>

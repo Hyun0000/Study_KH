@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function () {
+            // 순차적으로 접근하기 – each() 메소드
+
+            var $list = $("ul li");
+            // <ul>의 후손으로 있는 <li> 전부 선택
+
+            // 1. function(){} : 인자 없음  -->  <li> 하나씩 꺼내서 실행
+            // 얘는 forEach() method와 다르게 매개인자로 들어가는 함수에 parameter가 없어도 된다.
+            // parameter를 정하지 않았다. = each()에 들어오는 것을 js dom의 this 형태로 취급한다.
+            $list.each(function () {
+                console.log($(this).text());
+                // 꺼내진 <li> 한개가 바로 this --> 처음 실행시 this : <li class="myFavourite">html</li>
+                // 여기서 this는 js dom 형태이다. 따라서 $(this) --> this를 jQuery로 형변환 시킨것
+
+                console.log(this.innerText);
+                // 이렇게 뿌릴수도 있다. (js dom 모양 그대로 사용)
+                // 이때 this는 js dom 형태이다.
+            });
+            
+
+            // 2. function(index){} : 각 노드의 index값을 매개변수로 사용
+            $list.each(f1);
+
+            function f1 (index) {
+                console.log(index);
+            }
+            // parameter 명은 아무거나 해도 상관없다.
+            // parameter가 1개 = each()에 들어오는 것을 각 노드의 index로 취급한다.
+
+
+            // 3. function(index, element){} : 각 노드의 index값과 DOM 객체를 매개변수로 사용
+            $list.each(f2);
+
+            function f2 (index, element) {
+                console.log(element.innerText);
+                console.log($(element).text()); /* jQuery로 형변환 */
+            }
+            // parameter 명은 아무거나 해도 상관없다.
+            // parameter가 2개
+            // 1. index 자리에 들어오는 것은 index 개념으로 취급할 것이다.
+            // 2. element 자리에 들어오는 것은 js dom의 this 개념으로 취급할 것이다.
+            // 이때 this는 하나씩 꺼내어진 element이며 js dom 형태이다.
+            // element는 dom 형태이기에 js의 문법을 따라야한다.
+        });
+    </script>
+</head>
+<body>
+    <div id="frontEnd">
+        <h2>Front End</h2>
+        <ul>
+            <li class="myFavourite">html</li>
+            <li class="myFavourite">css</li>
+            <li class="js">javascript
+                <ul>
+                    <li id="JS_CORE"><a href="./JavaScript_Core.html"></a>JavaScript Core</li>
+                    <li id="DOM"><a href="./DOM.js"></a>DOM</li>
+                    <li id="BOM"><a href="./BOM.js"></a>BOM</li>
+                </ul>
+            </li>
+            <li class="js">jQuery</li>
+        </ul>
+    </div>
+
+    <div id="backEnd">
+        <h2>Back End</h2>
+        <ol>
+            <li class="java myFavourite">java</li>
+            <li class="java">jsp/servlet</li>
+            <li class="myFavourite">oracle</li>     
+        </ol>
+    </div>
+</body>
+</html>

@@ -47,8 +47,10 @@
             // innerHTML ==> 기존 내용을 싹다 지워버린 후 새로운 것을 집어넣는다.(onload 했던게 다 사라지는 것이다.)
 
             // 따라서 아래와 같은 방법을 이용한다.
-            // document.getElementById('forInner').innerHTML = n3;
+            // document.getElementById('forInner').innerHTML = n3;  -->  n3의 태그가 HTML 문법대로 해석된다.
+            
             document.getElementById('forInner').innerText = n3;
+            // n3의 태그가 텍스트 그대로 해석된다.
             // p태그 안에 n3의 내용이 들어가게 한다.
             // 그러면 <body>의 내용이 전부 사라지는게 아니라 <p>의 내용만 새로 갈아 엎어진다.
 
@@ -56,11 +58,11 @@
             // document.getElementById('id1').innerText = 'abc';
             // document.getElementById('id1').innerHTML = 'abc';
             document.getElementById('id1').value = 'abc';
-            // innerText는 열리는 태그 ~ 닫히는 태그 사이에 넣어준다는 의미
-            // 그러나 <input>은 열리는 태그 ~ 닫히는 태그의 개념이 없기에 innerText가 적용되지 않는다.
-            // 즉, <input>은 inner라는 개념자체가 없다.(당연히 innerHTML도 적용 불가)
-            // value로 넣은 글자는 글자색을 일일이 다르게 하거나 글자 크기를 일일이 다르게 지정할 수 없다.(textarea도 마찬가지)
-            // 열리는거 닫히는거의 개념이 없으면 inner 적용이 불가능하다.
+            // innerHTML과 innerText는 (열리는 태그 ~ 닫히는 태그) 사이에 원하는 내용을 넣어준다는 의미이다.
+            // 그러나 <input> 태그는 (열리는 태그 ~ 닫히는 태그)의 개념이 없기에 innerHTML과 innerText가 적용되지 않는것이다.
+            // 즉, <input>은 'inner'라는 개념자체가 없는 것이다. 따라서 value 속성을 통해서만 원하는 내용을 넣을 수 있다.
+            // ((열리는 태그 ~ 닫히는 태그) 개념이 없으면 inner 적용이 불가능하다.)
+            // cf) value 속성으로 넣은 글자는 색이나 크기를 각 글자마다 일일이 다르게 지정할 수 없다.(<textarea>도 마찬가지)
 
             // 노드 추출
             var title_1 = document.getElementById('title_1');
@@ -70,7 +72,6 @@
             title_1.innerHTML = "TITLE에서 TITLETITLE로 변경"
             title_2.innerHTML = "JS에서 JSJS로 변경"
             
-
             // tagName과 일치하는 문서 객체를 '배열로 추출'
             var h1Elements = document.getElementsByTagName("h1");
             console.log(h1Elements);

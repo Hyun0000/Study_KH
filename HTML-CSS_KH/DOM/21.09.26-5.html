@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(function () {
+            // 1. find() - 후손 노드 중 특정 노드 찾기
+            // $대상노드.find("선택자"); --> 대상 노드의 자손들 중에서 ('선택자')를 찾는다.
+            // 찾은 노드의 자손 노드 중에서 특정 노드를 찾고 싶을 때 사용
+            $('#backEnd').find('.java').eq(0).css('background', 'yellow');
+            // ('#backEnd')의 자손들 중에서 ('.java')를 찾고 그 중에 eq(0)째 인것
+            // cf) eq()는 jQuery 형태로 return
+
+            // cf)
+            // $("#backEnd").find(".java").eq(0).css("background", "yellow");
+            // $("#backEnd").find(".java").get(0).style.background = 'yellow';
+            // 두 개가 같은 의미이다.
+//====================================================================================================
+            // 2. children() - 모든 자식 노드 찾기
+            // $대상노드.children()
+            // 특정 노드 '바로 아래에 위치하고 있는 노드를 자식 노드'한다.
+            // 하위 노드의 하위 노드는 자식노드라고 하지 않는다.
+            // 특정 노드의 바로 하위에 위치한 '모든 자식 노드'를 찾고 싶을 때 사용
+            $('body').children().css('background', 'orange');
+//====================================================================================================
+            // 2-1. children() - 특정 자식 노드 찾기
+            // $대상노드.children("선택자")
+            // 선택자를 이용하여 '특정 자식 노드만을 찾고 싶을 때' 사용
+            $('#frontEnd').find('ul').children('.myFavourite').css('font-weight', 'bold');
+            // (id = frontEnd)인 노드의 후손중 <ul> 노드를 찾고 <ul>의 자식노드 중
+            // className = myFavourite인 노드들의 폰트를 bold처리
+//====================================================================================================
+            // 3. parent() - 바로 위의 부모 노드 한개 찾기
+            // $대상노드.parent()
+            // 특정 노드를 감싸고 있는 '바로 위의 상위 노드를 부모 노드'라고 한다.
+            // 특정 노드의 '모든 상위 노드를 조상 노드'라고 한다.
+            $('#DOM').parent().css('border', '1px solid blue');
+            // 부모는 딱 하나이다.(여러개일 수 없다.) 따라서 find()처럼 여러개를 찾을 수 없다.
+//====================================================================================================
+            // 3-1. parents() - 조상 노드 찾기
+            // $대상노드.parents()
+            // 특정 노드의 모든 상위 노드, 즉 조상 노드들을 찾을 때 사용
+            $('#DOM').parents().css('border', '2px solid black');
+            // (id = DOM)인 노드의 '모든 부모 노드'이기 때문에 ul, li, ul, div, body, html 노드 모두 border처리
+//====================================================================================================
+            // 형제 노드 찾기(동위관계)
+            // '같은 깊이에 존재하는 노드'를 형제 노드라고 한다. 즉 '같은 부모 노드를 공유'한다.
+            // 4. prev() - 이전 형제 노드 찾기(같은 깊이 중 나 바로 이전)
+            // $대상노드.prev()
+            // 특정 노드의 '바로 이전 형제 노드를 찾을 때' 사용
+            // 두 노드 앞의 형제 노드를 찾고 싶다면 prev()를 두 번 사용한다
+            $('#BOM').prev().prev().css("border", "2px solid #f00");
+//====================================================================================================
+            // 4-1. prevAll() - 모든 이전 형제 노드 찾기
+            // $대상노드.prevAll()
+            // 특정 노드의 모든 이전 형제 노드를 찾을 때 사용
+            $('.myFavourite').prevAll().css("border", "2px solid purple");
+//====================================================================================================
+            // 4-2. next() - 다음 형제 노드 찾기
+            // $대상노드.next()
+            // 특정 노드의 다음 형제 노드를 찾을 때 사용
+            $('#JS_CORE').next().css("border", "2px solid pink");
+//====================================================================================================
+            // 4-2. nextAll() - 모든 다음 형제 노드 찾기
+            // $대상노드.nextAll()
+            $('#frontEnd').nextAll().css("border", "5px solid brown");
+        })
+    </script>
+</head>
+<body>
+    <div id="frontEnd">
+        <h2>Front End</h2>
+        <ul>
+            <li class="myFavourite">html</li>
+            <li class="myFavourite">css</li>
+            <li class="js">JavaScript
+                <ul>
+                    <li id="JS_CORE"><a href="./JavaScript_Core.html">JavaScript Core</a></li>
+                    <li id="DOM"><a href="./DOM.js">DOM</a></li>
+                    <li id="BOM"><a href="./BOM.js">BOM</a></li>
+                </ul>
+            </li>
+            <li class="js">jQuery</li>
+        </ul>
+    </div>
+    <div id="backEnd">
+        <h2>Back End</h2>
+        <ul>
+            <li class="java myFavourite">java</li>
+            <li class="java">jsp/servlet</li>
+            <li class="myFavourite">oracle</li>
+        </ul>
+    </div>
+</body>
+</html>

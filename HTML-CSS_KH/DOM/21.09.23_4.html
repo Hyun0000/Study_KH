@@ -89,17 +89,15 @@
                 var cnv = checkNullValue(inputElements[i]);
                 if (cnv == false) { return false; }
             }
-            
+
             // var inputElements = document.getElementsByTagName("input");
             // inputElements.forEach(checkNullValue);
 
             // element 형태인 경우 forEach() method가 작동하지 않는다.
-            // 배열은 배열인데 element 형태(태그 모양)의 배열인 경우 작동을하지 않는다.
-            // 아무리 간단한 태그일지라도 작동이 되지 않는다.
-            // 따라서 기본 for문을 사용해야한다.
+            // 배열은 배열인데 element 형태(태그)로 구성된 배열일 경우 작동을 하지 않는다는 것이다.
+            // 아무리 간단한 태그일지라도 forEach() method가 작동이 되지 않으므로 기본 for문을 사용해야한다.
 
             // 단, jquery에서는 element 형태(태그 모양)도 사용 가능하다.
-
 
             // 2. 비밀번호를 6자 이상 ~ 12자 이하로 작성해야하는 조건에 맞지않다.
             if (pw1Value.length < 6 || pw1Value.length > 12) {
@@ -129,7 +127,7 @@
                 var frm1 = document.getElementById('frmId1');
 
                 // document.getElementById('frmId1') --> <form> 태그를 가져왔으므로 아래와 같이 설정할 수 있다.
-                // <form action="#" method="GET">와 같이 작성안해도 된다.
+                // HTML 부분에서 <form action="#" method="GET">와 같이 작성안해도 된다.
                 if (document.getElementById('id').value == 'admin') {
                     frmId1.action = "#관리자 페이지";
                 } else {
@@ -170,17 +168,17 @@
             <input type="text" name="name" id="name" required class="input">
             <!-- name="name"이어도 상관없다. -->
             <br><br>
-
+            
             <button type="button" id="btn1">버튼타입 제출</button>
             <!-- {onclick="return btnSubmit();"} 오직 인라인 방식을 통해서만 submit 기능을 컨트롤 할 수 있다. -->
             <!-- {"return btnSubmit();"}가 false면 submit을 못한다.  -->
             <!-- <button type="submit" id="submit" onclick="return btnSubmit();">버튼타입 제출</button> -->
 
-            <!-- 위와 같이 작성하면 {onclick="return btnSubmit();}이 먼저 호출되기에 <input>태그에 있는 required를 체크할 수가 없다. -->
+            <!-- 위와 같이 작성하면 {onclick="return btnSubmit();}이 먼저 호출되기에 <input>태그에 있는 required를 '먼저' 체크할 수가 없다. -->
             <!-- required를 먼저 체크하고 싶다면 <input>이 아니라 <script> 영역에서 required를 체크해야한다. -->
 
             <!-- 따라서 submit 기능이 없는 일반 button을 먼저 만들어야한다. -->
-            <!-- submit을 통제하고 싶으니까 일반 button으로 만드는 것이다. -->
+            <!-- submit 기능을 통제하고 싶으니까 일반 button으로 만드는 것이다. -->
        </fieldset>
     </form>
 </body>

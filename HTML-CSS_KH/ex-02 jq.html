@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/myReset.css">
+    <title>JS 입력 삭제 출력</title>
+</head>
+<body>
+    <!-- <form action="#" method="get" id="frmRecp"> -->
+        <!-- form때문에 훅 넘어가기에 주석처리 -->
+        <table>
+            <tr>
+                <th>구매자:</th>
+                <td><input type="text" name="name" id="name" class="iv" placeholder="구매자 이름 입력"></td>
+            </tr>
+            <tr>
+                <th>재료:</th>
+                <td><input type="text" name="ingredient" id="ingredient" class="iv" placeholder="재료 입력"></td>
+            </tr>
+            <tr>
+                <th>단가:</th>
+                <td><input type="text" name="price" id="price" class="iv" placeholder="단가 입력"></td>
+            </tr>
+            <tr>
+                <th>수량:</th>
+                <td><input type="text" name="amount" id="amount" class="iv" placeholder="수량 입력"></td>
+            </tr>
+        </table>
+        <button id="btnInsert" onclick="printValue();">입력</button>
+        <!-- 괄호 & 세미콜론 반드시 -->
+    <!-- </form> -->
+    <div id="print"></div>
+    <script>
+        let eleCnt = 0;
+        // 전역변수이면서 계속 지속되는 변수, refresh되면 다시 재정의
+
+        function printValue() {
+            eleCnt++;
+            
+            var name = $('#name').val();
+            var ingredient = $('#ingredient').val();
+            var price = $('#price').val();
+            var amount = $('#amount').val();
+
+            var $newElp = "<p id='ele"+eleCnt+"'></p>";
+            $('body').append($newElp);
+
+            var varInnerHTML = "";
+            varInnerHTML = "";
+            varInnerHTML = varInnerHTML + "구매자" + name + "님<br>";
+            varInnerHTML += "구매 재료 : " + ingredient + "<br>";
+            varInnerHTML += "단가 : " + price + "원<br>";
+            varInnerHTML += "수량 : " + amount + "개<br>";
+            varInnerHTML += "총가격 : " + (amount*price) + "원<br>";
+            // 방법1
+            divEle.innerHTML += '<button id="ele_'+eleCnt+'">삭제</button>';
+
+            // 방법2
+            // var btnEle = document.createElement("button");
+            // btnEle.setAttribute("id", "ele_"+eleCnt);
+            // btnEle.innerText = "삭제";
+            // divEle.appendChild(btnEle);
+            // 방법2 끝
+
+            document.body.appendChild(divEle);
+
+            // 삭제 버튼이 눌러지면 해당 p태그가 지워지게해보자
+            // 이를 위해 각각의 p 태그와 button 태그에 id 또는 class를 준다.
+            // button.click(함수 : p 태그 삭제) --> 간단히 하기위해 중복이 되는 classname을 이용
+            // 중요한건 classname이 시퀀스처럼 하나씩 증가해야한다.
+            // 불필요(this.parentElement 사용) --> divEle.setAttribute("class", "pele_"+(eleCnt));
+            // ++eleCount --> jsp에서 많이 이용
+
+            document.getElementsId("ele_"+eleCnt).onclick = function () {
+
+                // this.parentElement.remove();
+                $(this).parent().remove();
+
+            }
+
+            
+
+
+
+
+
+            // var printArea = document.getElementById('print');
+            // printArea.innerHTML = "";
+            // // <br> 쓸려고 innerHTML 이용
+            // printArea.innerHTML = printArea.innerHTML + "구매자" + name + "님<br>";
+            // printArea.innerHTML += "구매 재료 : " + ingredient + "<br>";
+            // printArea.innerHTML += "단가 : " + price + "원<br>";
+            // printArea.innerHTML += "수량 : " + amount + "개<br>";
+            // printArea.innerHTML += "총가격 : " + (amount*price) + "원<br>";
+        }
+    </script>
+</body>
+</html>

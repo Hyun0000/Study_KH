@@ -1,0 +1,7 @@
+/* 기본으로 잡고가기 */
+* { margin: 0; padding: 0; }
+body { font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; }
+li { list-style-type: none; }
+a { text-decoration: none; }
+img { border: 0; }
+table { border: 1px solid black; border-collapse: collapse; }

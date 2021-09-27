@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./jsimport/myCafeJs(0927).js"></script>
+    <title>Document</title>
+    <style>
+        /* 기본 style 지정 */
+        input[type=text]{
+            /* [type=text]에 쉼표가 있던 말던 스타일 적용 OK */
+            border: none;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="GET" id="frmCal">
+    <!-- 특정 페이지로 이동할 것은 아니지만 <input> 입력 값을 받는 것이기에 <form> 태그도 작성한다. -->
+        <table border="1">
+            <tr>
+                <th>메뉴</th>
+                <th>가격</th>
+                <th>수량</th>
+                <th>합계</th>
+            </tr>
+            <tr>
+                <td>아메리카노</td>
+                <td>2500</td>
+                <td><input type="text" name="c1" id="c1" class="c"></td>
+                <td><input type="text" name="c1Price" id="c1Price" class="p" readonly></td>
+            </tr>
+            <tr>
+                <td>라떼</td>
+                <td>3000</td>
+                <td><input type="text" name="c2" id="c2" class="c"></td>
+                <td><input type="text" name="c2Price" id="c2Price" class="p" readonly></td>
+            </tr>
+            <tr>
+                <td>생강라떼</td>
+                <td>4500</td>
+                <td><input type="text" name="c3" id="c3" class="c"></td>
+                <td><input type="text" name="c3Price" id="c3Price" class="p" readonly></td>
+            </tr>
+            <tr>
+                <th>합계</th>
+                <th></th>
+                <th><input type="text" name="cTotalCnt" id="cTotalCnt" class="c" readonly></th>
+                <th><input type="text" name="cTotalPrice" id="cTotalPrice" class="p" readonly></th>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <input type="button" value="계산하기">
+                    <input type="reset">
+                    <!-- type="reset"은 value를 주지않으면 버튼 이름 기본 값이 '초기화' / type="button"은 value를 꼭 넣어야 버튼 이름이 생긴다. -->
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

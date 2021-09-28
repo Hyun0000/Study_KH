@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Timer & Toggle</title> 
+</head>
+<body>
+    <h1>Stop Watch</h1>
+    <button type="button" id="btnStart">시작하기</button>
+    <button type="button" id="btnPause">일시정지</button>
+    <button type="button" id="btnRecord">기록</button>
+    <button type="button" id="btnStop">정지</button>
+    <hr>
+    <div id="a1"></div>
+    <hr>
+    <h1>기록</h1>
+    <div id="a2">
+        <button id="btnShowHide">접기</button>
+    </div>
+    <div id="a3"></div>
+    <script>
+        $('#btnShowHide').hide();
+        // 페이지 load시 버튼 자체가 안 보이게한다.
+        // 기록 버튼을 누르면 해당 버튼이 나오게 기능 구현
+
+        let Interval1 = 0;
+        let sec = 0;
+
+        function startWatch() {
+            Interval1 = window.setInterval(function(){
+                sec++;
+                var contentEle = "<p>" + sec + "초" + "</p>";
+                $("#a1").html(contentEle);
+            }, 200);
+        }
+
+        function pauseWatch() {
+            clearInterval(Interval1);
+            clearInterval(apple);
+        }
+        
+        function stopWatch() {
+            sec = 0;
+            var contentEle = "<p>" + sec + "초" + "</p>";
+            $("#a1").html(contentEle);
+            clearInterval(Interval1);
+            clearInterval(apple);
+        }
+
+        function stopRecord() {
+            var contentEle = "<p>" + sec + "초" + "</p>";
+            $("#a2").append(contentEle);
+            $('#btnShowHide').show();
+        }
+
+        $('#btnStart').click(startWatch);
+        $('#btnPause').click(pauseWatch);
+        $('#btnStop').click(stopWatch);
+        $('#btnRecord').click(stopRecord);
+        $('#btnShowHide').click(function(){
+            // $(this).nextAll().toggle(200);
+            // toggle()을 쓰면 편하긴하지만 버튼의 이름을 수정할 수가 없다.
+
+            var btnInnerText = $('#btnShowHide').text().trim();
+            // text() --> <button></button> 사이에 있는 텍스트 읽기 (html()로해도 동작한다.)
+            // trim() --> 문자열 양옆의 공백만 제거 가능, 중간의 공백은 제가 불가
+
+            if(btnInnerText == '접기'){
+                $(this).parent().children("p").hide(300);
+                $('#btnShowHide').text('펼치기');
+            } else {
+                $(this).parent().find("p").show(300);
+                $('#btnShowHide').text('접기');
+            }
+        });
+    </script>
+</body>
+</html>

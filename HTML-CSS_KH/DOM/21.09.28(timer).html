@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Timer & Toggle</title> 
+</head>
+<body>
+    <h1>Stop Watch</h1>
+    <button type="button" id="btnStart">시작하기</button>
+    <button type="button" id="btnPause">일시정지</button>
+    <button type="button" id="btnRecord">기록</button>
+    <button type="button" id="btnStop">정지</button>
+    <hr>
+    <div id="a1"></div>
+    <hr>
+    <h1>기록</h1>
+    <div id="a2">
+        <button id="btnShow">펼치기</button>
+        <button id="btnHide">접기</button>
+    </div>
+    <div id="a3"></div>
+    <script>
+        // onload 필요없다. --> $(function () {}) by 위치
+        // window.setInterval(); --> 앞에 window. 생략
+
+        let Interval1 = 0;
+        let sec = 0;
+
+        function startWatch() {
+            Interval1 = window.setInterval(function(){
+                sec++;
+                var contentEle = "<p>" + sec + "초" + "</p>";
+                $("#a1").html(contentEle);
+            }, 200);
+            // setInterval() 함수는 return 값이 있는 function이다.
+        }
+
+        // clearInterval()은 setInterval()에서 반환된 값을 매개인자로 넣어줘야한다.
+        // 변수 'Interval1'을 startWatch()의 지역변수로 설정하면 다른 function에서
+        // 사용이 불가능하기에 전역변수로 설정했다.(sec도 마찬가지)
+        function pauseWatch() {
+            clearInterval(Interval1);
+            clearInterval(apple);
+        }
+        
+        function stopWatch() {
+            sec = 0;
+            var contentEle = "<p>" + sec + "초" + "</p>";
+            $("#a1").html(contentEle);
+            clearInterval(Interval1);
+            clearInterval(apple);
+        }
+
+        function stopRecord() {
+            var contentEle = "<p>" + sec + "초" + "</p>";
+            $("#a2").append(contentEle);
+            // $(contentEle) 이렇게 안해도 정상작동한다.
+
+            // $("#a2").html(contentEle);
+            // html()을 쓰면 딱 하나의 값만 계속해서 업데이트되며 출력된다.
+        }
+
+        $('#btnStart').click(startWatch);
+        $('#btnPause').click(pauseWatch);
+        $('#btnStop').click(stopWatch);
+        $('#btnRecord').click(stopRecord);
+        $('#btnShow').click(function(){
+            $(this).next().nextAll().show(500);
+            // this --> 클릭이벤트를 발생시킨 버튼을 의미 = ('#btnShow')
+            // 그냥 this는 js dom의 this이다.
+            // 따라서 $(this)를 통해 jQuery 형태로 형변환(?)을 해줘야 next().nextAll().show() 등을 쓸수있다.
+            // cf) js dom일때는 display 속성을 이용한다.
+            // 이때는 for 문을 이용해야 display 속성을 한 번에 지정할 수 있다.
+            
+            // $(this).parent().find('p').show();
+            // 이게 더 안정적
+        });
+        $('#btnHide').click(function(){
+            $(this).nextAll().hide(500);
+
+            // $(this).parent().find('p').hide();
+            // 이게 더 안정적
+        });
+
+        var apple = setInterval(function(){
+            $("#a3").html(func())
+        },10);
+
+        var func = function () {
+            var d = new Date();
+            var year = d.getFullYear();
+            var month = d.getMonth() + 1;
+            var date = d.getDate();
+            var day = d.getDay();
+            var hour = d.getHours();
+            var min = d.getMinutes();
+            var sec = d.getSeconds();
+            var milisec = d.getMilliseconds();
+            month = (month > 9 ? "" : "0") + month;
+            date = (date > 9 ? "" : "0") + date;
+            hour = (hour > 9 ? "" : "0") + hour;
+            min = (min > 9 ? "" : "0") + min;
+            sec = (sec > 9 ? "" : "0") + sec;
+            var datestr;
+            switch (day) {
+                case 0: datestr = "일"; break;
+                case 1: datestr = "월"; break;
+                case 2: datestr = "화"; break;
+                case 3: datestr = "수"; break;
+                case 4: datestr = "목"; break;
+                case 5: datestr = "금"; break;
+                case 6: datestr = "토"; break;
+            }
+            return year + "-" + month + "-" + date + " (" + datestr + ") " + hour + ":" + min + ":" + sec + ":" + milisec;
+        }
+    </script>
+</body>
+</html>

@@ -161,16 +161,16 @@
                 alert('두번째 입력란은 숫자 7자리, 첫글자는 1,2,3,4 입력가능');
                 return false;
             }
-            // else {
-            //     var frm1 = document.getElementById('frmId1');
-            //     if (document.getElementById('id').value == 'admin') {
-            //         frmId1.action = "#관리자 페이지";
-            //     } else {
-            //         frmId1.action = "#일반 페이지";
-            //     }
-            //     frmId1.method = 'post';
-            //     frmId1.submit(); // action으로 submit해라
-            // }
+            else {
+                var frm1 = document.getElementById('frmId1');
+                if (document.getElementById('id').value == 'admin') {
+                    frmId1.action = "#관리자 페이지";
+                } else {
+                    frmId1.action = "#일반 페이지";
+                }
+                frmId1.method = 'post';
+                frmId1.submit(); // action으로 submit해라
+            }
         }
     </script>
 </head>

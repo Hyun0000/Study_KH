@@ -103,7 +103,11 @@ window.onload = function () {
         document.getElementById("ele_" + eleCnt).onclick = function(event) {
             event.target.parentElement.remove();
             // e.target.parentElement.remove(); --> 이렇게 사용하기도 한다.(parameter도 e로 수정)
-            // event.target --> 클릭이 이루어진 element
+            // event.target --> 클릭이 이루어진 element(버튼)
         }
     }
+}
+
+function f1() {
+    location.href = "./homework/html/homework1.html";
 }

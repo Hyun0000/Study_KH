@@ -4,21 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jsimport/node&dom(0927).js"></script>
     <title>Document</title>
     <script>
         window.onload = function () {
             document.getElementById('btn').onclick = f1;
         }
         function f1() {
-            var list = document.getElementsByTagName('li');
-            var inputs = document.getElementById('content');
-            var text = '';
-            for (let i = 0; i < inputs.length; i++) {
-                text += inputs.elements[i].value + "<br>";
-            }
+            var inputEle = document.getElementsByTagName('input');
+            var textEle = document.getElementById('detail');
+            var textEleVal = textEle.value;
 
-            document.getElementById('result').innerHTML = text;
+            var textEle = document.getElementsByTagName('detail');
+            
+            var content = '';
+            content += "구매자 명 : " + inputEle[0].value + "님<br>";
+            content += "상품 명 : " + inputEle[1].value + "<br>";
+            content += "가격 : " + inputEle[2].value + "만원<br>";
+            content += "구매 수량 : " + inputEle[3].value + "개<br>";
+            content += "납품 등급 : " + inputEle[4].value + "등급<br>";
+            content += "기타사항 : " + textEleVal;
 
+            document.getElementById('result').innerHTML = content;
         }
     </script>
 
@@ -31,8 +38,7 @@
     </style>
 </head>
 <body>
-    
-    <form id="content">
+    <!-- <form id="content"> -->
         <fieldset>
             <legend>구매 정보</legend>        
                 <ul>
@@ -44,17 +50,9 @@
                     <li><label for="detail">기타 사항 : </label><textarea name="" id="detail" cols="30" rows="10"></textarea></li>
                 </ul>
         </fieldset>
-        <button type="submit" id="btn">제출</button>
-    </form>
-    <div id="result">
-        <ul style="list-style-type: none;">
-            <li>구매자 명 : </li>
-            <li>상품명 : </li>
-            <li>가격 : </li>
-            <li>구매 수량 : </li>
-            <li>납품등급 : </li>
-            <li>기타사항 : </li>
-        </ul>
-    </div>
+        <button type="submit" id="btn">입력 값 출력하기</button>
+    <!-- </form> -->
+
+    <div id="result"></div>
 </body>
 </html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.addEventListener("load", pageLoadedHandler);
+        // 문제 1
+        // submit 버튼이 눌려지면 btnSubmit 함수가 호출되도록 callback 등록
+        function pageLoadedHandler() {
+            // HTML 영역의 <button>에 인라인 스크립트 방식으로 onclick event를 걸려면 
+            // document.getElementById('btn1').onclick = btnSubmit; 부분을 주석처리해야한다.
+            // 단, pageLoadedHandler function을 주석처리 하면 안 된다.
+            // window.addEventListener("load", pageLoadedHandler); --> 여기서 오류가 나기 때문이다.
+            document.getElementById('btn1').onclick = btnSubmit;
+        }
+
+        function btnSubmit() {
+            console.log("btnSubmit 진입");
+            
+        var id = document.getElementById("id");
+        var pw1 = document.getElementById("pwd");
+        var pw2 = document.getElementById("repwd");
+
+        var idValue = id.value;
+        var pw1value = pw1.value;
+        var pw2value = pw2.value;
+
+        // 문제 2
+        // 입력되지 않은 칸이 있는지 확인
+        function checkNull(v) {
+            if (v.length == 0) {
+                // 조건문을 (v == "")으로 작성해도 상관없다. (각 <input>의 value를 매개인자로 넣는다는 가정하에)
+                // "" --> <input>에서 아무런 입력도 안 됐을때의 value이다.
+                // 아무것도 입력 안했다고 해서 null이 되는것이 아니다.
+                // <input>을 비롯한 입력박스는 빈 공간이더라도 기본적으로 "" 이 들어있는 상태이다.
+                alert('모든칸을 입력해주세요');
+                return false;
+                // return false; --> 더 이상 아래에 있는 유효성 검사들을 진행하지 않고 멈추겠다는 의미
+                // 단, return true; 라고 해도 아래의 유효성 검사들은 진행되지 않는다.
+                // 즉, boolean 값에 상관없이 'return'을 만나면 function 자체가 종료돼버린다.
+                // false가 뜨지 않는 이상 계속 function을 진행하고 싶으면 return을 아예 쓰지 말아야한다.
+            }
+        }
+        checkNull(idValue);
+        checkNull(pw1value);
+        checkNull(pw2value);
+
+        var regE = /^[a-z][A-Za-z0-9!~]{2,5}$/;
+        // ^가 없으면 --> 첫 []에 입력되는 유효범위를 검사하지 않겠다는 의미
+        // $가 없으면 --> 마지막 []에 입력되는 유효범위를 검사하지 않겠다는 의미
+        // ex)
+        // var pwRexp = /^[a-z][A-Za-z0-9!~]{2,5}/; ('$'가 없는 상태)
+        // a111111111 라고 비밀번호를 입력해도 (^[a-z])를 만족시키기에 정규식을 통과한다.
+
+        // 문제 3
+        // 비밀번호와 비밀번호 확인란이 동일하지 않으면 <span id="checkpwd"></span> 에 "동일하게 입력해주세요"
+        if (pw1value != pw2value) {
+            // document.getElementById('checkpwd').innerHTML = "<h2>동일하게 입력해주세요</h2>";
+            document.getElementById('checkpwd').innerText = "동일하게 입력해주세요";
+            return false;
+        } else if(!regE.test(pw1value)) {
+            // 문제 4
+            // 첫글자는 영어소문자이고, 영문자+ 숫자 + 특수문자(!~) 유효, 3글자이상, 6글자 이하
+            // pw1value이 위 조건에 맞게 입력되지 않았다면 alert 띄움.
+            alert("영어 대소문자 + 숫자 + 특수문자(!~) 조건에 맞게 입력해주세요");
+            return false;
+        } else {
+            // 문제 5
+            // 위 조건을 모두 통과하면 입력된 데이터를 post 방식으로 "a.kh"로 이동.
+            var frm = document.getElementById('frmId1');
+            frm.action = "a.kh";
+            frm.method = "post";
+            frm.submit();
+            return true;
+            // 인라인 스크립트가 아닌 frm.submit(); 방식을 이용한다면 (return true;)가 없어도 된다.
+            // 써도 상관은 없지만 반드시 있을 필요도 없다.(어차피 여기서 function 자체가 끝이니까)
+            // 단,
+            // 인라인 스크립트 방식을 이용한다면 (return true;나 return false;)가 반드시 있어야한다.
+            // cf) return 값; --> 자신을 호출한 곳으로 가서 '값'을 뱉는 것이다.
+
+            // cf)
+            // function pageLoadedHandler() {
+            //    document.getElementById('btn1').onclick = btnSubmit;
+            // } --> 이 방식의 호출은 무엇을 return 하든 상관없다.
+        }
+    }
+</script>
+</head>
+
+<body>
+<form id="frmId1">
+    <fieldset>
+    <!-- 문제 6 "회원가입" 문구로 fieldset -->
+    <legend>회원가입</legend>
+        <label for="id">아이디 : </label>
+        <input type="text" id="id" name="id" class="input" required>
+        <span id="checkid"></span>
+
+        <br><br>
+
+        <label for="pwd">비밀번호 : </label>
+        <input type="password" id="pwd" name="pwd" class="input" required>
+        
+        <br><br>
+
+        <label for="repwd">비밀번호 확인 : </label>
+        <input type="password" id="repwd" class="input" required>
+        <span id="checkpwd"></span>
+
+        <br><br>
+
+        <button type="button" id="btn1">버튼타입제출</button>
+        <!-- <button type="submit" id="btn1" onclick="return btnSubmit();">버튼타입제출</button> -->
+        <!-- 인라인 스크립트 방식으로 onclick event를 걸려면 반드시 (type="submit")이여야 한다.  -->
+        <!-- (type = "button")이면 onclick="return btnSubmit(); 값이 무엇이든 의미가 없다. -->
+    </fieldset>
+</form>
+
+</body>
+</html>

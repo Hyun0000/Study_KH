@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            attr1: 'hello',
+            attr2: 'javascript',
+            attr3: function() { 
+                console.log("attr3이다.");},
+            attr4: function() { return "attr4이다." }
+        }
+
+        console.log("obj.attr1 : " + obj.attr1);
+        // hello
+
+        console.log("obj['attr1'] : " + obj['attr1']);
+        // hello
+
+        obj.attr3();
+        // 오류나지 않는다.
+        // attr3에 있는 함수가 실행되어 console에 값이 찍힌다.
+
+        console.log("obj.attr3() : " + obj.attr3());
+        // attr3()가 실행되고 난후 return하는 값이 없기에 undefined가 뜬다.
+        // 즉, return 값이 없는 경우 undefined가 표시된다.
+
+        console.log("obj['attr3'] : " + obj['attr3']);
+        // function() { console.log("attr3이다.");} 가 console에 그대로 출력된다.
+
+        console.log("obj.attr4() : " + obj.attr4());
+        // attr4이다.
+        console.log("============================================");
+
+        var obj = { "Korea":'seoul',
+                    'US':"Washington D.C",
+                    "China":"Beijing",
+                    "France":"Paris" }
+        // object의 key에는 따옴표가 있어도되고 없어도 된다.
+        // 단, value는 반드시 따옴표가 있어야한다. (없으면 변수로 인식해서 해당하는 변수의 값이 있는지 찾는다.)
+        // 물론, 작은 따옴표 & 큰 따옴표 중 무엇을 쓰든 상관없다.
+
+        for (let key in obj) {
+                console.log(key + " : " + obj[key]);
+            }
+
+        // document.write(key, " : ", obj[key], "<br>");
+        // write()에서 쉼표는 (+, 연결자)를 의미한다.
+        console.log("============================================");
+        // forEaxh
+        // 1.
+        var arr = ['apple', 'banana', 'kiwi'];
+            arr.forEach(function (e) {
+                console.log(e);
+            });
+        // forEach()가 매개인자로 들어온 function에게 배열의 element를 하나씩 넣어주는 것이다.
+
+        // 2.
+        function fruit() {
+            console.log("parameter가 없는 function을 forEach의 매개인자로 넣는다.");
+        }
+
+        var arr = ['apple', 'banana', 'kiwi'];
+            arr.forEach(fruit);
+        // 이렇게 해도 오류가 나지 않는다. 당연히 실행도 잘 된다.
+        // 매개인자로 들어온 function의 입장은 아래와 같다.
+        // "나는 forEach()가 넣어주는 배열의 요소는 안 받아도 된다. 단, '내가 정의한 기능만 배열의 길이만큼 수행할 것'이다."
+    </script>
+</body>
+</html>

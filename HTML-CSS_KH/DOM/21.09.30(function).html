@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 이래야만 (return 값;)을 한 의미가있다. -->
+    <button type="submit" onclick="return f3();">실행</button>
+
+    <script>
+        function f1() { console.log("f1 진입"); return; }
+
+        function f2() { console.log("f2 진입"); return true; }
+
+        function f3() { console.log("f3 진입"); return false; }
+        // 호출한 곳에서 단순히 function을 호출만하고 return 된 값을 사용하지 않는다면
+        // (return 값;)을 한 의미가 없다.
+
+        function f4() { console.log("f4 진입"); return "f4 함수리턴값"; }
+
+        // function은 호출을 해줘야만 결과가 나온다.
+        f1();
+        f3();
+
+        // 이래야만 (return 값;)을 한 의미가있다.
+        var v1 = f3();
+        if (v1) { console.log("f3 결과 참"); }
+        else { console.log("f3 결과 거짓"); }
+        console.log('======================================');
+
+        // JS의 function은 유동성을 많이 가진다.
+
+        // f5 function의 parameter는 3개지만 js는 이렇게 해도 오류가 나지않는다.
+        // 심지어 f5의 parameter가 아예 없어도 아래와 같은 코드에 오류가 나지 않는다.
+        f5("3", 2);
+        console.log('======================================1');
+
+        f5("3", 3);
+        console.log('======================================2');
+        
+        console.log("test1 : " + f5("3", 2)); // 6
+        console.log('======================================3');
+
+        console.log("test2 : " + f5("3")); // 3
+        console.log('======================================4');
+
+        console.log("test3 : " + f5("3", 2, 5)); // 30
+        console.log('======================================5');
+
+        console.log("test4 : " + f5("3", 2, 5, 3)); // 30
+        // function f5 say : "니가 뭘 넣든 나는 내 parameter 개수 만큼만 기능 수행할거야"
+        console.log('======================================6');
+
+        function f5(a, b, c) {
+            console.log(a);
+            console.log(b);
+            console.log(c);
+            // f5("3", 2); 일 때 console.log(c);는 null이 아니라 undefined로 console에 찍힌다.
+            // (var c;)로 선언만 되어있지 c에게 특정 값을 넣어주지 않았기 때문이다.
+
+            // cf) 숫자 * 숫자 * undefined = NaN
+            var result = 1;
+            if (a != undefined) { result *= a; } else { result *= 1}
+            if (b != undefined) { result *= b; } else { result *= 1}
+            if (c != undefined) { result *= c; } else { result *= 1}
+            return result;
+        }
+    </script>
+</body>
+</html>

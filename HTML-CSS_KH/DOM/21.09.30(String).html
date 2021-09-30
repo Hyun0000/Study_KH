@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var str = "Hello World";
+
+        // W가 console에 보여지게 charAt 사용
+        console.log(str.charAt(6));
+
+        // World가 console에 보여지게 substring 사용
+        console.log(str.substring(6, 11));
+        // substring(시작 위치, 마지막 위치)
+        // 시작 위치는 (시작 위치 index)에 있는 문자를 포함하여 계산한다.
+        // But 마지막 위치는 (마지막 위치 - 1)까지만 계산하여 문자열을 자른다
+        // 반환되는 문자 범위 : (시작 위치 ~ (마지막 위치 - 1))
+
+        // Hello 뿌리기
+        console.log(str.substring(0, 5));
+
+        // (index = 6)부터 시작해서 문자 끝까지라는 의미
+        console.log(str.substring(6));
+
+        // arrWord 변수에 배열형태로 Hello와 World가 들어가도록 split 사용
+        var arrWord = str.split(" ");
+        console.log(arrWord[0]);
+        console.log(arrWord[1]);
+
+        // 2개의 리미트를 걸었기 때문에 콘솔에 2개만 찍힌다. --> ['hello', 'world,']
+        console.log("hello world, everyone~ hi".split(" ", 2));
+
+        // 3개의 리미트를 걸었기 때문에 콘솔에 2개만 찍힌다. --> ['hello', 'world,', 'everyone~']
+        console.log("hello world, everyone~ hi".split(" ", 3));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

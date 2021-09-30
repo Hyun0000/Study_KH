@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="p1"></p>
+    <input type="text" id="apple" value="123">
+    <script>
+        console.log(document.getElementById('p1').innerHTML); // 공백 출력 (현재 "" 상태)
+        console.log(typeof document.getElementById('p1').innerHTML); // String
+        console.log(document.getElementById('p1')); // <p id="p1"></p> 혹은 p#p1
+        console.log(document.getElementById('p1').value); // undefined --> <p> 태그에 value라는건 없다.
+        console.log("==========================================");
+        
+        // 현재 (id = p2)인 태그가 없는 상태
+        console.log(document.getElementById('p2').innerHTML);
+        // 오류 : Cannot read properties of null (reading 'innerHTML')
+
+        console.log(typeof document.getElementById('p2').innerHTML);
+        // 오류 : Cannot read properties of null (reading 'innerHTML')
+
+        console.log(document.getElementById('p2'));
+        // null
+
+        console.log(document.getElementById('p2').value);
+        // 오류 : Cannot read properties of null (reading 'value')
+        console.log("==========================================");
+
+        // <input type="text" id="apple" value="123">
+        console.log(document.getElementById('apple').innerHTML); // 공백 출력 (현재 "" 상태)
+        console.log(typeof document.getElementById('apple').innerHTML); // String
+        console.log(document.getElementById('apple')); // <input type="text" id="apple" value="123"> 혹은 input#apple
+        console.log(document.getElementById('apple').value); // 123
+        console.log("==========================================");
+
+        var a; // 선언만 되고 값이 할당되지 않았다.
+        console.log(a); // undefined
+        console.log(typeof a); // undefined
+
+        console.log(a.value);
+        // 오류 : Cannot read properties of undefined (reading 'value')
+
+        console.log(a.length);
+        // 오류 : Cannot read properties of undefined (reading 'length')
+
+        console.log(c);
+        // 오류 : Uncaught ReferenceError: c is not defined
+        </script>
+</body>
+</html>

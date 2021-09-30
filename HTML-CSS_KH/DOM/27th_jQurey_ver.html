@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <form action="#" method="get" id="frmRecp"> -->
+    <table>
+        <tr>
+            <th>구매자:</th>
+            <td><input type="text" name="name" id="name" class="iv" placeholder="구매자 이름 입력"></td>
+        </tr>
+        <tr>
+            <th>재료:</th>
+            <td><input type="text" name="ingredient" id="ingredient" class="iv" placeholder="재료명"></td>
+        </tr>
+        <tr>
+            <th>단가:</th>
+            <td><input type="text" name="price" id="price" class="iv" placeholder="단가입력"></td>
+        </tr>
+        <tr>
+            <th>수량:</th>
+            <td><input type="text" name="amount" id="amount" class="iv" placeholder="수량"></td>
+        </tr>
+    </table>
+    <!-- <button id="btnInsert" onclick="printValue();">입력</button> -->
+    <button id="btnInsert">입력</button>
+    <!-- </form> -->
+    <div id="print"></div>
+
+    <script>
+        let count = 0;
+
+        // 여기에 있으면 문서가 load 됐을때의 값이 저장된다. 즉, ""가 저장된다.
+        // var name = $('#name').val();
+        // var ingredient = $('#ingredient').val();
+        // var price = $('#price').val();
+        // var amount = $('#amount').val();
+        // console.log(typeof name);
+        // console.log(typeof ingredient);
+        // console.log(typeof price);
+        // console.log(typeof amount);
+        
+        $('#btnInsert').click(function () {
+            count++;
+            var name = $('#name').val();
+            var ingredient = $('#ingredient').val();
+            var price = $('#price').val();
+            var amount = $('#amount').val();
+            
+            var $btn = '<button id="delelte_' + count + '">삭제</button>';
+            var $print = "<p id = 'pEle_" + count +"'>" + "이름 : " + name + "<br>" + "재료 : " + ingredient + "<br>" + "가격 : " + price + "<br>" + "수량 : " + amount + "<br>" + "</p>";
+            $('#print').append($print);
+            $('#pEle_' + count).append($btn);
+            
+            // var $pEle = "<p>" + print + "</p>" + "<br>" + $btn;
+
+            $('#delelte_' + count).click(function(){
+                $(this).parent().remove();
+            })
+        })
+    </script>
+</body>
+
+</html>

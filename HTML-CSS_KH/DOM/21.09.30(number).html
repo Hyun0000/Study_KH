@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        console.log("37" + 3); // 373
+        console.log(typeof ("37" + 3)); // tring
+        console.log("37" * 2); // 74
+        console.log(typeof ("37" * 2)); // number
+        console.log("37" + 3 * 2); // 376
+        console.log("=====================================");
+
+        console.log(parseInt("a1")); // NaN
+        console.log(parseInt("1a123")); // 1
+        console.log(typeof parseInt("a1")); // number --> NaN의 자료형은 number이다.
+        console.log(typeof parseInt("1a123")); // number
+
+        console.log(Number("a1")); // NaN
+        console.log(Number("1a123")); // NaN
+
+        var er = 123.456;
+        console.log(parseInt(er)); // 123
+        console.log(Number(er)); // 123.456
+        // parseInt() function
+        // 첫 글자가 문자열이면 NaN이 뜨고, 첫 글자가 숫자이면 앞의 숫자들만 형변환해서 반환한다.
+        // 즉, parseInt((정수 + 문자열))인 경우 앞의 정수만 추출해서 반환한다.
+
+        // cf)
+        // parseInt()대신 Number()를 써도 된다.
+        // Number()는 문자열이 포함돼 있으면 위치 상관없이 NaN이 반환된다.
+        // 또한 parseInt()는 소수점이 있는 실수를 정수만 반환, Number()는 소수점까지 모두 반환한다.
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

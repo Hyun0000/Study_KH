@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>JS 엑셀같은 표 계산</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var e1 = document.getElementById("d1");
+
+            var e2 = document.getElementById("d2");
+
+            var e3 = document.getElementById("d3");
+
+            // var t1 = document.getElementById("t1");
+
+            // var t1 = document.getElementById("t2");
+
+            // var t1 = document.getElementById("t3");
+
+            e1.onblur = update;
+            e2.onblur = update;
+            e3.onblur = update;
+            
+            function update() {
+                e1.value = isNaN(e1.value) ? 0 : parseInt(e1.value);
+                e2.value = isNaN(e2.value) ? 0 : (e2.value * 1);
+                e3.value = isNaN(e3.value) ? 0 : (e3.value * 1);
+
+                console.log(e1.value);
+                console.log(typeof e1.value);
+                console.log(typeof 1);
+                console.log(isNaN(e1.value));
+                
+                document.getElementById('totalC').value = e1.value + e2.value + e3.value;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="#" method="get" id="frmCal">
+        <table border="1">
+            <tr>
+                <th>재료</th>
+                <th>단가</th>
+                <th>수량</th>
+                <th>합계</th>
+            </tr>
+            <tr>
+                <td>당근</td>
+                <td>2500원</td>
+                <td><input type="text" id="d1"></td>
+                <td><input type="text" id="t1"></td>
+            </tr>
+            <tr>
+                <td>양파</td>
+                <td>3000원</td>
+                <td><input type="text" id="d2"></td>
+                <td><input type="text" id="t2"></td>
+            </tr>
+            <tr>
+                <td>고구마</td>
+                <td>4500원</td>
+                <td><input type="text" id="d3"></td>
+                <td><input type="text" id="t3"></td>
+            </tr>
+            <tr>
+                <th>합계</th>
+                <th></th>
+                <td><input type="text" id="totalC"></td>
+                <td><input type="text" id="totalP"></td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <input type="button" value="계산하기">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

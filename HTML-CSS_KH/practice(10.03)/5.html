@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 멈추기 버튼추가 id는 btn1을 사용함 -->
+
+    <h1 id="gugudan">구구단</h1>
+    <button type="button" id="btn1">그만!</button>
+
+    <script>
+        var divEle = document.createElement('div');
+        divEle.setAttribute('id', "a1");
+
+        var btnEle = document.getElementById('btn1');
+
+        // insertBefore()은 인자를 node형태로 받아야한다.
+        // 태그 이름이나 선택자 이름을 직접적으로 넣을 수 없다.
+        document.body.insertBefore(divEle, btnEle);
+        
+        var dan = 2;
+        var su = 1;
+        var interval = setInterval(function () {
+            var pEle = document.createElement('p');
+            
+            var text = dan + " * " + su + " = " + (dan * su);
+            pEle.innerText = text;
+
+            document.getElementById('a1').appendChild(pEle);
+
+            if (su == 9) {
+                dan++;
+                su = 1;
+            } else {
+                su++;
+            }
+        }, 1000);
+        // 페이지가 열리면
+        // "구구단" h1 태그 아래 구구단 2단(2*1=1)부터 보여지도록 id가 a1인 div태그를 사용함.
+        // id가 a1인 태그의 크기는 넓이 300*700 px, 배경색은 yellowgreen
+
+        // 1초마다 (2*1=1), (2*2=4), (2*3=6) 순차적으로 p 태그를 생성하여 화면에 추가적으로 나타냄
+        // 2*9=18 이후 3*1=3 이 표시된.
+
+        // id btn1 버튼이 눌려지면 구구단은 더이상 보여지지 않음.
+        document.getElementById('btn1').onclick = function () {
+            clearInterval(interval);
+        }
+    </script>
+</body>
+</html>

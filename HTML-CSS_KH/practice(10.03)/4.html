@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <style>
+        #colorBox {
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+            margin-bottom: 20px;
+            background-color: silver;
+        }
+    </style>
+
+<script>
+    $(function () {
+        // $("#btnRed").click( changeColorByInnerText );
+        // $("#btnBlue").click( changeColorByInnerText );
+        // $("#btnYellow").click( changeColorByInnerText );
+
+        // button 2개 일때
+        // $("#btn1").click( function() {
+        //     $(this).parent().prev().show(500);
+        // } );
+        // $("#btn2").click( function() {
+        //     $(this).parent().prev().hide(500);
+        // } );
+        // function changeColorByInnerText() {
+        //     $("#colorBox").css("background", $(this).text());
+        // }
+
+        // 토글
+        $('#btnToggle').click(toggleFunc);
+        function toggleFunc() {
+            var btnToggleText = $('#btnToggle').text();
+
+            if (btnToggleText == "숨기기") {
+                console.log("숨기기 상태");
+                $(this).parent().prev().hide(500);
+                $('#btnToggle').text("보이기");
+            } else {
+                console.log("보이기 상태");
+                $(this).parent().prev().show(500);
+                $('#btnToggle').text("숨기기");
+            }
+        }
+
+
+        $("#btnCcc").click(changeColor);
+        $("#colorValue").keydown( function( event ){
+            if(event.keyCode ==  13){   //  keyCode 13 은 enter key
+                event.stopPropagation();
+                event.preventDefault();   // 중첩이벤트 없앰.
+                changeColor();
+            }
+        });
+
+        $("#colorValue").select(function() {
+            console.log(this);
+        });
+
+        function changeColor() {
+            var color = $('input[id=colorValue]').val();
+            $("#colorBox").css("background", "#"+color);
+        }
+    });
+    function changeSelectOption(){
+        var index = $(":selected").index();
+        console.log(index);
+        var color = $(":selected").val();
+        console.log(color);
+        $("#colorBox").css("background", color);
+    }
+</script>
+</head>
+
+<body>
+<div id="colorBox"></div>
+<div>
+    <button id="btnRed" class="btn">red</button>
+    <button id="btnBlue" class="btn">blue</button>
+    <button id="btnYellow" class="btn">yellow</button>
+    <button id="btnCcc" class="btn">#ccc</button>
+    <hr>
+    Color Code 입력 후 enter <input type="text" name="color" id="colorValue">
+    <hr>
+    <!-- 보이기 숨기기를 누르면 위 colorBox가 보였다 안보였다 동작 -->
+    <!-- <button id="btn1">보이기</button> -->
+    <!-- <button id="btn2">숨기기</button> -->
+
+    <!-- 토글 -->
+    <!-- 처음에 사이트 들어올때는 박스가 보이므로 버튼의 기본값을 '숨기기'로 설정 -->
+    <button id="btnToggle">숨기기</button>
+</div>
+</body>
+</html>

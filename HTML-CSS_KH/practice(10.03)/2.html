@@ -14,17 +14,17 @@
     <!-- 문제 1 -->
     <!-- 입력 버튼을 누르면 inline 형태로 insertIngredient 호출되게 함. -->
     <!-- 출력 버튼을 누르면 inline 형태로 printIngredient 호출되게 함. -->
-    <button type="button" onclick="insertIngredient();" id="insert">입력</button>
-    <button type="button" onclick="printIngredient();" id="print">출력</button>
+    <button id="insert" type="button" onclick="insertIngredient();">입력</button>
+    <button id="print" type="button" onclick="printIngredient();">출력</button>
     <script>
         // 문제 2
         // 입력 버튼을 누르면 addEventListener를 사용하여 insertIngredient 호출되게 함.
         // 출력 버튼을 누르면 addEventListener를 사용하여 printIngredient 호출되게 함.
-        // document.getElementById('insert').addEventListener('click', insertIngredient);
-        // document.getElementById('print').addEventListener('click', printIngredient);
+        // document.getElementById('insert').addEventListener("click", insertIngredient);
+        // document.getElementById('print').addEventListener("click", printIngredient);
 
         var member;
-        var idCount = 0;
+        var count = 0;
 
         function insertIngredient() {
             // 문제 3
@@ -44,35 +44,37 @@
                 단가 : 200원
                 수량 : 3
                 */
-                    var content = "";
-                    content += "재료 : " + this.ingredient + "<br>";
-                    content += "단가 : " + this.price + "<br>";
-                    content += "수량 : " + this.amount + "<br>";
-                    return content;
+                    var text = "";
+                    text += "재료 : " + this.ingredient + "<br>";
+                    text += "단가 : " + this.price + "원" + "<br>";
+                    text += "수량 : " + this.amount + "<br>";
+                    return text;
                 }
             }
         }
         function printIngredient() {
             // 문제 5
-            // 입력된 데이터가 있다면 member.info를 이용하여 출력데이터를 list div 안에 p태그로 하나씩 추가되고, 해당 p 태그 다음(형제 개념)에 삭제버튼도 추가
+            // 입력된 데이터가 있다면 아래와 같이 출력
+            // member.info를 이용하여 출력데이터를 list div 안에 p태그로 하나씩 추가되고 해당 p 태그 다음에 삭제버튼도 추가
             if (member != undefined && member.ingredient != "" && member.price != "" && member.amount != "") {
-                idCount++;
+                count++;
+                var btnEle = document.createElement('button');
+                btnEle.innerText = "삭제"
+                btnEle.setAttribute('id', "remove_" + count);
 
                 var pEle = document.createElement('p');
-                var btnEle = document.createElement('button');
-                btnEle.setAttribute("id", "delete_" + idCount);
-                btnEle.innerText = "삭제";
-
                 pEle.innerHTML = member.info();
-                document.getElementById('list').appendChild(pEle);
-                document.getElementById('list').appendChild(btnEle);
-
-                document.getElementById("delete_" + idCount).addEventListener('click', function(){
-                    this.previousSibling.remove();
-                    this.remove();
-                })
+                document.getElementById("list").appendChild(pEle);
+                document.getElementById("list").appendChild(btnEle);
             } else {
                 alert("입력을 먼저 진행해주세요");
+            }
+
+            // 문제 6 
+            // 삭제버튼을 누르면 해당 p 태그가 삭제
+            document.getElementById("remove_" + count).onclick = function () {
+                this.previousSibling.remove();
+                this.remove();
             }
         }
     </script>

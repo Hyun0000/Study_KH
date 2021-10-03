@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.addEventListener("load", pageLoadedHandler);
+        // 문제 1
+        // submit 버튼이 눌려지면 btnSubmit함수가 호출되도록 callback 등록
+        function pageLoadedHandler() {
+            document.getElementById('btn1').onclick = btnSubmit;
+        }
+
+        function btnSubmit() {
+            console.log("btnSubmit 진입");
+
+            // 문제 2
+            // 입력되지 않은 칸이 있는지 확인
+            var pw1 = document.getElementById("pwd");
+            var pw2 = document.getElementById("repwd");
+            var id = document.getElementById("id");
+
+            var pw1value = pw1.value;
+            var pw2value = pw2.value;
+            var idValue = id.value;
+
+            function nullCheck(n) {
+                if (n == "") {
+                    alert('빈칸 입력 안하니?')
+                }
+            }
+
+            nullCheck(pw1value);
+            nullCheck(pw2value);
+            nullCheck(idValue);
+
+            // 문제 3
+            // 비밀번호와 비밀번호 확인란이 동일하지 않으면 <span id="checkpwd"></span> 에 "동일하게 입력해주세요"
+            if (pw1value != pw2value) {
+                document.getElementById('checkpwd').innerText = "동일하게 입력해주세요";
+                return false;
+            }
+
+            // 문제 4
+            // 첫글자는 영어소문자이고, 영문자+ 숫자 + 특수문자(!~) 유효, 3글자이상, 6글자 이하
+            // pw1value이 위 조건에 맞게 입력되지 않았다면 alert 띄움.
+            var pwReExp = /^[a-z][a-zA-Z0-9!~]{2,5}$/;
+            if (!pwReExp.test(pw1value)) {
+                alert("영어 대소문자 + 숫자 + 특수문자(!~) 조건에 맞게 입력해주세요");
+                return false;
+            } else {
+                // 문제 5
+                // 위 조건을 모두 통과하면 입력된 데이터를 post 방식으로 "a.kh"로 이동
+                var frm = document.getElementById('frmId1');
+                frm.method = 'post';
+                frm.action = "a.kh";
+                frm.submit();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form id="frmId1">
+        <fieldset>
+            <legend>회원가입</legend>
+        <!-- 문제 6 "회원가입" 문구로 fieldset -->
+            <label for="id">아이디 : </label>
+            <input type="text" id="id" name="id" class="input" required>
+            <span id="checkid"></span>
+            <br><br>
+            <label for="pwd">비밀번호 : </label>
+            <input type="password" id="pwd" name="pwd" class="input" required>
+            <br><br>
+            <label for="repwd">비밀번호 확인 : </label>
+            <input type="password" id="repwd" class="input" required>
+            <span id="checkpwd"></span>
+            <br><br>
+            <button type="button" id="btn1">버튼타입제출</button>
+        </fieldset>
+    </form>
+
+</body>
+</html>

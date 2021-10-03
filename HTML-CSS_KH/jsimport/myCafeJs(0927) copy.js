@@ -28,17 +28,17 @@ window.onload = function () {
         count3 = isNaN(count3) ? 0 : count3 * 1;
 
         // 실패한 삼항연산자
-        // count1 = typeof(count1)!=Number ? 0 : v1;
-        // count2 = typeof(count2)!=Number ? 0 : v2;
-        // count3 = typeof(count3)!=Number ? 0 : v3;
+        // count1 = typeof(count1) != Number ? 0 : v1;
+        // count2 = typeof(count2) != Number ? 0 : v2;
+        // count3 = typeof(count3) != Number ? 0 : v3;
         // typeof 로는 원하는 결과를 도출할 수가 없다.
         // why? '<input>에서 꺼낸 value는 무조건 String 모양'을 갖추고 있기 때문이다.
 
         // 이렇게하면 원하는 결과를 얻을 수 있긴하지만 합계 중간중간에 NaN이 뜨는 문제가 있다.
         // console.log(typeof "");은 String이다. --> 이것이 NaN이 뜨는 이유의 핵심이다
-        // count1 = typeof(count1)==Number ? 0 : parseInt(count1);
-        // count2 = typeof(count2)==Number ? 0 : parseInt(count2);
-        // count3 = typeof(count3)==Number ? 0 : parseInt(count3);
+        // count1 = typeof(count1) == Number ? 0 : parseInt(count1);
+        // count2 = typeof(count2) == Number ? 0 : parseInt(count2);
+        // count3 = typeof(count3) == Number ? 0 : parseInt(count3);
 
         // 각 메뉴 합계 가격 --> * 연산자로 인해 (문자열 * 숫자 = 숫자) 처리
         var t1 = count1 * 2500;

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <style>
+        #colorBox {
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+            margin-bottom: 20px;
+            background-color: silver;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("#btnRed").click( changeColorByInnerText );
+            $("#btnBlue").click( changeColorByInnerText );
+            $("#btnYellow").click( changeColorByInnerText );
+
+            function changeColorByInnerText() {
+                $("#colorBox").css("background", $(this).text());
+            }
+    
+            $("#btnCcc").click(changeColor);
+
+            $("#colorValue").keydown( function( event ){
+                if(event.keyCode ==  13){   //  keyCode 13 은 enter key
+                    event.stopPropagation();
+                    event.preventDefault();   // 중첩이벤트 없앰.
+                    changeColor();
+                }
+            });
+    
+            $("#colorValue").select(function() {
+                console.log(this);
+            });
+    
+            function changeColor() {
+                var color = $('input[id=colorValue]').val();
+                $("#colorBox").css("background", "#"+color);
+            }
+
+            $('#btn1').click(function() {
+                // $("#colorBox").show(500);
+                $(this).parent().prev().show(500);
+                console.log(this);
+                console.log(document.getElementById('btn1'));
+            })
+
+            $('#btn2').click(function() {
+                // $("#colorBox").hide(500);
+                $(this).parent().prev().hide(500);
+            })
+
+            $('button').click(function(){
+                console.log(this);
+                console.log($(this));
+                // 현재 막 눌려진 버튼이 무엇인지를 알 수 있다.
+                // 이 this를 통해 다양한 작업을 할 수 있다.
+                $(this).hide();
+            })
+        });
+
+        function changeSelectOption(){
+            var index = $(":selected").index();
+            console.log(index);
+            var color = $(":selected").val();
+            console.log(color);
+            $("#colorBox").css("background", color);
+        }
+
+    </script>
+</head>
+<body>
+    <div id="colorBox"></div>
+    <div>
+        <button id="btnRed" class="btn">red</button>
+        <button id="btnBlue" class="btn">blue</button>
+        <button id="btnYellow" class="btn">yellow</button>
+        <button id="btnCcc" class="btn">#ccc</button>
+        <hr>
+        Color Code 입력 후 enter <input type="text" name="color" id="colorValue">
+        <hr>
+        <!-- 보이기 숨기기를 누르면 위 colorBox가 보였다 안보였다 동작 -->
+        <button id="btn1">보이기</button>
+        <button id="btn2">숨기기</button>
+    </div>
+    </body>
+</html>

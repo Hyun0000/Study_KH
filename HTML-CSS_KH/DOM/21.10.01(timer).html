@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <style>
+        /* css는 js와 달리 element가 없어도 미리 스타일 지정이 가능하다. */
+        /* #a1 {
+            width: 300px; */
+            /* height: 700px; */
+            /* height를 지정하지 않으면 <div> 안에 있는 자식 태그(<p>)가 늘어남에 따라 자동으로 부모인 <div>의 크기도 늘어난다. */
+            /* background-color: yellowgreen;
+        } */
+    </style>
+</head>
+<body>
+    <!-- 문제1 -->
+    <!-- 멈추기 버튼추가 id는 btn1을 사용함 -->
+    <button type="button" id="btn1">멈추기</button>
+    <h1>구구단</h1>
+    <script>
+        // 문제4
+        // id btn1 버튼이 눌려지면 구구단은 더이상 보여지지 않음.
+        $('#btn1').click(function () {
+            console.log(intervalGGD);
+            window.clearInterval(intervalGGD);
+        })
+        // 해당 event가 가장 위에 있어도 작동이 정상적으로 된다.
+        // why? 현재 click event에 등록된 function은 <button>이 click 되는 시점에 실행되는 것이다.
+        // 즉, click이 되는 시점에 function 속에 있는 값들이 읽혀지는 것이다.
+
+        // 쉽게말해 단순히 (위 ~ 아래) 순서로 읽으면 변수 intervalGGD의 값을 인지할 수가 없기에 오류가 난다.
+        // 그러나 intervalGGD의 값을 읽는 것은 <button>이 click 되는 시점에 행하는 것이기에 문제가 없다.
+        // <button>을 클릭할 수 있다는 것은 load가 다 됐다는 의미이기 때문에 이미 intervalGGD의 값도 읽힌 후라는 의미이다.
+        // 따라서 소스코드의 위치에 상관없이 작동이 정상적으로 된다.
+        // JS는 이러한 시나리오를 잘 구상해야한다.
+
+        // 문제2
+        // 페이지가 load되면
+        // "구구단" <h1> 태그 아래 구구단 2단(2 * 1 = 1)부터 보여지도록 (id = a1)인 <div>태그를 사용
+        // (id = a1)인 태그의 크기는 넓이 300*700 px, 배경색은 yellowgreen
+
+        var newDiv = "<div id='a1'></div>";
+        $(newDiv).appendTo($('body'));    // $('body').append(newDiv); --> 이렇게도 추가할 수 있다.
+        $('#a1').css({'width': '300px', 'background-color':"yellowgreen"})
+        // 굳이 <style> 태그 안이 아니라 이렇게도 style을 지정할 수 있다.
+        // 단, newDiv가 append() 되고 난후에 적용 가능하다.
+
+        // cf) 아래와 같은 방식으로는 사용할 수 없다.
+        // $('newDiv').css({'width': '300px', 'height': "700px", 'background-color':"yellowgreen"})
+        // $(newDiv).css({'width': '300px', 'height': "700px", 'background-color':"yellowgreen"})
+        // newDiv.css({'width': '300px', 'height': "700px", 'background-color':"yellowgreen"})
+        // - newDiv는 단순히 String을 담은 '변수일 뿐'이다.
+        // - 단순 변수만으로 jQuery의 속성과 메소드를 이용할 수는 없다.
+
+        // 문제3
+        // 1초마다 (2 * 1 = 1), (2 * 2 = 4), (2 * 3 = 6) 순차적으로 <p> 태그를 생성, 화면에 추가적으로 나타낸다.
+        // (2 * 9 = 18 이후 3 * 1 = 3 이 표시된다.)
+        let dan = 2;
+        let su = 1;
+        var intervalGGD = window.setInterval(f1, 1000);
+        // intervalGGD에는 number 형태의 숫자가 반환된다.
+
+        function f1() {
+            var newP = '<p class="a1">' + dan + "*" + su + '=' + dan*su + '</p>';
+            // id가 아닌 class로 지정을해야 class의 속성값이 겹쳐도 상관없다.
+            // cf)
+            // 지금 newP의 가장 바깥을 '작은 따옴표'로 감싸고 있다. 하지만 html 태그의 속성값은 반드시 "큰 따옴표"로 감싸야한다.
+            // 그러나 '작은 따옴표'를 이용해도 알아서 따옴표 모양을 처리해준다.
+            $('#a1').append(newP);
+
+            // $('.a1').html(dan + "*" + su + '=' + dan*su);
+            // $('.a1').text(dan + "*" + su + '=' + dan*su);
+            // 잘못된 방법 --> 곱셈의 결과가 중첩돼서 출력되는게 아니라 f1이 실행될 때마다 계속해서 새로운 내용 한개만 출력된다.
+            su++;
+            if (su == 10) { dan++; su = 1;}
+            if (dan == 10) { dan = 2; su = 1; }
+            }
+    </script>
+</body>
+</html>

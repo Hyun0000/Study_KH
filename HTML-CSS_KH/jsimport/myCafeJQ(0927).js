@@ -3,7 +3,6 @@ $(function () {
     // $('.c').blur(update);
 
     function update() {
-        console.log('ㅅㅂ');
         var v1 = $('#c1').val();
         var v2 = $('#c2').val();
         var v3 = $('#c3').val();

@@ -41,8 +41,10 @@ $(function() {
 		// ajax를 통해 데이터를 묶어서 로그인 정보를 전달한다.
 		// 이로인해 HTML 영역에서 별도의 <form> 태그가 필요 없는 것이다.
 		$.ajax({ // JQuery 를 통한 ajax 호출 방식
+		// type : "GET", // servlet에 없는 method를 작성
 		type : "POST", // <form>의 method 속성과 동일
 		url : "login.lo", // <form>의 action 속성과 동일
+		// url : "apple.loa", // 없는 url을 작성
 		data : {
 			// 원하는 값을 object(객체) 모양에 맞춰 각각 대입한 다음에 data(key)에 실겠다는 의미
 			id : $("#userid").val(),
@@ -69,17 +71,78 @@ $(function() {
 		// 화면에 뿌려진 데이터를 function(data)에 넣어준다.(이렇게 약속이 되어있다.)
 		success : function(data) { // 여기서의 data의 타입이 json 형태여야한다.
 					if(data.result == "ok"){
+						console.log("로그인 성공");
 						// js에서 object의 값을 읽는 방법과 동일하다.
 						// cf) 반드시 parameter 이름을 data로 할 필요는 없다. 아무거나 해도 된다.
 						var text = "<h3>환영합니다, "+data["name"]+"님!!!</h3>"+"<p>오늘도 좋은 하루 되세요~!!</p><button onclick='location.href=\"views/member/myInfo.jsp\"'>회원정보보기</button><button onclick=\"location.href='logout.lo'\">로그아웃</button>";
 						// data["name"] 이렇게 쓰면 오류 발생 가능성이 높다. why?
 						// var text가 현재 String이기 때문에 쉼표가 ㅈㄹ 많아 오류가 발생할 수 있다.
 						$(".box").html(text);
+						
+						// 방법 1&2만 이 부분에서 확인이 가능하다.(나머지 방법들은 애초에 로그인이 불가한 형태)
+						// 방법 1
+						console.log(data);
+						// success의 function에 매개인자로 아래의 값이 들어오는 것이다.(parameter인 data에 아래의 값이 담기는 것이다.)
+						// memberInfo: {id: 'user33', passwd: 'pass33', name: '사용자3', email: 'user22@test.or.kr'}
+						// name: "사용자3"
+						// result: "ok"
+						console.log(data.memberInfo) // memberInfo: {id: 'user33', passwd: 'pass33', name: '사용자3', email: 'user22@test.or.kr'}
+						console.log(data.memberInfo.id) // user33
+						
+						// 방법 2
+						console.log(data)
+						// memberInfo: Array(2)
+						// 0: {id: 'user33', passwd: 'pass33', name: '사용자3', email: 'user22@test.or.kr'}
+						// 1: {id: 'user33', passwd: 'pass33', name: '사용자3', email: 'user22@test.or.kr'}
+						// name: "사용자3"
+						// result: "ok"
+						console.log(data.memberInfo)
+						// 0: {id: 'user33', passwd: 'pass33', name: '사용자3', email: 'user22@test.or.kr'}
+						// 1: {id: 'user33', passwd: 'pass33', name: '사용자3', email: 'user22@test.or.kr'}
+						console.log(data.memberInfo[0].id)
+						// user33
 				} else {
 						alert("로그인 실패!\nID와 비밀번호를 다시 확인하세요.");
+						console.log("로그인 실패");
+						// 방법 3
+						console.log(data) // 배열 형태가 됐다.
+						// 0:
+						// memberInfo: {id: 'user33', passwd: 'pass33', name: '사용자3', email: 'user22@test.or.kr'}
+						// name: "사용자3"
+						// result: "ok"
+						// [[Prototype]]: Object
+						// 1:
+						// memberInfo: {id: 'user33', passwd: 'pass33', name: '사용자3', email: 'user22@test.or.kr'}
+						// name: "사용자3"
+						// result: "ok"
+						// [[Prototype]]: Object
+						// length: 2
+						console.log(data.id) // undefined
+						console.log(data[0].result); // if(data[0].result == "ok") --> 이렇게 작성하면 로그인이 가능하다.
+						
+						// 방법 0 & 4(오타 아니다.)
+						console.log(data)
+						// 0: {id: 'user33', passwd: 'pass33', name: '사용자3', email: 'user22@test.or.kr'}
+						// length: 1
+						console.log(data.id) // undefined
+						console.log(data[0].id);// user33
+						
+						// 방법 5
+						console.log(data)
+						// {id: 'user33', passwd: 'pass33', name: '사용자3', email: 'user22@test.or.kr'}
+						// [[Prototype]]: Object
+						console.log(data.id)
+						// user33
 				}
+					console.log(data)
+					console.log(data.id)
 			},
+			// 일부러 error를 만들어 보자
+			// 1. 없는 url을 작성 --> url : "apple.loa"
+			// 2. 지원하지 않는 type을 작성 --> type : "get" (현재 LoginServlet에는 doGet method 자체가 없는 상황이다.)
+			// 2번의 경우 405 오류가 난다.
 		error : function(request, status, error) {
+			console.log("error 발생")
 			alert("code:"+request.status+"\n"+"message:"+request.responseText+
 			"\n"+"error:"+error);
 				}

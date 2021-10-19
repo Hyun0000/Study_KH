@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <style>input { display: none; } ul { display: none; } label { display: block; padding: 20px; }</style>
+    <script>
+        $(function() {
+            $('.level1').click(function() {
+                // $('.level1')를 통해 3개의 선택자가 동시에 선택됐지만 실제로 클릭이벤트는 딱 하나에만 걸려야한다.
+                // 따라서 this를 사용한다.
+                console.log(this); // js dom 모양으로 찍힌다.
+                console.log($(this)); // jQuery 모양으로 찍힌다.
+
+                // $(this).next().css('display', 'block');
+                // 위의 방법으로는 radio와 같이 선택되지 않은 메뉴가 자동으로 사라지는 기능을 구현할 수 없다.
+                // 이러한 문제를 해결하기 위해 each() function을 사용한다.
+
+                var clickedIndex = $(this).index();
+                console.log("clickedIndex :" + clickedIndex);
+                // $(this).index() --> 클릭한 this(<label>)가 부모로부터 몇번째 자식인지 알 수 있다.
+                // index이기에 '0'부터 시작한다.(첫 번째 자식의 index = 0)
+                // 여기서 부모 ==> <div id="arcodian">
+
+                // ul을 $('ul')로 선택했을때의 index값과 맞추기 위해 '/2'를 한다.
+                var clickedIndexDivide = $(this).index()/2;
+                console.log("clickedIndexDivide : " + clickedIndexDivide);
+                //콘솔에 찍히는 값 --> 0, 1, 2
+
+                // 근데 사실 이 방법은.... 아래의 <div id="arcodian">안에 다른 태그가 하나만 추가되도
+                // index 순서가 모두 달라지기 때문에 그닥 좋은 방법이 아니다.
+                $('label').each(function(index, element) {
+                    console.log(this);
+                    console.log(element);
+
+                    // this와 index의 특징을 이용해 스타일을 건다.
+                    if (clickedIndexDivide == index) {
+                        // $(this).next().css('display', 'block');
+                        $(element).next().show();
+                        // 반드시 $(element)로 형변환을 시켜야 jQuery의 function을 사용할 수 있다.
+                        // why? index는 숫자이기에 별도의 형변환이 필요없지만
+                        // element는 js dom 형태(this와 같은 상황)이므로 jQuery 형태로 형변환을 해야한다.
+                        // cf) 여기서 element는 <label>을 의미한다.
+                    } else {
+                        $(element).next().hide();
+                    }
+                })
+
+                // 다른 방법
+                // $('ul').each(function(index, element) {
+                //     if (clickedIndexDivide == index) {
+                //         element.style.display = "block";
+                //     } else {
+                //         element.style.display = "none";
+                //     }
+                // })
+            })
+        })
+    </script>
+</head>
+<body>
+    <nav>
+        <!-- radio는 한 개만 선택되게 하고 싶을때 사용 -->
+        <input type="radio" name="tabmenu" id="one">
+        <input type="radio" name="tabmenu" id="two">
+        <input type="radio" name="tabmenu" id="three">
+        <div id="arcodian">
+            <!-- label은 display 속성이 옆으로 나타나는 애들이다. -->
+            <label for="one" class="level1">프로그래밍언어</label> <!-- 0 -->
+            <!-- ul은 block 정렬 -->
+            <ul> <!-- 1 -->
+                <li><a href="#one">JAVA</a></li>
+                <li><a href="#two">HTML/CSS/Js/jQuery</a></li>
+                <li><a href="#three">ORACLE/PlSql</a></li>
+            </ul>
+<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+            <label for="two" class="level1">프로그래밍언어</label> <!-- 2 -->
+            <ul> <!-- 3 -->
+                <li><a href="#one">JAVA</a></li>
+                <li><a href="#two">HTML/CSS/Js/jQuery</a></li>
+                <li><a href="#three">ORACLE/PlSql</a></li>
+            </ul>
+<!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+            <label for="three"  class="level1">프로그래밍언어</label> <!-- 4 -->
+            <ul> <!-- 5 -->
+                <li><a href="#one">JAVA</a></li>
+                <li><a href="#two">HTML/CSS/Js/jQuery</a></li>
+                <li><a href="#three">ORACLE/PlSql</a></li>
+            </ul>
+        </div>
+    </nav>
+</body>
+</html>

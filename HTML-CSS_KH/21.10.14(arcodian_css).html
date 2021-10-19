@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input[type=radio] {  /* [type="radio"] 이것만 써도 된다. */
+            display: none;
+        }
+
+        ul {
+            display: none;
+        }
+
+        .level1 {
+            display: block;
+            padding: 10px 5px;
+        }
+        input:nth-of-type(1):checked ~ label:nth-of-type(1) + ul {
+            display: block;
+        }
+
+        input:nth-of-type(2):checked ~ label:nth-of-type(2) + ul {
+            display: block;
+        }
+        
+        input:nth-of-type(3):checked ~ label:nth-of-type(3) + ul {
+            display: block;
+        }
+        /* radio의 특징으로 인해 하나를 누르면 자동으로 다른 radio는 체크가 해제된다. */
+        /* css를 이용한 방법은 간단하지만 다른 기능을 못 넣는다는 단점이 있다. (단순히 보여줄거면 이걸쓰면된다.) */
+    </style>
+</head>
+<body>
+    <nav>
+        <!-- radio는 한 개만 선택되게 하고 싶을때 사용한다. -->
+        <div id="arcodian">
+            <!-- label은 display 속성이 옆으로 나타나는 애들이다. -->
+            <input type="radio" name="tabmenu" id="one">
+            <label for="one" class="level1">프로그래밍언어</label>
+            <ul> <!-- ul의 display 속성은 block -->
+                <li><a href="#one">JAVA</a></li>
+                <li><a href="#two">HTML/CSS/Js/jQuery</a></li>
+                <li><a href="#three">ORACLE/PlSql</a></li>
+            </ul>
+            <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+            <input type="radio" name="tabmenu" id="two">
+            <label for="two" class="level1">프로그래밍언어</label>
+            <ul>
+                <li><a href="#one">JAVA</a></li>
+                <li><a href="#two">HTML/CSS/Js/jQuery</a></li>
+                <li><a href="#three">ORACLE/PlSql</a></li>
+            </ul>
+            <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+            <input type="radio" name="tabmenu" id="three">
+            <label for="three"  class="level1">프로그래밍언어</label>
+            <ul>
+                <li><a href="#one">JAVA</a></li>
+                <li><a href="#two">HTML/CSS/Js/jQuery</a></li>
+                <li><a href="#three">ORACLE/PlSql</a></li>
+            </ul>
+        </div>
+    </nav>
+</body>
+</html>

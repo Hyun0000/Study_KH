@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <style>
+        header ,nav, section, aside, footer {
+            border: 1px solid black;
+            width: 500px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        .modal {
+            display: none;
+            width: 100%; height: 100%;
+            top: 0; left: 0;
+            position: fixed;
+            z-index: 1;
+            background-color: rgba(12, 12, 12, .3);
+        }
+
+        .modal-content {
+            width: 200px; height: 300px;
+            top: 50px; margin: auto;
+            position: relative;
+            background-color: steelblue;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- modal box -->
+    <!-- 아래의 구조(기본 화면)에서 modal box를 띄어보자 -->
+    <div id="modal_01" class="modal"> <!-- 전체 화면(배경) -->
+        <div class="modal-content"> <!-- 진짜배기 내용 -->
+            <p class="close">&times; &nbsp; &#10006;</p>
+            <!-- &times;가 한 덩어리이다. -->
+            <!-- &#10006;가 한 덩어리이다. -->
+            <p>모달 박스의 내용 부분</p>
+            <form action="./21.10.14.html" method="get">
+                아이디<input type="text" name="a1">
+                <br>
+                패스워드<input type="text" name="a1">
+                <br>
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+<!-- 기본 화면 --><!-- 기본 화면 --><!-- 기본 화면 --><!-- 기본 화면 --><!-- 기본 화면 --><!-- 기본 화면 --><!-- 기본 화면 --><!-- 기본 화면 --><!-- 기본 화면 -->
+<!-- 기본 화면 --><!-- 기본 화면 --><!-- 기본 화면 --><!-- 기본 화면 --><!-- 기본 화면 --><!-- 기본 화면 --><!-- 기본 화면 --><!-- 기본 화면 --><!-- 기본 화면 -->
+    <header>
+        난 기본화면
+        <button id="btnModalShow">로그인</button>
+    </header>
+
+    <nav>난 메뉴</nav>
+
+    <section>기본 구성 화면</section>
+
+    <aside>어사이드</aside>
+
+    <footer>푸터</footer>
+<!-- <script> --><!-- <script> --><!-- <script> --><!-- <script> --><!-- <script> --><!-- <script> --><!-- <script> --><!-- <script> --><!-- <script> -->
+<!-- <script> --><!-- <script> --><!-- <script> --><!-- <script> --><!-- <script> --><!-- <script> --><!-- <script> --><!-- <script> --><!-- <script> -->
+    <script>
+        $('#btnModalShow').click(function() {
+            $('.modal').css('display', 'block');
+        })
+
+        $('.close').click(function() {
+            $('.modal').css('display', 'none');
+        })
+
+        // modal box 외의 영역을 누르면 modal box가 닫히게 하는 event
+        $(window).on('click', function(e) {
+            // event 객체가 안으로 들어온다. = 클릭이 된 영역이 안으로 들어온다고 생각하면된다.
+            // (event 객체 = 클릭이 된 영역의 태그라고 생각)
+            // event 객체가 안으로 들어오는 것이므로 patameter 'e'를 굳이 작성할 필요는 없다.(parameter가 없어도 알아서 들어오니까.)
+            // 만약 paramter가 없다면 [if (e.target == modal)]를 [if (event.target == modal)]로 적으면된다.
+            // event 형태로 들어올때 event.target으로 적으면 this의 개념으로 들어온다. (event.target = this)
+
+
+            // parameter인 'e'에 클릭된 객체가 event 형태로 담겨들어온다.
+            // console.log(this);
+            // console.log($(this));
+            // console.log(e);
+            // console.log(e.target);
+
+            // 방법 1
+            // var modal = document.getElementById('modal_01');
+            // if (e.target == modal) {
+            //     $('.modal').hide();
+            // }
+
+            // 방법 2
+            if (e.target == $('.modal').get(0)) {
+                $('.modal').hide(100);
+            }
+            // e.target이 js dom 형태이므로 get() function을 이용해 jQuery 형태($('.modal'))를 js dom 형태로 변환시킨다.
+        })
+    </script>
+</body>
+</html>

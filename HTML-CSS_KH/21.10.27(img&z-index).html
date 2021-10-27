@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>top-menu</title>
+    <style>
+        * { margin: 0; padding: 0; }
+
+        body { margin-left: 50px; }
+
+        /* 각 <img>를 겹치게 하려면 부모 태그(<div class="img-box">)에 relative를 적용해 기준점(0,0)으로 재설정 해야한다. */
+        /* 이 기준점을 기준으로 자식 <img>들의 위치를 모두 다르게 잡는다.(<img>의 position은 absolute이다.)*/
+        .img-box {
+            position: relative;
+            /* 이제 내가 기준점이 되어 (0,0)이 된다. */
+        }
+
+        .img-box > img {
+            width: 200px; height: 200px;
+        }
+
+        /* 각 <img>의 위치를 다르게 설정 */
+        #f1 {
+            position: absolute;
+            left: 0;
+        }
+
+        /* 각 <img>의 위치를 다르게 설정 */
+        #f2 {
+            position: absolute;
+            left: 150px;
+        }
+
+        /* 각 <img>의 위치를 다르게 설정 */
+        #f3 {
+            position: absolute;
+            left: 300px;
+        }
+
+        .img-box > img:hover {
+            /* z-index를 이용해 hover가 된 <img>를 맨 위로 띄운다. */
+            z-index: 1;
+            transform: scale(1.1);
+            transition-duration: 1s;
+        }
+        /* transform: scale(1); --> 원래 크기 그대로 */
+        /* transform: scale(.5); --> 원래 크기 보다 축소 */
+        /* transform: scale(1.2); --> 원래 크기 보다 확대 */
+    </style>
+</head>
+<body>
+    <div class="img-box">
+        <img id="f1" src="./Melon Artist Page.jfif" alt="">
+        <img id="f2" src="./Wendy (5).jfif" alt="">
+        <img id="f3" src="./다운로드.jfif" alt="">
+    </div>
+</body>
+</html>

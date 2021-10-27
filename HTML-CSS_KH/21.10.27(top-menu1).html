@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; }
+
+        body { margin-left: 50px; }
+
+        /* css는 순서를 정하고 시작하는게 좋다. */
+        nav>ul>li {
+            list-style-type: none;
+            float: left;
+            width: 100px; height: 50px;
+            text-align: center; line-height: 50px;
+            background-color: #ccc;
+        }
+
+        nav>ul>li>a {
+            text-decoration: none; color: black;
+            /* <a> 태그의 영역을 <li>와 갖게 하기 */
+            display: block;
+            /* inline-block하면 별도로 width : 100%, height : 100% 지정을 해줘야한다.  */
+        }
+        /* 
+        <a> 태그는 기본 display 속성이 inline이기에 별도의 width, height 설정이 불가능하며
+        딱 text 크기만큼의 사이즈만 갖는다.
+        이 속성을 바꾸려면 display 속성 자체를 바꿔야한다.
+        */
+
+        nav>ul>li>a:hover {
+            background-color: gray;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition-duration: 1s;
+        }
+
+        /* nav>ul>li:hover { */
+            /* background-color: gray; */
+            /* 이렇게 지정하면 오직 글자위에 마우스를 올려야만 링크를 탈 수 있고 마우스 커서 모양도 글자위에서만 변경된다. */
+        /* } */
+
+        section {
+            clear: both;
+            width: 300px;
+            background-color: blanchedalmond;
+        }
+
+        section>div {
+            display: none;
+        }
+
+        nav>ul>li:nth-of-type(1)>a:hover {
+            background-color: bisque;
+        }
+
+        nav>ul>li:nth-of-type(2)>a:hover {
+            background-color: bisque;
+        }
+
+        nav>ul>li:nth-of-type(3)>a:hover {
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">London</a></li>
+            <li><a href="#">Paris</a></li>
+            <li><a href="#">Tokoy</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div>
+            London is the capital city of England.
+        </div>
+
+        <div>
+            Paris is the capital of France.
+        </div>
+
+        <div>
+            Tokyo is the capital of Japan.
+        </div>
+    </section>
+    <script>
+        // 현재의 HTML 구조로는 css를 이용해 원하는 모양을 나타낼 수 없다.(top-menu 얘기)
+        // 따라서 script를 이용해야한다.
+        // 1.
+        // $('li:first-child').hover(function() {
+        //     $('div').hide();
+        //     $('section div:first-child').show();
+        // })
+
+        // $('li:nth-of-type(2)').hover(function() {
+        //     $('div').hide();
+        //     $('section div:nth-of-type(2)').show();
+        // })
+
+        // $('li:nth-of-type(3)').hover(function() {
+        //     $('div').hide();
+        //     $('section div:nth-of-type(3)').show();
+        // })
+
+        // 2.
+        $('li').hover(function() {
+            var selectedIdx = $(this).index();
+            // $(this)는 hover된 <li>를 의미한다.
+            // hover된 <li>가 몇번째 순서인지 알려준다.
+            // 기준이 되는 부모 태그는 <ul>이다. --> <ul>의 자식 <li> 중 몇 번째 자식인가
+            console.log("selectedIdx : " + selectedIdx);
+            $(this).parents('nav').next().children().each(function(index, element) {
+            // $(this)는 hover된 <li>를 의미한다.
+            // children() --> 모든 자식 노드 찾기
+            // next() --> 다음 형제 노드 찾기
+
+                $(this).hide(); // 일단은 <div>를 다 숨기고 아래 조건에 맞으면 화면에 보이게한다.
+                // $(this)는 <section> 아래에 있는 3개의 <div>를 의미한다.
+                if (index == selectedIdx) {
+                // index는 <section> 아래에 있는 3개의 <div>의 순서를 의미한다.
+                // 현재 <li>도 <ul>의 밑으로 3개가 있고 <div>도 <section> 밑으로 3개가 있기에 index 속성을 사용할 수 있다.
+                    $(this).show();
+                }
+            })
+        })
+    </script>
+</body>
+</html>
